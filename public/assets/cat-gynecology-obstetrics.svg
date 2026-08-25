@@ -1,0 +1,25 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="gyneTitle">
+  <title id="gyneTitle">Gynecology and obstetrics instrument set</title>
+  <defs>
+    <linearGradient id="gynePlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4F6F7"/>
+      <stop offset="100%" stop-color="#EDF9F5"/>
+    </linearGradient>
+    <linearGradient id="gyneSweep" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C8891"/>
+      <stop offset="100%" stop-color="#18B27F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#gynePlate)"/>
+  <circle cx="400" cy="300" r="230" fill="#FFFFFF" fill-opacity="0.6"/>
+  <rect x="0" y="596" width="800" height="4" fill="url(#gyneSweep)"/>
+
+  <g fill="none" stroke="#0B1119" stroke-opacity="0.75" stroke-width="9" stroke-linecap="round">
+    <path d="M320 220 C260 260 260 340 320 380"/>
+    <path d="M320 220 C400 240 400 360 320 380"/>
+    <path d="M320 220 L470 200"/>
+    <path d="M320 380 L470 400"/>
+  </g>
+  <circle cx="500" cy="300" r="14" fill="#18B27F"/>
+</svg>

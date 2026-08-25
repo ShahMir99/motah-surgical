@@ -1,0 +1,31 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="orthoTitle">
+  <title id="orthoTitle">Orthopedic and spine surgery instrument set</title>
+  <defs>
+    <linearGradient id="orthoPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4F6F7"/>
+      <stop offset="100%" stop-color="#EDF9F5"/>
+    </linearGradient>
+    <linearGradient id="orthoSweep" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C8891"/>
+      <stop offset="100%" stop-color="#18B27F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#orthoPlate)"/>
+  <circle cx="400" cy="300" r="230" fill="#FFFFFF" fill-opacity="0.6"/>
+  <rect x="0" y="596" width="800" height="4" fill="url(#orthoSweep)"/>
+
+  <g fill="none" stroke="#0B1119" stroke-opacity="0.75" stroke-width="8">
+    <ellipse cx="330" cy="200" rx="42" ry="26"/>
+    <ellipse cx="330" cy="270" rx="42" ry="26"/>
+    <ellipse cx="330" cy="340" rx="42" ry="26"/>
+    <ellipse cx="330" cy="410" rx="42" ry="26"/>
+  </g>
+
+  <rect x="470" y="180" width="14" height="260" rx="7" fill="#7C8891" transform="rotate(6 477 310)"/>
+
+  <g fill="#18B27F">
+    <rect x="440" y="205" width="70" height="12" rx="6" transform="rotate(6 475 211)"/>
+    <rect x="460" y="330" width="70" height="12" rx="6" transform="rotate(6 495 336)"/>
+  </g>
+</svg>

@@ -1,143 +1,76 @@
-"use client";
-
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
-import logo from "@/assets/logo.png";
-
-export function Footer() {
+export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-8 md:grid-cols-4">
-        <div className="md:col-span-1">
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tigh"
-          >
-            <Image src={logo} alt="NSCC Logo" width={310} height={310} />
-          </Link>
-          <h4 className="mt-6 text-sm font-semibold uppercase tracking-widest text-secondary">
-            Stay Tuned With Us
-          </h4>
-          <p className="mt-3 text-sm text-primary-foreground/70">
-            At NSCC (National Service & Contracting Company), we bring your
-            architectural dreams to life. A leading general contracting company
-            in Egypt and Saudi Arabia.
+    <footer className="bg-accent text-accent-foreground">
+      <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4 lg:py-20">
+        <div>
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center bg-primary font-display text-lg font-bold text-primary-foreground">
+              P
+            </span>
+            <span className="font-display text-lg font-bold">Professional</span>
+          </div>
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-accent-foreground/65">
+            Precision surgical instruments engineered in Sialkot and trusted by clinicians in more
+            than 50 countries.
           </p>
         </div>
 
-        <div className="pt-10">
-          <h4 className="text-sm font-semibold uppercase tracking-widest text-secondary">
-            Quick Links
-          </h4>
-          <ul className="mt-4 space-y-2 text-sm text-primary-foreground/80">
-            <li>
-              <Link href="/about" className="hover:text-secondary">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href="/projects" className="hover:text-secondary">
-                Our Projects
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="hover:text-secondary">
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link href="/blog" className="hover:text-secondary">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-secondary">
-                Contact Us
-              </Link>
-            </li>
+        <div>
+          <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Company</h3>
+          <ul className="mt-5 space-y-3 text-sm text-accent-foreground/70">
+            {[
+              { to: "/about", label: "About us" },
+              { to: "/products", label: "Products" },
+              { to: "/contact", label: "Contact" },
+            ].map((l) => (
+              <li key={l.to}>
+                <Link href={l.to} className="transition-colors hover:text-primary">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        <div className="pt-10">
-          <h4 className="text-sm font-semibold uppercase tracking-widest text-secondary">
-            Services
-          </h4>
-          <ul className="mt-4 space-y-2 text-sm text-primary-foreground/80">
-            <li>
-              <Link href="/services/construction" className="hover:text-secondary">
-                Construction
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services/commercial-industrial"
-                className="hover:text-secondary"
-              >
-                Commercial & Industrial
-              </Link>
-            </li>
-            <li>
-              <Link href="/services/residential" className="hover:text-secondary">
-                Residential
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services/infrastructure"
-                className="hover:text-secondary"
-              >
-                Infrastructure
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services/mep-contracting"
-                className="hover:text-secondary"
-              >
-                MEP Contracting
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services/finishing-decoration"
-                className="hover:text-secondary"
-              >
-                Finishing & Decoration
-              </Link>
-            </li>
+        <div>
+          <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Specialties</h3>
+          <ul className="mt-5 space-y-3 text-sm text-accent-foreground/70">
+            {["General surgery", "Cardiovascular", "Dental", "Microsurgery"].map((s) => (
+              <li key={s}>{s}</li>
+            ))}
           </ul>
         </div>
 
-        <div className="pt-10">
-          <h4 className="text-sm font-semibold uppercase tracking-widest text-secondary">
-            Head Office
-          </h4>
-          <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
-            <li className="flex gap-2">
-              <MapPin className="h-4 w-4 shrink-0 text-secondary" />
-              Egypt and Saudi Arabia, Madinah Munawwarah, King Khalid Road,
-              Waqran District
+        <div>
+          <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Get in touch</h3>
+          <ul className="mt-5 space-y-4 text-sm text-accent-foreground/70">
+            <li className="flex items-start gap-3">
+              <Phone size={16} className="mt-0.5 shrink-0 text-primary" />
+              <a href="tel:+923248610315" className="transition-colors hover:text-primary">
+                +92 324 8610315
+              </a>
             </li>
-            <li className="flex gap-2">
-              <Mail className="h-4 w-4 shrink-0 text-secondary" />{" "}
-              info@nscc-group.com
+            <li className="flex items-start gap-3">
+              <Mail size={16} className="mt-0.5 shrink-0 text-primary" />
+              <a href="mailto:sales@phfworld.com" className="transition-colors hover:text-primary">
+                sales@phfworld.com
+              </a>
             </li>
-            <li className="flex gap-2">
-              <Phone className="h-4 w-4 shrink-0 text-secondary" /> (+966) 54 108
-              4450
-            </li>
-            <li className="flex gap-2">
-              <Phone className="h-4 w-4 shrink-0 text-secondary" /> 013 821 1753
+            <li className="flex items-start gap-3">
+              <MapPin size={16} className="mt-0.5 shrink-0 text-primary" />
+              19-A(N), Industrial Estate, Sialkot 51310, Pakistan
             </li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-primary-foreground/10">
-        <div className="mx-auto max-w-7xl px-6 py-5 text-center text-xs text-primary-foreground/60">
-          © {new Date().getFullYear()} NSCC General Contracting. All rights
-          reserved.
+
+      <div className="border-t border-accent-foreground/10">
+        <div className="container-page flex flex-col gap-2 py-6 text-xs text-accent-foreground/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Professional Hospital Furnishers. All rights reserved.</p>
+          <p>ISO 13485 · CE Marked · EU-MDR compliant</p>
         </div>
       </div>
     </footer>

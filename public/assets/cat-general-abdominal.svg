@@ -1,0 +1,28 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="genTitle">
+  <title id="genTitle">General and abdominal surgery instrument set</title>
+  <defs>
+    <linearGradient id="genPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4F6F7"/>
+      <stop offset="100%" stop-color="#EDF9F5"/>
+    </linearGradient>
+    <linearGradient id="genSweep" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C8891"/>
+      <stop offset="100%" stop-color="#18B27F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#genPlate)"/>
+  <circle cx="400" cy="300" r="230" fill="#FFFFFF" fill-opacity="0.6"/>
+  <rect x="0" y="596" width="800" height="4" fill="url(#genSweep)"/>
+
+  <g transform="translate(210,230) rotate(-18)">
+    <rect x="0" y="34" width="230" height="14" rx="7" fill="#7C8891"/>
+    <path d="M230 24 L318 41 L230 58 Z" fill="#18B27F"/>
+  </g>
+
+  <g transform="translate(260,330) rotate(10)" fill="none" stroke="#0B1119" stroke-width="10" stroke-linecap="round" stroke-opacity="0.75">
+    <path d="M0 0 C55 55 55 130 0 180"/>
+    <path d="M55 0 C0 55 0 130 55 180"/>
+    <circle cx="27" cy="78" r="11" fill="#18B27F" stroke="none"/>
+  </g>
+</svg>

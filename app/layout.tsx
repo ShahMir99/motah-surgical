@@ -1,43 +1,36 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Saira } from "next/font/google";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Footer } from "@/components/site/Footer";
-import { Header } from "@/components/site/Header";
+import Footer from "@/components/site/Footer";
+import Header from "@/components/site/Header";
+import { Poppins } from "next/font/google";
 
-const saira = Saira({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["400", "500", "600", "700"]
-});
+import "./globals.css";
 
-const inter = Inter({
+
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-sans",
-});
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+})
+
 export const metadata: Metadata = {
-  title: "Motah Surgical — Leading General Contracting Company in Egypt and Saudi Arabia",
+  title: "Motah Surgical — Precision Surgical Instrumentation, Saudi Arabia",
   description:
-    "From iconic commercial buildings to turnkey residential developments, Motah Surgical delivers construction, MEP and engineering excellence across Egypt and Saudi Arabia.",
-  openGraph: {
-    title: "Motah Surgical — General Contracting in Egypt and Saudi Arabia",
-    description: "Building landmarks, shaping Egypt and Saudi Arabia's future.",
-  },
+    "Certified, locally finished surgical instrumentation for hospitals and healthcare networks across Saudi Arabia. SFDA licensed, ISO 13485:2016, LCGPA certified.",
 };
+
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={`${saira.className} h-full antialiased`}>
-      <body cz-shortcut-listen="true" className="min-h-full flex flex-col">
-        <TooltipProvider>
-          <Header />
-          {children}
-          <Footer />
-        </TooltipProvider>
+    <html lang="en">
+      <body  cz-shortcut-listen="true" className={`${poppins.className} antialiased`}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

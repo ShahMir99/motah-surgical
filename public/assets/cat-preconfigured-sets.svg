@@ -1,0 +1,30 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="setsTitle">
+  <title id="setsTitle">Pre-configured surgical instrument set tray</title>
+  <defs>
+    <linearGradient id="setsPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4F6F7"/>
+      <stop offset="100%" stop-color="#EDF9F5"/>
+    </linearGradient>
+    <linearGradient id="setsSweep" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C8891"/>
+      <stop offset="100%" stop-color="#18B27F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#setsPlate)"/>
+  <circle cx="400" cy="300" r="230" fill="#FFFFFF" fill-opacity="0.6"/>
+  <rect x="0" y="596" width="800" height="4" fill="url(#setsSweep)"/>
+
+  <rect x="230" y="180" width="340" height="260" rx="18" fill="none" stroke="#7C8891" stroke-width="6"/>
+  <g stroke="#7C8891" stroke-width="3" stroke-opacity="0.6">
+    <path d="M400 180 V440"/>
+    <path d="M230 310 H570"/>
+  </g>
+
+  <g stroke-linecap="round">
+    <rect x="260" y="220" width="90" height="8" rx="4" fill="#0B1119" fill-opacity="0.7"/>
+    <circle cx="500" cy="245" r="16" fill="none" stroke="#18B27F" stroke-width="7"/>
+    <path d="M270 360 L340 390" stroke="#0B1119" stroke-opacity="0.7" stroke-width="8"/>
+    <path d="M470 370 L540 400" stroke="#18B27F" stroke-width="8"/>
+  </g>
+</svg>

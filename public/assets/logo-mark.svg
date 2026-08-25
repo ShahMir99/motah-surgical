@@ -1,0 +1,6 @@
+<svg viewBox="0 0 226 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Motah Surgical</title>
+  <rect x="0" y="0" width="40" height="40" rx="10" fill="#18B27F"/>
+  <path d="M10 29 L10 11 L20 23 L30 11 L30 29" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="52" y="26" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="19" letter-spacing="0.3" fill="#0B1119">MOTAH<tspan fill="#18B27F"> SURGICAL</tspan></text>
+</svg>
