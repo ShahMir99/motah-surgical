@@ -83,7 +83,7 @@ function Hero() {
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-[#173B4C]/70" />
+      <div className="absolute inset-0 bg-primary-dark" />
 
       <div className="relative mx-auto flex max-w-6xl flex-col lg:h-[360px] lg:flex-row">
         <div className="relative flex w-full h-[440px] flex-col justify-center bg-[#02ac75] px-8 py-14 lg:w-[480px] lg:shrink-0 lg:px-16 lg:py-0">
@@ -97,7 +97,7 @@ function Hero() {
           </h1>
           <button
             type="button"
-            className="mt-8 w-fit rounded-xl bg-[#173B4C] px-6 py-3 text-base font-semibold tracking-wider text-white transition-colors hover:bg-[#0F2A38]"
+            className="mt-8 w-fit rounded-xl bg-primary-dark px-6 py-3 text-base font-semibold tracking-wider text-white transition-colors hover:bg-[#0F2A38]"
           >
             DOWNLOAD CATALOGUE
           </button>
@@ -145,7 +145,7 @@ function ProductRow({
         </p>
         <button
           type="button"
-          className="rounded-full bg-[#173B4C] px-7 py-3.5 text-xs font-bold tracking-wide text-white transition-colors hover:bg-[#0F2A38]"
+          className="rounded-full bg-primary-dark px-7 py-3.5 text-xs font-bold tracking-wide text-white transition-colors hover:bg-[#0F2A38]"
         >
           VIEW PRODUCTS
         </button>
@@ -187,7 +187,7 @@ function ProductsSection() {
 
 function CtaBanner() {
   return (
-    <section className="bg-[#173B4C]">
+    <section className="bg-primary-dark border-b border-white">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row lg:px-10">
         <p className="text-sm font-bold tracking-wide text-white">
           WANT TO KNOW MORE ABOUT PROFESSIONAL?

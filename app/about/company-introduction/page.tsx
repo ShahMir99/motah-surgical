@@ -22,7 +22,7 @@ const About = () => {
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#173B4C]/70" />
+        <div className="absolute inset-0 bg-primary-dark" />
 
         <div className="relative mx-auto flex max-w-5xl flex-col lg:h-[360px] lg:flex-row">
           <div className="relative flex text-center w-full h-[440px] flex-col justify-center bg-[#02ac75] px-8 py-14 lg:shrink-0 lg:px-16 lg:py-0">

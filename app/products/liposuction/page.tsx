@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import gsImage from "@/assets/genral-surgery-image.png"
+import gsImage from "@/assets/liposuction.jpg"
 import Image from 'next/image';
 
 const PRIMARY = '#18B27F';
@@ -31,9 +31,9 @@ export default function LiposuctionCategoryPage() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="bg-[#18B27F] text-white flex flex-col justify-center gap-8 px-7 py-14 md:px-12 md:py-14"
         >
-          <span className="text-[13px] font-bold tracking-[2px]">General Surgery</span>
+          <span className="text-[13px] font-bold tracking-[2px]">Liposuction</span>
           <h1 className="font-light text-[28px] md:text-[42px] leading-[1.25]">
-            Comprehensive Solutions for General Surgery
+            Precision tools for sculpted body transformations
           </h1>
           <button className="w-fit bg-[#1E2A3B] hover:bg-[#24344A] transition-colors text-white text-xs font-bold tracking-[1.5px] px-6 py-4">
             DOWNLOAD CATALOGUE

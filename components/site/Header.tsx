@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -13,18 +13,22 @@ const productCategories = [
   { to: "/products/plastic-surgery", label: "Plastic Surgery" }
 ] as const;
 
+const aboutCategories = [
+  { to: "/about/company-introduction", label: "Company Introduction" },
+] as const;
+
 const nav = [
   { to: "/", label: "Home" },
   { to: "/products", label: "Products", dropdown: productCategories },
-  { to: "/about", label: "About Us" },
-  { to: "/news", label: "News" },
+  { to: "#", label: "About Us", dropdown: aboutCategories },
   { to: "/blog", label: "Blog" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
-  const [desktopProductsOpen, setDesktopProductsOpen] = useState(false);
+  const [mobileOpenKey, setMobileOpenKey] = useState<string | null>(null);
+  const [desktopOpenKey, setDesktopOpenKey] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-md">
@@ -39,8 +43,8 @@ export default function Header() {
               <div
                 key={item.to}
                 className="relative"
-                onMouseEnter={() => setDesktopProductsOpen(true)}
-                onMouseLeave={() => setDesktopProductsOpen(false)}
+                onMouseEnter={() => setDesktopOpenKey(item.to)}
+                onMouseLeave={() => setDesktopOpenKey((prev) => (prev === item.to ? null : prev))}
               >
                 <Link
                   href={item.to}
@@ -50,12 +54,12 @@ export default function Header() {
                   <ChevronDown
                     size={16}
                     className={`transition-transform duration-200 ${
-                      desktopProductsOpen ? "rotate-180" : ""
+                      desktopOpenKey === item.to ? "rotate-180" : ""
                     }`}
                   />
                 </Link>
 
-                {desktopProductsOpen && (
+                {desktopOpenKey === item.to && (
                   <div className="absolute left-0 top-[20px] w-72 overflow-hidden rounded-lg border border-border border-t-0 bg-background shadow-xl">
                     <ul className="max-h-[70vh] overflow-y-auto py-2">
                       {item.dropdown.map((sub) => (
@@ -85,9 +89,9 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link href="/contact" className="btn-base btn-primary">
-            Request a quote
-          </Link>
+          <a href="tel:+966565111175" className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+              <Phone className="h-4 w-4" /> (+966) 56 5111 175
+            </a>
         </div>
 
         <button
@@ -108,19 +112,21 @@ export default function Header() {
                 <div key={item.to} className="border-b border-border/60">
                   <button
                     type="button"
-                    onClick={() => setMobileProductsOpen((v) => !v)}
+                    onClick={() =>
+                      setMobileOpenKey((prev) => (prev === item.to ? null : item.to))
+                    }
                     className="flex w-full items-center justify-between py-4 text-sm font-semibold text-ink-soft transition-colors hover:text-primary"
                   >
                     {item.label}
                     <ChevronDown
                       size={18}
                       className={`transition-transform duration-200 ${
-                        mobileProductsOpen ? "rotate-180" : ""
+                        mobileOpenKey === item.to ? "rotate-180" : ""
                       }`}
                     />
                   </button>
 
-                  {mobileProductsOpen && (
+                  {mobileOpenKey === item.to && (
                     <ul className="pb-2">
                       {item.dropdown.map((sub) => (
                         <li key={sub.to}>
@@ -147,9 +153,9 @@ export default function Header() {
                 </Link>
               )
             )}
-            <Link href="/contact" onClick={() => setOpen(false)} className="btn-base btn-primary mt-5">
-              Request a quote
-            </Link>
+             <a href="tel:+966565111175" className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+              <Phone className="h-4 w-4" /> (+966) 56 5111 175
+            </a>
           </nav>
         </div>
       )}

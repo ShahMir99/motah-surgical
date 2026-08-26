@@ -1,17 +1,16 @@
-import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import logo from "@/assets/logo.png"
+import { Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-accent text-accent-foreground">
+    <footer className="bg-primary-dark text-accent-foreground">
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4 lg:py-20">
         <div>
-          <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center bg-primary font-display text-lg font-bold text-primary-foreground">
-              P
-            </span>
-            <span className="font-display text-lg font-bold">Professional</span>
-          </div>
+         <Link href="/" className="group flex items-center gap-3">
+          <Image src={logo} alt="logo" width={300} height={300} />
+        </Link>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-accent-foreground/65">
             Precision surgical instruments engineered in Sialkot and trusted by clinicians in more
             than 50 countries.

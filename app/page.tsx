@@ -142,7 +142,7 @@ export default function Home() {
           </div>
 
           <div className="mt-14 flex justify-center">
-            <Link href="/products" className="btn-base btn-ink">
+            <Link href="/products" className="btn-base btn-ink bg-primary">
               View all products
             </Link>
           </div>
@@ -213,20 +213,20 @@ export default function Home() {
       </section>
 
       {/* Highlights */}
-      <section className="bg-accent section-pad text-accent-foreground">
+      <section className="section-pad text-accent-foreground">
         <div className="container-page">
           <Reveal className="max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">
               Our highlights
             </p>
-            <h2 className="mt-4  text-3xl font-bold sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 text-3xl text-ink font-bold sm:text-4xl lg:text-5xl">
               Where our engineering makes the difference
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-px overflow-hidden border border-accent-foreground/10 bg-accent-foreground/10 sm:grid-cols-2">
+          <div className="mt-14 grid gap-10 overflow-hidden  sm:grid-cols-2">
             {highlights.map((h, i) => (
               <Reveal key={h.title} delay={i * 80}>
-                <article className="group h-full bg-accent p-9 transition-colors duration-500 hover:bg-primary-dark lg:p-12">
+                <article className="group h-full bg-accent p-14 transition-colors duration-500 hover:bg-primary lg:p-12">
                   <h.icon
                     size={28}
                     className="text-primary transition-colors group-hover:text-primary-foreground"

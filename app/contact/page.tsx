@@ -1,214 +1,160 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { UploadCloud, MessageCircle, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { useState } from "react";
 
-import { fadeUp, stagger, viewportOnce } from "@/components/site/motion";
-import { PageHeader } from "@/components/site/PageHeader";
-
-const categories = [
-  "Government Tender / NUPCO Requisition",
-  "Private Hospital Procurement",
-  "Custom Procedure Tray / Set Request",
-  "OEM & Contract Manufacturing Partnership",
-  "Refurbishment & Re-Passivation Request",
-];
-
-// Placeholder — replace with the real WhatsApp Business number, digits only, country code first.
-const whatsappNumber = "966500000000";
+const PRIMARY = "#18B27F";
+const PRIMARY_DARK = "#129468";
+const GRADIENT = `linear-gradient(135deg, ${PRIMARY} 0%, ${PRIMARY_DARK} 100%)`;
 
 export default function ContactPage() {
+  const [sent, setSent] = useState(false);
   return (
     <div>
-      <PageHeader
-        eyebrow="Contact"
-        title="Contact Our Procurement Team"
-        description="Tell us what you need and how to reach you — a specialist will route your inquiry to the right team."
-      />
-
-      {/* SECTION 1 — SMART INQUIRY ROUTING FORM */}
-      <section className="bg-white py-24">
-        <div className="mx-auto max-w-3xl px-6">
-          <motion.form
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
-            variants={stagger}
-            className="rounded-2xl border border-[#D9DEE2] bg-white p-6 shadow-sm sm:p-10"
-          >
-            <motion.div variants={fadeUp} className="grid gap-6 sm:grid-cols-2">
-              <div>
-                <label className="text-sm font-semibold text-[#0B1119]">Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  className="mt-2 w-full rounded-xl border border-[#D9DEE2] px-4 py-3 text-sm text-[#0B1119] outline-none focus:border-[#18B27F]"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-[#0B1119]">Organization / Hospital</label>
-                <input
-                  type="text"
-                  name="organization"
-                  className="mt-2 w-full rounded-xl border border-[#D9DEE2] px-4 py-3 text-sm text-[#0B1119] outline-none focus:border-[#18B27F]"
-                  placeholder="Facility or company name"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-[#0B1119]">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  className="mt-2 w-full rounded-xl border border-[#D9DEE2] px-4 py-3 text-sm text-[#0B1119] outline-none focus:border-[#18B27F]"
-                  placeholder="you@hospital.sa"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-[#0B1119]">Phone</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  className="mt-2 w-full rounded-xl border border-[#D9DEE2] px-4 py-3 text-sm text-[#0B1119] outline-none focus:border-[#18B27F]"
-                  placeholder="+966 5X XXX XXXX"
-                />
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeUp} className="mt-6">
-              <label className="text-sm font-semibold text-[#0B1119]">Inquiry Category</label>
-              <select
-                name="category"
-                defaultValue=""
-                className="mt-2 w-full rounded-xl border border-[#D9DEE2] bg-white px-4 py-3 text-sm text-[#0B1119] outline-none focus:border-[#18B27F]"
-              >
-                <option value="" disabled>
-                  Select an inquiry type
-                </option>
-                {categories.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-            </motion.div>
-
-            <motion.div variants={fadeUp} className="mt-6">
-              <label className="text-sm font-semibold text-[#0B1119]">Message</label>
-              <textarea
-                name="message"
-                rows={4}
-                className="mt-2 w-full rounded-xl border border-[#D9DEE2] px-4 py-3 text-sm text-[#0B1119] outline-none focus:border-[#18B27F]"
-                placeholder="Tell us about your requirement..."
-              />
-            </motion.div>
-
-            <motion.div variants={fadeUp} className="mt-6">
-              <label
-                htmlFor="tender-upload"
-                className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[#D9DEE2] px-6 py-10 text-center transition hover:border-[#18B27F]"
-              >
-                <UploadCloud className="h-8 w-8 text-[#18B27F]" />
-                <span className="text-sm font-semibold text-[#0B1119]">
-                  Attach Tender File / Item Requisition
-                </span>
-                <span className="font-mono text-xs text-[#7C8891]">PDF, Excel, or Word</span>
-                <input id="tender-upload" name="tender-upload" type="file" accept=".pdf,.xls,.xlsx,.doc,.docx" className="sr-only" />
-              </label>
-            </motion.div>
-
-            <motion.button
-              variants={fadeUp}
-              type="submit"
-              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#18B27F] px-8 py-4 text-sm font-semibold text-white transition hover:bg-[#12915F]"
-            >
-              Submit Institutional Inquiry
-              <ArrowRight className="h-4 w-4" />
-            </motion.button>
-          </motion.form>
-        </div>
-      </section>
-
-      {/* SECTION 2 — WHATSAPP BUSINESS */}
-      <section className="bg-[#0B1119] py-20">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
-          variants={fadeUp}
-          className="mx-auto flex max-w-4xl flex-col items-center gap-5 px-6 text-center"
-        >
-          <span className="grid h-16 w-16 place-items-center rounded-full bg-[#18B27F]/10 text-[#80D5B9]">
-            <MessageCircle className="h-7 w-7" />
-          </span>
-          <h2 className="font-display text-2xl font-extrabold text-white md:text-3xl">
-            Urgent Procurement Support
-          </h2>
-          <p className="max-w-xl text-white/70">
-            Connect directly with a sales specialist in Riyadh for real-time inventory checks
-            and urgent hospital orders.
+      {/* <section className="py-24 text-white" style={{ background: PRIMARY }}>
+        <div className="mx-auto max-w-7xl px-6">
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-white">Contact Us</span>
+          <h1 className="mt-4 font-display text-5xl font-extrabold md:text-6xl">
+            Let&apos;s Talk About Your Surgical Instrument Needs
+          </h1>
+          <p className="mt-5 max-w-2xl text-white/80">
+            Whether you need custom instruments, bulk export orders, or ongoing manufacturing
+            support, our team at Motah Surgical is ready to help.
           </p>
-          <a
-            href={`https://wa.me/${whatsappNumber}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 inline-flex items-center gap-2 rounded-full bg-[#18B27F] px-8 py-4 text-sm font-semibold text-white transition hover:bg-[#12915F]"
-          >
-            Chat via WhatsApp Business
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </motion.div>
-      </section>
+        </div>
+      </section> */}
 
-      {/* SECTION 3 — FACILITY LOCATION & DIRECT CONTACT */}
-      <section className="bg-white py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1fr,1.3fr]">
-          <motion.div initial="hidden" whileInView="show" viewport={viewportOnce} variants={fadeUp}>
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#18B27F]">
-              Facility Location
-            </span>
-            <h2 className="mt-3 font-display text-2xl font-extrabold text-[#0B1119] md:text-3xl">
-              Direct Contact
-            </h2>
+      {/* Hero / Introduction banner */}
+      <section className="relative">
+        <img
+          src="https://placehold.co/1600x520/16303d/16303d?text=+"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-primary-dark" />
 
-            <div className="mt-6 space-y-4 text-sm text-[#3B4652]">
-              <p className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#18B27F]" />
-                Riyadh, Kingdom of Saudi Arabia
-              </p>
-              <a href="mailto:info@motahsurgical.com" className="flex items-start gap-3 hover:text-[#18B27F]">
-                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-[#18B27F]" />
-                info@motahsurgical.com
-              </a>
-              <p className="flex items-start gap-3">
-                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-[#18B27F]" />
-                All institutional inquiries are acknowledged within 24 business hours.
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
-            variants={fadeUp}
-            className="overflow-hidden rounded-2xl border border-[#D9DEE2]"
-          >
-            {/*
-              Placeholder query — replace "Riyadh,Saudi+Arabia" with your
-              exact facility address once available for a pinpoint marker.
-            */}
-            <iframe
-              src="https://www.google.com/maps?q=Riyadh,Saudi+Arabia&output=embed"
-              className="h-[360px] w-full lg:h-full"
-              style={{ border: 0 }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Motah Surgical — Riyadh facility location"
-            />
-          </motion.div>
+        <div className="relative mx-auto flex max-w-5xl flex-col lg:h-[360px] lg:flex-row">
+          <div className="relative flex text-center w-full h-[440px] flex-col justify-center bg-[#02ac75] px-8 py-14 lg:shrink-0 lg:px-16 lg:py-0">
+            <p className="mb-5 text-lg font-medium tracking-[0.4em] text-white">
+              CONTACT US
+            </p>
+            <h1 className="font-serif text-7xl font-semibold text-white lg:text-7xl">
+              Let's Build Something Great Together
+            </h1>
+            <p className="mt-6 text-2xl font-light leading-snug text-white lg:text-3xl">
+              Let&apos;s Talk About Your
+              <br />
+              Surgical Instrument Needs
+            </p>
+          </div>
         </div>
       </section>
+
+      <section className="bg-white py-24 pt-44">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-5">
+          <div className="space-y-6 lg:col-span-2">
+            {[
+              {
+                icon: MapPin,
+                title: "Head Office",
+                value: "[Motah Surgical office address]",
+              },
+              {
+                icon: Mail,
+                title: "Email",
+                value: "[Motah Surgical email address]",
+              },
+              {
+                icon: Phone,
+                title: "Phone",
+                value: "[Motah Surgical phone number]",
+              },
+            ].map((c) => (
+              <div
+                key={c.title}
+                className="flex gap-4 rounded-2xl border border-gray-200 bg-white p-5"
+              >
+                <div
+                  className="grid h-12 w-12 shrink-0 place-items-center rounded-xl"
+                  style={{ background: GRADIENT }}
+                >
+                  <c.icon className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+                    {c.title}
+                  </div>
+                  <div className="mt-1 font-semibold text-gray-900">
+                    {c.value}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              setSent(true);
+            }}
+            className="rounded-3xl bg-white p-8 shadow-[0_25px_60px_-20px_rgba(24,178,127,0.35)] lg:col-span-3"
+          >
+            <h2
+              className="font-display text-2xl font-bold"
+              style={{ color: PRIMARY }}
+            >
+              Send us a message
+            </h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <Field label="Name" name="name" />
+              <Field label="Email" name="email" type="email" />
+              <Field label="Phone" name="phone" />
+              <Field label="Subject" name="subject" />
+            </div>
+            <div className="mt-4">
+              <label className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+                Message
+              </label>
+              <textarea
+                required
+                rows={5}
+                name="message"
+                className="mt-2 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm outline-none focus:border-[#18B27F]"
+              />
+            </div>
+            <button
+              className="mt-6 inline-flex rounded-full px-8 py-3.5 text-sm font-semibold text-white"
+              style={{ background: GRADIENT }}
+            >
+              {sent ? "Message Sent ✓" : "Send Message"}
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function Field({
+  label,
+  name,
+  type = "text",
+}: {
+  label: string;
+  name: string;
+  type?: string;
+}) {
+  return (
+    <div>
+      <label className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+        {label}
+      </label>
+      <input
+        required
+        type={type}
+        name={name}
+        className="mt-2 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm outline-none focus:border-[#18B27F]"
+      />
     </div>
   );
 }
