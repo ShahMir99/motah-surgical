@@ -1,16 +1,17 @@
-"use client"
+"use client";
 
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import logo from "@/assets/logo.png"
+import logo from "@/assets/logo.png";
+import { cn } from "@/lib/utils";
 
 const productCategories = [
   { to: "/products/general-surgery", label: "General Surgery" },
   { to: "/products/liposuction", label: "Liposuction" },
-  { to: "/products/plastic-surgery", label: "Plastic Surgery" }
+  { to: "/products/plastic-surgery", label: "Plastic Surgery" },
 ] as const;
 
 const aboutCategories = [
@@ -30,10 +31,50 @@ export default function Header() {
   const [mobileOpenKey, setMobileOpenKey] = useState<string | null>(null);
   const [desktopOpenKey, setDesktopOpenKey] = useState<string | null>(null);
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+
+      setIsScrolled((prev) => {
+        if (window.scrollY >= 30) return true;
+        if (window.scrollY <= 10) return false;
+        return prev;
+      });
+      ticking = false;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-md">
-      <div className="container-page flex h-[105px] items-center justify-between gap-6">
-        <Link href="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
+    <header
+      className={cn(
+        "sticky top-0 z-50 bg-background",
+        isScrolled ? "border-b border-border/70 shadow-sm" : "",
+      )}
+    >
+      <div
+        className={cn(
+          "container-page flex items-center justify-between gap-6 transition-all h-[105px] duration-100",
+          isScrolled && "h-[85px]",
+        )}
+      >
+        <Link
+          href="/"
+          className="group flex items-center gap-3"
+          onClick={() => setOpen(false)}
+        >
           <Image src={logo} alt="logo" width={300} height={300} />
         </Link>
 
@@ -44,7 +85,9 @@ export default function Header() {
                 key={item.to}
                 className="relative"
                 onMouseEnter={() => setDesktopOpenKey(item.to)}
-                onMouseLeave={() => setDesktopOpenKey((prev) => (prev === item.to ? null : prev))}
+                onMouseLeave={() =>
+                  setDesktopOpenKey((prev) => (prev === item.to ? null : prev))
+                }
               >
                 <Link
                   href={item.to}
@@ -84,14 +127,17 @@ export default function Header() {
               >
                 {item.label}
               </Link>
-            )
+            ),
           )}
         </nav>
 
         <div className="hidden lg:block">
-          <a href="tel:+966565111175" className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
-              <Phone className="h-4 w-4" /> (+966) 56 5111 175
-            </a>
+          <a
+            href="tel:+966565111175"
+            className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+          >
+            <Phone className="h-4 w-4" /> (+966) 56 5111 175
+          </a>
         </div>
 
         <button
@@ -113,7 +159,9 @@ export default function Header() {
                   <button
                     type="button"
                     onClick={() =>
-                      setMobileOpenKey((prev) => (prev === item.to ? null : item.to))
+                      setMobileOpenKey((prev) =>
+                        prev === item.to ? null : item.to,
+                      )
                     }
                     className="flex w-full items-center justify-between py-4 text-sm font-semibold text-ink-soft transition-colors hover:text-primary"
                   >
@@ -151,9 +199,12 @@ export default function Header() {
                 >
                   {item.label}
                 </Link>
-              )
+              ),
             )}
-             <a href="tel:+966565111175" className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+            <a
+              href="tel:+966565111175"
+              className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+            >
               <Phone className="h-4 w-4" /> (+966) 56 5111 175
             </a>
           </nav>

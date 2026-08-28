@@ -112,26 +112,6 @@ export default function LiposuctionCategoryPage() {
   );
 }
 
-/** Original stand-in graphic (generic instrument shapes) — replace with real product SVG art */
-function HeroIllustration() {
-  return (
-    <svg viewBox="0 0 600 600" className="w-full h-full max-h-[600px]">
-      <rect width="600" height="600" fill="#F4F5F6" />
-      <g stroke="#8A8F94" strokeWidth={3} strokeLinecap="round">
-        <line x1="120" y1="500" x2="330" y2="90" />
-        <line x1="180" y1="520" x2="400" y2="80" />
-        <line x1="260" y1="540" x2="470" y2="140" />
-        <line x1="90" y1="430" x2="230" y2="150" />
-      </g>
-      <circle cx="330" cy="90" r="14" fill={PRIMARY_DARK} />
-      <rect x="380" y="60" width="22" height="46" rx="6" fill="#1E2A3B" transform="rotate(-25 391 83)" />
-      <rect x="150" y="470" width="26" height="60" rx="8" fill="#C7963B" transform="rotate(20 163 500)" />
-      <rect x="450" y="120" width="24" height="40" rx="6" fill="#B5442E" transform="rotate(-15 462 140)" />
-      <circle cx="230" cy="150" r="10" fill="#5A6470" />
-      <rect x="60" y="400" width="30" height="50" rx="10" fill="#9AA0A6" transform="rotate(30 75 425)" />
-    </svg>
-  );
-}
 
 function MediaThumbnail() {
   return (
