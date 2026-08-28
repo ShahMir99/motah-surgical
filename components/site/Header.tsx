@@ -32,7 +32,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-md">
-      <div className="container-page flex h-20 items-center justify-between gap-6">
+      <div className="container-page flex h-[105px] items-center justify-between gap-6">
         <Link href="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
           <Image src={logo} alt="logo" width={300} height={300} />
         </Link>

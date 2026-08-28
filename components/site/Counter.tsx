@@ -37,11 +37,11 @@ export function Counter({
 
   return (
     <div ref={ref} className="text-center md:text-left">
-      <div className="text-5xl font-semibold text-primary lg:text-6xl">
+      <div className="text-5xl font-bold text-ink lg:text-5xl">
         {n.toLocaleString()}
         {suffix}
       </div>
-      <div className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+      <div className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-muted-foreground">
         {label}
       </div>
     </div>

@@ -1,24 +1,27 @@
 "use client";
 
 import React from "react";
-import {
-  Search,
-  Phone,
-  Mail,
-  MapPin,
-  Download,
-  ChevronDown,
-  MessageCircle,
-  ArrowRight,
-  CheckCircle2,
-  BadgeCheck,
-} from "lucide-react";
+import { Download } from "lucide-react";
+import { StaticImageData } from "next/image";
+
+import laryngoscopy from "@/assets/products_home/Laryngoscopy.jpg";
+import liposuction from "@/assets/products_home/Liposuction.jpg";
+import microSurgery from "@/assets/products_home/Micro-Surgery.jpg";
+import generalSurgery from "@/assets/products_home/gernal-surgery.png";
+import Gynaecology from "@/assets/products_home/Gynaecology.jpg";
+import eyeSurgery from "@/assets/products_home/Eye-Surgery.jpg";
+import entSurgery from "@/assets/products_home/ENT-Surgery.jpg";
+import dentistry from "@/assets/products_home/Dentistry.jpg";
+import cardioVascular from "@/assets/products_home/Cardio-Vascular.jpg";
+import arthroscopy from "@/assets/products_home/Arthoscopy.jpg"; 
+import Orthopedics from "@/assets/products_home/arthopedic.jpg"; 
+import neurosurgery from "@/assets/products_home/neurosurgery.jpg"; 
 
 interface ProductCategory {
   name: string;
   badge?: string;
   description: string;
-  image: string;
+  image: StaticImageData;
 }
 
 const productCategories: ProductCategory[] = [
@@ -26,51 +29,51 @@ const productCategories: ProductCategory[] = [
     name: "General Surgery",
     description:
       "We understand the critical role that precision and reliability play in surgical procedures, which is why we offer a wide range of general surgery instruments built to the highest standard.",
-    image: "https://placehold.co/700x500/eef2f3/1f2937?text=General+Surgery",
+    image: generalSurgery,
   },
   {
     name: "Ear, Nose & Throat Surgery",
     description:
       "Professional Hospital offers a comprehensive range of high-quality ENT instruments for ear, nose, and throat procedures. Our precision-crafted instruments are trusted by surgeons worldwide.",
-    image: "https://placehold.co/700x500/eef2f3/1f2937?text=ENT+Surgery",
+    image: entSurgery,
   },
   {
     name: "Orthopedics",
     description:
       "Discover a wide array of orthopedic instruments, including bone saws, drills, reamers, retractors, forceps, and more. Each instrument is ergonomically designed for surgeon comfort and control.",
-    image: "https://placehold.co/700x500/eef2f3/1f2937?text=Orthopedics",
+    image: Orthopedics,
   },
   {
     name: "Arthroscopy",
     badge: "New",
     description:
       "Professional Arthroscopy Instruments are specifically designed for minimally invasive joint procedures. These instruments offer precise control, visibility, and access during complex procedures.",
-    image: "https://placehold.co/700x500/eef2f3/1f2937?text=Arthroscopy",
+    image: arthroscopy,
   },
   {
     name: "Neurosurgery",
     badge: "New",
     description:
       "Unlocking precision and potential: Professional's neurosurgery instruments are meticulously designed to empower surgeons with the tools they need to perform delicate procedures with confidence.",
-    image: "https://placehold.co/700x500/eef2f3/1f2937?text=Neurosurgery",
+    image: neurosurgery,
   },
   {
     name: "Gynaecology",
     description:
       "Our gynecology instruments category encompasses a wide range of specialized tools tailored to the unique needs of gynecological procedures, from routine exams to complex surgeries.",
-    image: "https://placehold.co/700x500/eef2f3/1f2937?text=Gynaecology",
+    image: Gynaecology,
   },
   {
     name: "Eye Instruments",
     description:
       "Our eye instruments are engineered with a keen focus on the intricate and delicate nature of eye procedures. Each instrument is crafted for exceptional precision and control.",
-    image: "https://placehold.co/700x500/eef2f3/1f2937?text=Eye+Instruments",
+    image: eyeSurgery,
   },
   {
     name: "Microsurgery",
     description:
       "We understand that in microsurgery, even the smallest movement matters. That's why our instruments are engineered for the highest level of precision and reliability.",
-    image: "https://placehold.co/700x500/eef2f3/1f2937?text=Microsurgery",
+    image: microSurgery,
   },
 ];
 
@@ -86,7 +89,7 @@ function Hero() {
       <div className="absolute inset-0 bg-primary-dark" />
 
       <div className="relative mx-auto flex max-w-6xl flex-col lg:h-[360px] lg:flex-row">
-        <div className="relative flex w-full h-[440px] flex-col justify-center bg-[#02ac75] px-8 py-14 lg:w-[480px] lg:shrink-0 lg:px-16 lg:py-0">
+        <div className="relative flex w-full h-[440px] flex-col justify-center bg-[#02ac75] px-8 py-14 lg:w-[510px] lg:shrink-0 lg:px-16 lg:py-0">
           <p className="mb-4 text-xl font-bold tracking-[0.3em] text-white">
             PRODUCTS
           </p>
@@ -152,11 +155,15 @@ function ProductRow({
       </div>
 
       <div className="w-full lg:w-1/2">
-        <div className="border-l-[10px] border-[#02ac75]">
+        <div className="flex">
+          <div className="flex flex-col">
+            <div className="w-[20px] h-[88%] bg-primary"/>
+            <div className="w-[20px] h-[12%] bg-primary-dark"/>
+          </div>
           <img
-            src={category.image}
+            src={category.image.src}
             alt={category.name}
-            className="h-96 w-full object-cover lg:h-[370px]"
+            className="h-96 w-full object-cover object-top lg:h-[370px]"
           />
         </div>
       </div>

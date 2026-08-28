@@ -5,35 +5,22 @@ import { ArrowRight, Award, Globe2, ShieldCheck, Sparkles } from "lucide-react";
 import heroImg from "@/assets/nurse-smiling.png";
 import factoryImg from "@/assets/about-factory.jpg";
 import { categories } from "@/lib/catalog";
+
+import logo from "@/assets/logo.png";
+
+// About Section
+import SurgeonImage from "@/assets/anesthetist-surgery-doctor-about-section.png";
+import worldVectorImage from "../assets/world-vector-image.png";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
 
 import { motion } from "framer-motion";
-
-const highlights = [
-  {
-    icon: Award,
-    title: "50 Years in Healthcare",
-    body: "Five decades of relentless refinement in surgical instrumentation, from the first forceps to today's micro-engineered systems.",
-  },
-  {
-    icon: Sparkles,
-    title: "Laparoscopic Simulators",
-    body: "Training platforms that let surgical teams rehearse minimally invasive technique with realistic tissue feedback.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Rhinoplasty Instruments",
-    body: "Rasps, osteotomes and elevators built for the control that aesthetic nasal surgery demands.",
-  },
-  {
-    icon: Globe2,
-    title: "Global Presence",
-    body: "Exhibiting from Düsseldorf to Kuala Lumpur, bringing our catalogue directly to clinicians worldwide.",
-  },
-];
+import ProductCategoriesGrid from "@/components/ProductGrid";
+import HighlightsGrid from "@/components/Highlights";
+import UpcomingExhibitions from "@/components/Upcomingexhibitions";
 
 export default function Home() {
   return (
@@ -92,54 +79,16 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="section-pad">
+      <section className="relative pt-32 pb-14">
         <div className="container-page">
           <Reveal className="max-w-2xl">
-            <p className="eyebrow">Product range</p>
-            <h2 className="mt-4  text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">
-              Find your specialty
+            <p className="eyebrow text-ink">Product range</p>
+            <h2 className="mt-4 text-6xl font-medium text-primary sm:text-4xl  lg:text-5xl">
+              What are you looking for ?
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-              Ten thousand instruments organised by specialty, each finished,
-              tested and traceable to the bench it was made on.
-            </p>
           </Reveal>
 
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {categories.map((c, i) => (
-              <Reveal key={c.slug} delay={i * 70}>
-                <Link
-                  href="/products"
-                  className="group block h-full overflow-hidden border border-border bg-card shadow-card transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-lift"
-                >
-                  <div className="overflow-hidden bg-muted">
-                    <img
-                      src={c.image.src}
-                      alt={c.name}
-                      loading="lazy"
-                      width={800}
-                      height={600}
-                      className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-7">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                      {c.count}
-                    </p>
-                    <h3 className="mt-3  text-xl font-bold text-ink transition-colors group-hover:text-primary">
-                      {c.name}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {c.blurb}
-                    </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.12em] text-ink transition-all group-hover:gap-3 group-hover:text-primary">
-                      Explore <ArrowRight size={15} />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+          <ProductCategoriesGrid />
 
           <div className="mt-14 flex justify-center">
             <Link href="/products" className="btn-base btn-ink bg-primary">
@@ -150,7 +99,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="bg-secondary section-pad">
+      {/* <section className="bg-secondary section-pad">
         <div className="container-page grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <div className="relative">
@@ -192,18 +141,84 @@ export default function Home() {
             </Link>
           </Reveal>
         </div>
+      </section> */}
+
+      <section className="relative">
+        {/* Colored panel starts lower than the section so the image can overlap above it */}
+        <div
+          className="absolute inset-x-0 top-20 bottom-0 overflow-hidden bg-primary md:top-24"
+          style={{
+            backgroundImage: `url(${worldVectorImage.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+
+        <div className="relative mx-auto max-w-[1320px] px-10 ">
+          <div className="grid items-center lg:grid-cols-[45%_55%]">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="relative aspect-[9/10] w-full max-w-[490px] rounded-xl overflow-hidden bg-gray-100"
+            >
+              <Image
+                src={SurgeonImage}
+                alt="Motah Surgical instrument manufacturing"
+                fill
+                sizes="(max-width: 1024px) 90vw, 490px"
+                className="object-cover"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+              className="py-16 text-white lg:py-24"
+            >
+              <div className="flex flex-wrap items-baseline gap-x-3 mt-10">
+                <span className="text-3xl font-light md:text-4xl">About</span>
+                <h1 className="uppercase text-4xl font-bold">Motah Surgical</h1>
+              </div>
+
+              <p className="mt-6 max-w-xl text-lg whitespace-[20px] leading-relaxed text-white/90">
+                Professional  Hospital Furnishers, a leading surgical instrument
+                manufacturer, has made significant contributions to the
+                healthcare industry for over 50 years. Operating in 50+
+                countries, we have earned a reputation for quality and
+                innovation. Our extensive range of over 10,000 precision
+                surgical instruments reflects our commitment to customer
+                satisfaction and professionalism. By embracing advanced
+                technology and promoting innovation, we empower healthcare
+                professionals to make a positive impact on patient lives and
+                shape the future of medicine.
+              </p>
+
+              <Link
+                href="/company-introduction"
+                className="mt-8 inline-flex bg-primary-dark w-fit items-center rounded px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white transition-colors"
+              >
+                Read more
+              </Link>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Stats */}
       <section className="section-pad">
         <div className="container-page">
           <Reveal className="max-w-xl">
-            <p className="eyebrow">Why Professional</p>
-            <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
+            <p className="eyebrow text-ink">Why Professional</p>
+            <h2 className="mt-4 text-3xl font-bold text-primary sm:text-4xl">
               Numbers built over decades
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 px-20">
             <Counter value={50} label="Years in business" />
             <Counter value={50} suffix="+" label="Countries served" />
             <Counter value={10000} suffix="+" label="Instrument types" />
@@ -215,60 +230,23 @@ export default function Home() {
       {/* Highlights */}
       <section className="section-pad text-accent-foreground">
         <div className="container-page">
-          <Reveal className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">
+          <Reveal className="max-w-2xl pb-5">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-ink">
               Our highlights
             </p>
-            <h2 className="mt-4 text-3xl text-ink font-bold sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 text-3xl text-primary font-bold sm:text-4xl lg:text-5xl">
               Where our engineering makes the difference
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-10 overflow-hidden  sm:grid-cols-2">
-            {highlights.map((h, i) => (
-              <Reveal key={h.title} delay={i * 80}>
-                <article className="group h-full bg-accent p-14 transition-colors duration-500 hover:bg-primary lg:p-12">
-                  <h.icon
-                    size={28}
-                    className="text-primary transition-colors group-hover:text-primary-foreground"
-                  />
-                  <h3 className="mt-6  text-xl font-bold">
-                    {h.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-accent-foreground/65 transition-colors group-hover:text-accent-foreground/85">
-                    {h.body}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+
+          <HighlightsGrid />
+          
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section-pad">
-        <div className="container-page">
-          <Reveal>
-            <div className="border border-border bg-primary-soft px-8 py-14 text-center lg:px-20 lg:py-20">
-              <p className="eyebrow">Upcoming exhibitions</p>
-              <h2 className="mx-auto mt-4 max-w-3xl  text-3xl font-bold text-ink sm:text-4xl">
-                Meet us at Expomed Eurasia, Medica and Arab Health
-              </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                Book a stand appointment with our export team, or request the
-                full catalogue and a quotation tailored to your theatre
-                requirements.
-              </p>
-              <div className="mt-10 flex flex-wrap justify-center gap-4">
-                <Link href="/contact" className="btn-base btn-primary">
-                  Contact our team
-                </Link>
-                <Link href="/products" className="btn-base btn-outline">
-                  Download catalogue
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+      <section className="pb-10">
+        <UpcomingExhibitions />
       </section>
     </>
   );
