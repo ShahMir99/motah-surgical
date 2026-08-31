@@ -46,9 +46,13 @@ export default function LiposuctionCategoryPage() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="bg-[#18B27F] text-white flex flex-col justify-center gap-8 px-7 py-14 md:px-12 md:py-14"
         >
-          <span className="text-[13px] font-bold tracking-[2px]">BLOGS</span>
-          <h1 className="font-light text-[28px] md:text-[42px] leading-[1.25]">
-            Insights, Inspiration, and Expertise: Dive into our Inspiring Blog
+          <span className="text-[23px] font-bold tracking-[2px]">BLOGS</span>
+
+          <h1 className="font-light text-[28px]  md:text-[55px] leading-[1.35] pt-14 pb-20">
+            Insights, Inspiration, and Expertise: 
+            <span className="text-[45px] font-bold tracking-[2px]">
+               Dive into our Inspiring Blog
+            </span>
           </h1>
         </motion.div>
 

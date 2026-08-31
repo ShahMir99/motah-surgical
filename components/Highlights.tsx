@@ -20,25 +20,29 @@ const highlights: Highlight[] = [
   {
     label: "50 Years in Healthcare",
     heading: "50 Years in Healthcare",
-    blurb:"For 50 extraordinary years, Professional Hospital has relentlessly pursued excellence in the healthcare field, revolutionizing surgical instruments and saving lives worldwide. Join us as we embark on the next chapter of innovation and success.",
+    blurb:
+      "For 50 extraordinary years, Professional Hospital has relentlessly pursued excellence in the healthcare field, revolutionizing surgical instruments and saving lives worldwide. Join us as we embark on the next chapter of innovation and success.",
     image: Years50Healthcare,
   },
   {
     label: "Laparoscopic Simulators",
     heading: "Laparoscopic Simulators",
-    blurb: "Unleash your surgical prowess with Professional Hospital's revolutionary laparoscopic trainers. Master the art of minimally invasive surgery, and elevate your expertise to new heights with our state-of-the-art training solutions.",
+    blurb:
+      "Unleash your surgical prowess with Professional Hospital's revolutionary laparoscopic trainers. Master the art of minimally invasive surgery, and elevate your expertise to new heights with our state-of-the-art training solutions.",
     image: liproscopySimulation1,
   },
   {
     label: "Rhinoplasty Instruments",
     heading: "Rhinoplasty Instruments",
-    blurb: "Achieve aesthetic perfection in rhinoplasty procedures with Professional Hospital's advanced rhinoplasty instruments. Experience precision, control, and superior outcomes, enhancing your ability to sculpt the ideal nasal contours with confidence.",
+    blurb:
+      "Achieve aesthetic perfection in rhinoplasty procedures with Professional Hospital's advanced rhinoplasty instruments. Experience precision, control, and superior outcomes, enhancing your ability to sculpt the ideal nasal contours with confidence.",
     image: rhinoplasty,
   },
   {
     label: "Global Presence",
     heading: "Global Presence",
-    blurb: "Professional exhibited at the prestigious South East Asia healthcare exhibition in Kuala Lumpur, as we extend our global outreach, showcasing our innovative surgical solutions to healthcare professionals across the region.",
+    blurb:
+      "Professional exhibited at the prestigious South East Asia healthcare exhibition in Kuala Lumpur, as we extend our global outreach, showcasing our innovative surgical solutions to healthcare professionals across the region.",
     image: globalPresence,
   },
 ];
@@ -65,7 +69,11 @@ export default function HighlightsGrid() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-primary px-8 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div
+                className={`absolute inset-0 flex flex-col items-center justify-center px-8 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${
+                  i % 2 === 0 ? "bg-primary" : "bg-primary-dark"
+                }`}
+              >
                 <h3 className="text-xl font-bold text-white md:text-[27px]">
                   {item.heading}
                 </h3>

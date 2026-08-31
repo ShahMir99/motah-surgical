@@ -186,7 +186,7 @@ export default function Home() {
               </div>
 
               <p className="mt-6 max-w-xl text-lg whitespace-[20px] leading-relaxed text-white/90">
-                Professional  Hospital Furnishers, a leading surgical instrument
+                A leading surgical instrument
                 manufacturer, has made significant contributions to the
                 healthcare industry for over 50 years. Operating in 50+
                 countries, we have earned a reputation for quality and

@@ -74,7 +74,7 @@ const About = () => {
           <p>Dear Healthcare Professionals,</p>
 
           <p>
-            Welcome to Professional Hospital Furnishers, your destination for
+            Your destination for
             top-quality surgical instruments and innovative solutions. With over
             50 years of experience in the healthcare industry, we are a trusted
             global leader in manufacturing and supplying high-quality surgical
@@ -124,11 +124,11 @@ const About = () => {
 
         <div className="mt-8 flex flex-col gap-8 sm:flex-row sm:gap-24">
           <div>
-            <p className="font-bold text-slate-900">Waseem Abbas</p>
+            {/* <p className="font-bold text-slate-900">Waseem Abbas</p> */}
             <p className="italic text-slate-600">Managing Director</p>
           </div>
           <div>
-            <p className="font-bold text-slate-900">Aqeel Abbas</p>
+            {/* <p className="font-bold text-slate-900">Aqeel Abbas</p> */}
             <p className="italic text-slate-600">Marketing Director</p>
           </div>
         </div>

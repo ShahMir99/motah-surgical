@@ -12,10 +12,24 @@ const productCategories = [
   { to: "/products/general-surgery", label: "General Surgery" },
   { to: "/products/liposuction", label: "Liposuction" },
   { to: "/products/plastic-surgery", label: "Plastic Surgery" },
+  { to: "/products/ear-nose-throat-surgery", label: "Ear, Nose & Throat Surgery" },
+  { to: "/products/cardiovascular-surgery", label: "Cardiovascular Surgery" },
+  { to: "/products/orthopedics", label: "Orthopedics" },
+  { to: "/products/dental-surgery", label: "Dental Surgery" },
+  { to: "/products/arthroscopy", label: "Arthroscopy" },
+  { to: "/products/neurosurgery", label: "Neurosurgery" },
+  { to: "/products/gynaecology", label: "Gynaecology" },
+  { to: "/products/eye-instruments", label: "Eye Instruments" },
+  { to: "/products/laryngoscopes", label: "Laryngoscopes" },
+  { to: "/products/microsurgery", label: "Microsurgery" },
 ] as const;
 
 const aboutCategories = [
   { to: "/about/company-introduction", label: "Company Introduction" },
+  { to: "/about/mission-vision", label: "Mission & Vision" },
+  { to: "/about/compliance", label: "Compliance" },
+  { to: "/about/faqs", label: "FAQs" },
+  { to: "/about/downloads", label: "Downloads" },
 ] as const;
 
 const nav = [
@@ -69,7 +83,7 @@ export default function Header() {
           "container-page flex items-center justify-between gap-6 transition-all h-[105px] duration-100",
           isScrolled && "h-[85px]",
         )}
-      >
+      > 
         <Link
           href="/"
           className="group flex items-center gap-3"
@@ -104,7 +118,7 @@ export default function Header() {
 
                 {desktopOpenKey === item.to && (
                   <div className="absolute left-0 top-[20px] w-72 overflow-hidden rounded-lg border border-border border-t-0 bg-background shadow-xl">
-                    <ul className="max-h-[70vh] overflow-y-auto py-2">
+                    <ul className="max-h-[75vh] overflow-y-auto py-2">
                       {item.dropdown.map((sub) => (
                         <li key={sub.to}>
                           <Link
@@ -133,10 +147,10 @@ export default function Header() {
 
         <div className="hidden lg:block">
           <a
-            href="tel:+966565111175"
+            href="tel:+966564391056"
             className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
           >
-            <Phone className="h-4 w-4" /> (+966) 56 5111 175
+            <Phone className="h-4 w-4" /> (+966) 56 439 1056
           </a>
         </div>
 
@@ -202,10 +216,10 @@ export default function Header() {
               ),
             )}
             <a
-              href="tel:+966565111175"
+              href="tel:+966564391056"
               className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
             >
-              <Phone className="h-4 w-4" /> (+966) 56 5111 175
+              <Phone className="h-4 w-4" /> (+966) 56 439 1056
             </a>
           </nav>
         </div>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import exibation from "@/assets/exibation.png"
+import exibation from "@/assets/exhibation.jpeg"
 
 export default function UpcomingExhibitions() {
   return (
@@ -21,8 +21,8 @@ export default function UpcomingExhibitions() {
               <span className="block">Upcoming</span>
               <span className="block">Exhibitions</span>
             </h2>
-            <p className="mt-5 text-xl font-bold uppercase tracking-wide text-gray-900">
-              Expomed eurasia
+            <p className="mt-5 text-xl max-w-[300px] font-semibold uppercase tracking-wide text-gray-900">
+              Global Health Exhibition, Riyadh (Malham), Oct 26–29, 2026
             </p>
           </motion.div>
 

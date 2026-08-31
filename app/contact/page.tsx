@@ -39,7 +39,7 @@ export default function ContactPage() {
             <p className="mb-5 text-lg font-medium tracking-[0.4em] text-white">
               CONTACT US
             </p>
-            <h1 className="font-serif text-7xl font-semibold text-white lg:text-7xl">
+            <h1 className="font-serif max-w-xl mx-auto text-7xl font-semibold text-white lg:text-5xl">
               Let's Build Something Great Together
             </h1>
             <p className="mt-6 text-2xl font-light leading-snug text-white lg:text-3xl">
@@ -58,17 +58,17 @@ export default function ContactPage() {
               {
                 icon: MapPin,
                 title: "Head Office",
-                value: "[Motah Surgical office address]",
+                value: "5208 Al Amir Bandar Ibn Abdul Aziz, Al Khalij, Riyadh 13224",
               },
               {
                 icon: Mail,
                 title: "Email",
-                value: "[Motah Surgical email address]",
+                value: "info@motah-surgical.com",
               },
               {
                 icon: Phone,
                 title: "Phone",
-                value: "[Motah Surgical phone number]",
+                value: "(+966) 56 439 1056",
               },
             ].map((c) => (
               <div
@@ -129,6 +129,20 @@ export default function ContactPage() {
               {sent ? "Message Sent ✓" : "Send Message"}
             </button>
           </form>
+        </div>
+
+        {/* Map Section */}
+        <div className="w-full h-[70vh] overflow-hidden pt-20">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1225414.8709407137!2d45.89737256073068!3d24.749391598559473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s5208%20Al%20Amir%20Bandar%20Ibn%20Abdul%20Aziz%2C%20Al%20Khalij%2C%20Riyadh%2013224!5e0!3m2!1sen!2s!4v1788169006144!5m2!1sen!2s"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Company Location"
+          ></iframe>
         </div>
       </section>
     </div>

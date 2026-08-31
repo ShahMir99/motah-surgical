@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import gsImage from "@/assets/products_home/gernal-surgery.png";
+import gsImage from "@/assets/products_home/Cardio-Vascular.jpg";
 import Image from "next/image";
 
 const PRIMARY = "#18B27F";
@@ -28,7 +28,7 @@ const categories = [
   "Suturing Instruments",
 ];
 
-export default function GernalSurgeoryPage() {
+export default function PlasticSurgeoryPage() {
   return (
     <main className="bg-white text-[#4A5560]">
       {/* HERO */}
@@ -41,12 +41,12 @@ export default function GernalSurgeoryPage() {
           className="bg-[#18B27F] text-white flex flex-col gap-8 px-7 py-14 md:px-20 md:py-20"
         >
           <span className="text-[23px] font-semibold uppercase tracking-[2px]">
-            General Surgery
+            Cardiovascular Surgery
           </span>
           <h1 className="font-light text-[28px] md:text-[55px] leading-[1.35] pt-14 pb-20">
-            Comprehensive Solutions for
+            Precise tools for life-saving precision in
             <span className="block text-[45px] font-bold tracking-[2px]">
-              General Surgery
+              Cardiovascular Procedures
             </span>
           </h1>
           <button className="w-fit bg-[#1E2A3B] hover:bg-[#24344A] transition-colors  text-white text-xs font-bold tracking-[1.5px] px-6 py-4">
@@ -68,16 +68,18 @@ export default function GernalSurgeoryPage() {
         {/* INTRO */}
         <section className="pt-14">
           <h2 className="text-[#18B27F] font-bold text-[45px] mb-5">
-            General Surgery
+            Cardiovascular Surgery
           </h2>
           <p className="text-ink text-[18px] leading-relaxed tracking-wide">
-            We understand the critical role that precision and reliability play
-            in surgical procedures, which is why we offer a wide range of
-            instruments designed to meet the demanding needs of modern surgical
-            practices. Our collection includes major types of instruments such
-            as forceps, scalpels, retractors, scissors, clamps, and needle
-            holders. Each instrument is meticulously crafted using premium
-            materials, ensuring durability and optimal performance.
+            Professional Hospital Furnishers, a leading Cardiovascular Surgery
+            Instrument Manufacturers in Pakistan offers a comprehensive range of
+            high-quality instruments designed to meet the demanding needs of
+            cardiac surgeons. Our precision-crafted instruments provide
+            exceptional performance, reliability, and accuracy in cardiovascular
+            procedures. From surgical instruments for bypass surgery to
+            specialized devices for valve repair, our cardiovascular instruments
+            ensure optimal outcomes for patients and support the advancement of
+            cardiac care.
           </p>
         </section>
 
