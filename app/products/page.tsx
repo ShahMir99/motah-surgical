@@ -4,16 +4,16 @@ import React from "react";
 import { Download } from "lucide-react";
 import { StaticImageData } from "next/image";
 
-import laryngoscopy from "@/assets/products_home/Laryngoscopy.jpg";
-import liposuction from "@/assets/products_home/Liposuction.jpg";
-import microSurgery from "@/assets/products_home/Micro-Surgery.jpg";
-import generalSurgery from "@/assets/products_home/gernal-surgery.png";
+import laryngoscopy from "@/assets/products_home/Laryngoscop.jpeg";
+import liposuction from "@/assets/products_home/Liposucction.jpeg";
+import microSurgery from "@/assets/products_home/MicroSurgery.jpeg";
+import generalSurgery from "@/assets/products_home/gernal-surgery.jpeg";
 import Gynaecology from "@/assets/products_home/Gynaecology.jpg";
-import eyeSurgery from "@/assets/products_home/Eye-Surgery.jpg";
-import entSurgery from "@/assets/products_home/ENT-Surgery.jpg";
-import dentistry from "@/assets/products_home/Dentistry.jpg";
-import cardioVascular from "@/assets/products_home/Cardio-Vascular.jpg";
-import arthroscopy from "@/assets/products_home/Arthoscopy.jpg"; 
+import eyeSurgery from "@/assets/products_home/Eye-Surgery.jpeg";
+import entSurgery from "@/assets/products_home/ENT-Surgery.jpeg";
+import dentistry from "@/assets/products_home/Dentistry.jpeg";
+import cardioVascular from "@/assets/products_home/Cardio-Vascular.jpeg";
+import arthroscopy from "@/assets/products_home/Arthoscopy.jpeg"; 
 import Orthopedics from "@/assets/products_home/arthopedic.jpg"; 
 import neurosurgery from "@/assets/products_home/neurosurgery.jpg"; 
 
