@@ -34,9 +34,10 @@ const aboutCategories = [
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/products", label: "Products", dropdown: productCategories },
   { to: "#", label: "About Us", dropdown: aboutCategories },
-  { to: "/blog", label: "Blog" },
+  { to: "/products", label: "Surgical Instruments", dropdown: productCategories },
+  { to: "/surgical-sets", label: "Surgical Sets" },
+  { to: "/blog", label: "News and Events" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -74,7 +75,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 bg-background",
+        "sticky top-0 z-50 bg-background px-5",
         isScrolled ? "border-b border-border/70 shadow-sm" : "",
       )}
     >
@@ -92,7 +93,7 @@ export default function Header() {
           <Image src={logo} alt="logo" width={300} height={300} />
         </Link>
 
-        <nav className="hidden items-center gap-9 lg:flex">
+        <nav className="hidden items-center gap-4 lg:flex">
           {nav.map((item) =>
             "dropdown" in item ? (
               <div
@@ -105,7 +106,7 @@ export default function Header() {
               >
                 <Link
                   href={item.to}
-                  className="relative flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-primary after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                  className="relative flex items-center gap-1.5 text-sm font-medium text-gray-500 transition-colors hover:text-primary after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {item.label}
                   <ChevronDown
@@ -123,7 +124,7 @@ export default function Header() {
                         <li key={sub.to}>
                           <Link
                             href={sub.to}
-                            className="block border-b border-border/60 px-5 py-3 text-sm font-medium text-ink-soft transition-colors last:border-b-0 hover:bg-primary/5 hover:text-primary"
+                            className="block border-b border-border/60 px-5 py-3 text-sm font-medium text-gray-500 transition-colors last:border-b-0 hover:bg-primary/5 hover:text-primary"
                           >
                             {sub.label}
                           </Link>
@@ -137,7 +138,7 @@ export default function Header() {
               <Link
                 key={item.to}
                 href={item.to}
-                className="relative text-sm font-[500] text-ink-soft transition-colors hover:text-primary after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-sm font-[500] text-gray-500 transition-colors hover:text-primary after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.label}
               </Link>
@@ -147,10 +148,10 @@ export default function Header() {
 
         <div className="hidden lg:block">
           <a
-            href="tel:+966564391056"
+            href="tel:+966543000010"
             className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
           >
-            <Phone className="h-4 w-4" /> (+966) 56 439 1056
+            <Phone className="h-4 w-4" /> (+966) 54 300 0010
           </a>
         </div>
 
@@ -216,10 +217,10 @@ export default function Header() {
               ),
             )}
             <a
-              href="tel:+966564391056"
+              href="tel:+966543000010"
               className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
             >
-              <Phone className="h-4 w-4" /> (+966) 56 439 1056
+              <Phone className="h-4 w-4" /> (+966) 54 300 0010
             </a>
           </nav>
         </div>

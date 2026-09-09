@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import gsImage from "@/assets/products_home/gernal-surgery.png";
+import gsImage from "@/assets/products_home/gernal-surgery.jpeg";
 import Image from "next/image";
 
 const PRIMARY = "#18B27F";

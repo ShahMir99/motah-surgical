@@ -2,14 +2,14 @@
 
 import { ArrowRight, Award, Globe2, ShieldCheck, Sparkles } from "lucide-react";
 
-import heroImg from "@/assets/nurse-smiling.png";
+import heroImg from "@/assets/hero-section.jpeg";
 import factoryImg from "@/assets/about-factory.jpg";
 import { categories } from "@/lib/catalog";
 
 import logo from "@/assets/logo.png";
 
 // About Section
-import SurgeonImage from "@/assets/anesthetist-surgery-doctor-about-section.png";
+import aboutUs from "@/assets/about-us.jpg";
 import worldVectorImage from "../assets/world-vector-image.png";
 
 import Link from "next/link";
@@ -27,7 +27,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative">
-        <div className="relative h-[78vh] min-h-[560px] w-full overflow-hidden">
+        <div className="relative h-[85vh] min-h-[560px] w-full overflow-hidden">
           <Image
             src={heroImg}
             alt="Surgical team operating under theatre lights"
@@ -35,26 +35,25 @@ export default function Home() {
             height={1280}
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 flex items-center px-28">
+          <div className="absolute inset-0 flex items-center px-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="w-full max-w-[470px] p-10 flex flex-col gap-8 bg-primary"
+              className="w-full max-w-[460px] p-10 flex flex-col gap-3 bg-primary"
             >
               <span className="text-white font-medium text-xl">
                 What drives us
               </span>
 
-              <h2 className="text-white font-normal text-[35px] md:text-[36px] leading-[1.3]">
-                We manufacture the precision instruments surgeons rely on around
-                the world.
+              <h2 className="text-white font-normal text-[35px] md:text-[39px] leading-[1.3]">
+                We protect and improve the health of people around the world.
               </h2>
 
               <a
                 href="#"
-                className="w-fit rounded-full bg-white text-[#18B27F] font-semibold text-sm px-6 py-3.5 hover:bg-white/90 transition-colors"
+                className="w-fit rounded-full mt-6 bg-white text-[#18B27F] font-semibold text-sm px-6 py-3.5 hover:bg-white/90 transition-colors"
               >
                 Learn more about Motah Surgical
               </a>
@@ -81,16 +80,16 @@ export default function Home() {
       {/* Categories */}
       <section className="relative pt-32 pb-14">
         <div className="container-page">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow text-ink">Product range</p>
-            <h2 className="mt-4 text-6xl font-medium text-primary sm:text-4xl  lg:text-5xl">
+          <Reveal className="max-w-2xl mx-auto">
+            <p className="eyebrow text-ink text-center">Product range</p>
+            <h2 className="mt-2 text-6xl text-center font-medium text-primary sm:text-4xl  lg:text-5xl">
               What are you looking for ?
             </h2>
           </Reveal>
 
           <ProductCategoriesGrid />
 
-          <div className="mt-14 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <Link href="/products" className="btn-base btn-ink bg-primary">
               View all products
             </Link>
@@ -165,7 +164,7 @@ export default function Home() {
               className="relative aspect-[9/10] w-full max-w-[490px] rounded-xl overflow-hidden bg-gray-100"
             >
               <Image
-                src={SurgeonImage}
+                src={aboutUs}
                 alt="Motah Surgical instrument manufacturing"
                 fill
                 sizes="(max-width: 1024px) 90vw, 490px"
@@ -186,13 +185,12 @@ export default function Home() {
               </div>
 
               <p className="mt-6 max-w-xl text-lg whitespace-[20px] leading-relaxed text-white/90">
-                A leading surgical instrument
-                manufacturer, has made significant contributions to the
-                healthcare industry for over 50 years. Operating in 50+
-                countries, we have earned a reputation for quality and
-                innovation. Our extensive range of over 10,000 precision
-                surgical instruments reflects our commitment to customer
-                satisfaction and professionalism. By embracing advanced
+                A leading surgical instrument manufacturer, has made significant
+                contributions to the healthcare industry for over 50 years.
+                Operating in 50+ countries, we have earned a reputation for
+                quality and innovation. Our extensive range of over 10,000
+                precision surgical instruments reflects our commitment to
+                customer satisfaction and professionalism. By embracing advanced
                 technology and promoting innovation, we empower healthcare
                 professionals to make a positive impact on patient lives and
                 shape the future of medicine.
@@ -210,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="section-pad">
+      {/* <section className="section-pad">
         <div className="container-page">
           <Reveal className="max-w-xl">
             <p className="eyebrow text-ink">Why Professional</p>
@@ -225,22 +223,21 @@ export default function Home() {
             <Counter value={800} suffix="+" label="Employees" />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Highlights */}
       <section className="section-pad text-accent-foreground">
         <div className="container-page">
-          <Reveal className="max-w-2xl pb-5">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-ink">
+          <Reveal className="max-w-2xl mx-auto pb-5">
+            <p className="text-xs font-bold text-center uppercase tracking-[0.24em] text-ink">
               Our highlights
             </p>
-            <h2 className="mt-4 text-3xl text-primary font-bold sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 text-3xl text-center text-primary font-bold sm:text-4xl lg:text-5xl">
               Where our engineering makes the difference
             </h2>
           </Reveal>
 
           <HighlightsGrid />
-          
         </div>
       </section>
 

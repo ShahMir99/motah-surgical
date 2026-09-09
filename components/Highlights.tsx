@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-import Years50Healthcare from "@/assets/50YearsHealthcare.png";
-import liproscopySimulation1 from "@/assets/liproscopySimulation-1.png";
-import rhinoplasty from "@/assets/rhinoplasty.png";
-import globalPresence from "@/assets/globalPresence.png";
+import image1 from "@/assets/1.png";
+import image2 from "@/assets/2.png";
+import image3 from "@/assets/3.png";
+import image4 from "@/assets/4.png";
 
 interface Highlight {
   label: string;
@@ -22,28 +22,28 @@ const highlights: Highlight[] = [
     heading: "50 Years in Healthcare",
     blurb:
       "For 50 extraordinary years, Professional Hospital has relentlessly pursued excellence in the healthcare field, revolutionizing surgical instruments and saving lives worldwide. Join us as we embark on the next chapter of innovation and success.",
-    image: Years50Healthcare,
+    image: image1,
   },
   {
     label: "Laparoscopic Simulators",
     heading: "Laparoscopic Simulators",
     blurb:
       "Unleash your surgical prowess with Professional Hospital's revolutionary laparoscopic trainers. Master the art of minimally invasive surgery, and elevate your expertise to new heights with our state-of-the-art training solutions.",
-    image: liproscopySimulation1,
+    image: image2,
   },
   {
     label: "Rhinoplasty Instruments",
     heading: "Rhinoplasty Instruments",
     blurb:
       "Achieve aesthetic perfection in rhinoplasty procedures with Professional Hospital's advanced rhinoplasty instruments. Experience precision, control, and superior outcomes, enhancing your ability to sculpt the ideal nasal contours with confidence.",
-    image: rhinoplasty,
+    image: image3,
   },
   {
     label: "Global Presence",
     heading: "Global Presence",
     blurb:
       "Professional exhibited at the prestigious South East Asia healthcare exhibition in Kuala Lumpur, as we extend our global outreach, showcasing our innovative surgical solutions to healthcare professionals across the region.",
-    image: globalPresence,
+    image: image4,
   },
 ];
 

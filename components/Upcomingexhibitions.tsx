@@ -15,13 +15,13 @@ export default function UpcomingExhibitions() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="pl-16"
+            className="pl-8"
           >
             <h2 className="text-5xl font-light leading-tight text-primary md:text-5xl">
               <span className="block">Upcoming</span>
               <span className="block">Exhibitions</span>
             </h2>
-            <p className="mt-5 text-xl max-w-[300px] font-semibold uppercase tracking-wide text-gray-900">
+            <p className="mt-5 text-xl max-w-[380px] font-semibold uppercase tracking-wide text-gray-900">
               Global Health Exhibition, Riyadh (Malham), Oct 26–29, 2026
             </p>
           </motion.div>
