@@ -9,41 +9,46 @@ import image2 from "@/assets/2.png";
 import image3 from "@/assets/3.png";
 import image4 from "@/assets/4.png";
 
-interface Highlight {
+export interface Highlight {
   label: string;
   heading: string;
   blurb: string;
   image: any;
+  href: string;
 }
 
-const highlights: Highlight[] = [
+export const highlights: readonly Highlight[] = [
   {
-    label: "50 Years in Healthcare",
-    heading: "50 Years in Healthcare",
+    label: "Building Sovereign Healthcare",
+    heading: "Building Sovereign Healthcare",
     blurb:
-      "For 50 extraordinary years, Professional Hospital has relentlessly pursued excellence in the healthcare field, revolutionizing surgical instruments and saving lives worldwide. Join us as we embark on the next chapter of innovation and success.",
+      "We are committed to building strong national healthcare supply chains by delivering world-class, SFDA-compliant surgical instruments directly inside the Kingdom. Backed by a lifetime guarantee, our localized operations ensure Saudi hospitals maintain uninterrupted access to precision tools for critical care.",
     image: image1,
+    href: "/about/mission-vision",
   },
   {
-    label: "Laparoscopic Simulators",
-    heading: "Laparoscopic Simulators",
+    label: "Micro-Precision Engineering",
+    heading: "Micro-Precision Engineering",
     blurb:
-      "Unleash your surgical prowess with Professional Hospital's revolutionary laparoscopic trainers. Master the art of minimally invasive surgery, and elevate your expertise to new heights with our state-of-the-art training solutions.",
+      "Master fine-tissue manipulation with our research-backed microsurgical instruments. Specialized for complex micro-vascular procedures, our high-grade tools deliver exceptional balance and ultra-fine tactile control where every millimeter counts.",
     image: image2,
+    href: "/products/microsurgery",
   },
   {
-    label: "Rhinoplasty Instruments",
-    heading: "Rhinoplasty Instruments",
+    label: "Precision Rhinoplasty Solutions",
+    heading: "Precision Rhinoplasty Solutions",
     blurb:
-      "Achieve aesthetic perfection in rhinoplasty procedures with Professional Hospital's advanced rhinoplasty instruments. Experience precision, control, and superior outcomes, enhancing your ability to sculpt the ideal nasal contours with confidence.",
+      "Elevate surgical outcomes in nasal procedures with our specialized rhinoplasty instruments. Engineered for exact balance and fine tactile feedback, our tools deliver the control required to achieve refined aesthetic results.",
     image: image3,
+    href: "/products/ear-nose-throat-surgery",
   },
   {
-    label: "Global Presence",
-    heading: "Global Presence",
+    label: "Expanding Global Presence",
+    heading: "Expanding Global Presence",
     blurb:
-      "Professional exhibited at the prestigious South East Asia healthcare exhibition in Kuala Lumpur, as we extend our global outreach, showcasing our innovative surgical solutions to healthcare professionals across the region.",
+      "Motah Surgical actively projects Saudi manufacturing capability onto the international stage through key regional medical exhibitions. By showcasing our SFDA-compliant instruments across global healthcare platforms, we advance Saudi Vision 2030 and integrate local precision into worldwide surgical supply chains.",
     image: image4,
+    href: "/about/company-introduction",
   },
 ];
 
@@ -81,7 +86,7 @@ export default function HighlightsGrid() {
                   {item.blurb}
                 </p>
                 <Link
-                  href="/products"
+                  href={item.href}
                   className="mt-6 inline-flex w-fit items-center rounded-xl bg-[#1E2A3B] px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#24344A]"
                 >
                   Explore

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import gsImage from "@/assets/products_home/plastic-surgery.jpg";
+import gsImage from "@/assets/products_home/Arthoscopy.jpeg";
 import Image from "next/image";
 
 const PRIMARY = "#18B27F";

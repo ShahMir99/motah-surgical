@@ -2,7 +2,7 @@ import React from "react";
 import { Counter } from "@/components/site/Counter";
 import { Reveal } from "@/components/site/Reveal";
 
-import aboutBanner from "@/assets/about-image.png"
+import aboutBanner from "@/assets/about-image.png";
 
 const stats = [
   { value: "50", label: "Years in Business" },
@@ -14,7 +14,6 @@ const stats = [
 const About = () => {
   return (
     <div>
-      {/* Hero / Introduction banner */}
       <section className="relative">
         <img
           src="https://placehold.co/1600x520/16303d/16303d?text=+"
@@ -30,37 +29,19 @@ const About = () => {
               INTRODUCTION
             </p>
             <h1 className="font-serif text-7xl font-semibold text-white lg:text-7xl">
-              Professional
+              Motah Surgical
             </h1>
             <p className="mt-6 text-2xl font-light leading-snug text-white lg:text-3xl">
-              True Partner, Smart Solutions,
+              Built for Precision. Driven by Purpose.
               <br />
-              Consistent Performance
+              Secured for KSA.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Why Professional — stats */}
-      <section className="bg-white py-16 lg:pt-40 lg:pb:20">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <Reveal className="max-w-xl">
-            <p className="eyebrow text-left">Why Professional</p>
-            <h2 className="mt-4 font-display text-left text-3xl font-bold text-ink sm:text-4xl">
-              Numbers built over decades
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-            <Counter value={50} label="Years in business" />
-            <Counter value={50} suffix="+" label="Countries served" />
-            <Counter value={10000} suffix="+" label="Instrument types" />
-            <Counter value={800} suffix="+" label="Employees" />
-          </div>
-        </div>
-      </section>
-
       {/* Feature image */}
-      <section className="mx-auto max-w-5xl px-6 py-12">
+      <section className="mx-auto max-w-5xl px-6 py-12 lg:pt-40 lg:pb:20">
         <img
           src={aboutBanner.src}
           alt="Surgeons handing over a surgical instrument"
@@ -71,52 +52,51 @@ const About = () => {
       {/* Letter */}
       <section className="mx-auto max-w-5xl px-6 pb-20">
         <div className="space-y-5 text-sm leading-relaxed text-slate-700">
-          <p>Dear Healthcare Professionals,</p>
+          <p>To Our Partners in Healthcare,</p>
 
           <p>
-            Your destination for
-            top-quality surgical instruments and innovative solutions. With over
-            50 years of experience in the healthcare industry, we are a trusted
-            global leader in manufacturing and supplying high-quality surgical
-            equipment.
+            Welcome to Motah Surgical—where quality manufacturing meets
+            dependable surgical performance. Built in alignment with Saudi
+            Vision 2030, we produce high-precision surgical instruments designed
+            to support surgeons, improve patient care, and secure complete
+            supply independence directly within the Kingdom.
           </p>
 
           <p>
-            Our success is fueled by our commitment to innovation and staying at
-            the forefront of emerging healthcare trends. By investing in
-            cutting-edge technology and fostering a culture of innovation, we
-            deliver state-of-the-art products that meet your evolving needs.
+            Our approach is simple: continuous innovation and strict quality
+            control. By carrying out specialized processing, rigorous material
+            testing, and full SFDA compliance inside Saudi Arabia, we eliminate
+            reliance on foreign supply chains—delivering lifetime-guaranteed
+            instruments directly to healthcare institutions when they need them
+            most.We focus on precision because we know what hospitals and
+            surgical teams require. Every instrument we produce—including
+            specialized microsurgery tools—is designed for superior grip, ideal
+            balance, and reliable accuracy in the operating room.
           </p>
 
           <p>
-            We value professionalism and your satisfaction is our priority. We
-            understand your unique requirements and provide tailored solutions
-            that exceed expectations. Our dedicated team of professionals is
-            trained to provide exceptional service and support, ensuring a
-            seamless experience.
+            Efficiency and reliability drive our operations. Through localized
+            processing and streamlined distribution, we ensure hospitals,
+            medical centers, and healthcare systems maintain uninterrupted
+            access to world-class instruments without supply delays.
             <br />
-            Efficiency is at the core of our operations. Through streamlined
-            workflows and best practices, we deliver high-quality products on
-            time, precisely meeting your demands.
+            Building national supply security also drives our growth across
+            regional and global markets. As we strengthen Saudi Arabia&#39;s
+            healthcare infrastructure, Motah Surgical presents Made-in-KSA
+            quality on the international stage, showing what modern healthcare
+            systems can expect from a trusted supply partner.
           </p>
 
           <p>
-            Our unwavering commitment to sustainability drives us to minimize
-            our environmental impact through responsible manufacturing practices
-            and eco-friendly initiatives. Together, we can contribute to a
-            greener and healthier planet.
+            At Motah Surgical, we offer more than medical tools; we provide
+            reliable supply partnerships for modern healthcare systems. Partner
+            with us to strengthen your supply chain, elevate surgical standards,
+            and support the future of sovereign healthcare.
           </p>
 
           <p>
-            At Professional Hospital Furnishers, we take pride in our legacy of
-            excellence, innovation, and customer-centricity. Partner with us to
-            enhance patient care and outcomes with our finest surgical
-            instruments.
-          </p>
-
-          <p>
-            Thank you for choosing Professional Hospital Furnishers. Let&apos;s
-            revolutionize healthcare and shape the future of medicine together.
+            Thank you for choosing Motah Surgical. Let’s build a stronger, more
+            reliable healthcare supply chain together.
           </p>
 
           <p>Sincerely,</p>

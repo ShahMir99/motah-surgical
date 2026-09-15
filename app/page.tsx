@@ -9,7 +9,7 @@ import { categories } from "@/lib/catalog";
 import logo from "@/assets/logo.png";
 
 // About Section
-import aboutUs from "@/assets/about-us.jpg";
+import aboutUs from "@/assets/about-us.png";
 import worldVectorImage from "../assets/world-vector-image.png";
 
 import Link from "next/link";
@@ -48,7 +48,8 @@ export default function Home() {
               </span>
 
               <h2 className="text-white font-normal text-[35px] md:text-[39px] leading-[1.3]">
-                We protect and improve the health of people around the world.
+                Advancing Kingdom healthcare with Made-in-KSA surgical
+                instruments.
               </h2>
 
               <a
@@ -155,13 +156,13 @@ export default function Home() {
         />
 
         <div className="relative mx-auto max-w-[1320px] px-10 ">
-          <div className="grid items-center lg:grid-cols-[45%_55%]">
+          <div className="grid items-center lg:grid-cols-[50%_50%]">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative aspect-[9/10] w-full max-w-[490px] rounded-xl overflow-hidden bg-gray-100"
+             className="relative aspect-[4/3] w-full max-w-[560px] -mt-30 rounded-xl overflow-hidden bg-gray-100"
             >
               <Image
                 src={aboutUs}
@@ -185,15 +186,15 @@ export default function Home() {
               </div>
 
               <p className="mt-6 max-w-xl text-lg whitespace-[20px] leading-relaxed text-white/90">
-                A leading surgical instrument manufacturer, has made significant
-                contributions to the healthcare industry for over 50 years.
-                Operating in 50+ countries, we have earned a reputation for
-                quality and innovation. Our extensive range of over 10,000
-                precision surgical instruments reflects our commitment to
-                customer satisfaction and professionalism. By embracing advanced
-                technology and promoting innovation, we empower healthcare
-                professionals to make a positive impact on patient lives and
-                shape the future of medicine.
+                At Motah Surgical, we forge world-class, Made-in-KSA surgical
+                instruments engineered to meet the highest global
+                standards—backed by a lifetime guarantee. Built from inside the
+                Kingdom, our operations directly accelerate Saudi Vision 2030 by
+                localizing medical device manufacturing and reinforcing national
+                healthcare sovereignty. We equip surgeons with absolute tactile
+                precision, elevating standard operating procedure across Saudi
+                hospitals and empowering healthcare professionals to perform
+                with total confidence.
               </p>
 
               <Link

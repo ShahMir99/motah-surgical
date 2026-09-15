@@ -3,35 +3,34 @@
 import { motion } from "framer-motion";
 import BlogPost from "@/components/shared/BlogPost";
 
-import featuredBlogImage1 from "@/assets/blogs/featured-blog.jpg";
-import BlogImage1 from "@/assets/blogs/blog1.jpg";
-import BlogImage2 from "@/assets/blogs/blog2.jpg";
-import BlogImage3 from "@/assets/blogs/blog3.jpg";
+import featuredBlogImage1 from "@/assets/blogs/featured-blog.png";
+import BlogImage1 from "@/assets/blogs/Blog 1.png";
+import BlogImage2 from "@/assets/blogs/Blog 2.png";
+import BlogImage3 from "@/assets/blogs/Blog 3.png";
 
 const blogsData = [
   {
     id: 1,
-    title: "More Than Repair: The Life-Saving Imperative of Microsurgery",
-    category: "News exhibitions",
+    title: "FDA Compliance Guide for Hospital Procurement Leaders",
+    category: "Industry Insights",
     date: "2025-02-01",
     blogImage: BlogImage1.src,
   },
   {
     id: 2,
-    title:
-      "Engineered for Extremes: The Unseen Material Science Behind High-Precision Microsurgical Instruments",
-    category: "News exhibitions",
+    title: "Why Localized Instrument Manufacturing Matters for KSA Healthcare?",
+    category: "Industry Insights",
     date: "2025-02-01",
     blogImage: BlogImage2.src,
   },
   {
     id: 3,
-    title:
-      "Microsurgery Industry Trends 📈 The Business of Precision: Key Trends Driving the Microsurgery Market to $4.3 Billion by 2032",
-    category: "News exhibitions",
+    title: "4 Essential Care Rules to Extend Surgical Tool Lifespan",
+    category: "Product Care",
     date: "2025-02-01",
     blogImage: BlogImage3.src,
   },
+  
 ];
 
 export default function LiposuctionCategoryPage() {
@@ -49,7 +48,7 @@ export default function LiposuctionCategoryPage() {
           <span className="text-[23px] font-bold tracking-[2px]">BLOGS</span>
 
           <h1 className="font-light text-[28px]  md:text-[55px] leading-[1.35] pt-14 pb-20">
-            Insights, Inspiration, and Expertise: 
+            News, Insights, and Industry Events : 
             <span className="text-[45px] font-bold tracking-[2px]">
                Dive into our Inspiring Blog
             </span>
@@ -58,7 +57,7 @@ export default function LiposuctionCategoryPage() {
 
         <div className="order-first flex-col md:order-last gap-5 flex pl-16 justify-center overflow-hidden min-h-[320px]">
           <h1 className="font-bold text-[28px] md:text-[42px] text-primary leading-[1.25]">
-            Featured Blog
+            Featured News &amp; Insights
           </h1>
 
           <BlogPost

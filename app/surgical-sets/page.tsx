@@ -91,12 +91,12 @@ function Hero() {
       <div className="relative mx-auto flex max-w-6xl flex-col lg:h-[360px] lg:flex-row">
         <div className="relative flex w-full h-[440px] flex-col justify-center bg-[#02ac75] px-8 py-14 lg:w-[510px] lg:shrink-0 lg:px-16 lg:py-0">
           <p className="mb-4 text-xl font-bold tracking-[0.3em] text-white">
-            Surgical Instruments
+            Surgical Sets
           </p>
           <h1 className="text-3xl font-light leading-tight text-white lg:text-[2.8rem]">
-            High-Precision <br className="hidden lg:block" />
-            Instruments for{" "}
-            <span className="font-bold">Engineered for Excellence</span>
+            Integrated Instruments <br className="hidden lg:block" />
+            for Advanced{" "}
+            <span className="font-bold">Procedure Standards</span>
           </h1>
           <button
             type="button"
@@ -108,13 +108,13 @@ function Hero() {
 
         <div className="flex items-center px-8 py-10 lg:px-16 lg:py-0">
           <p className="w-full text-lg leading-relaxed text-white/90">
-            Experience clinical excellence with Motah Surgical precision
-            instruments. Our dedicated manufacturing and commitment to quality
-            ensure dependable performance in every operating room. From scalpels
-            and forceps to scissors and speculums, our expertly crafted tools
-            deliver exceptional precision, safety, and durability. Elevate
-            surgical outcomes across your institution with instruments designed
-            for uncompromising performance.
+            We are finalizing our specialized surgical instrument sets to
+            support hospital operating rooms and tender requirements across
+            Saudi Arabia. Engineered for complete clinical precision and fully
+            compliant with SFDA standards, our complete specialty sets will be
+            available shortly. Please design header just like Surgical
+            Instruments Page and below just plain Green Boxes without any image
+            or Products
           </p>
         </div>
       </div>
@@ -175,12 +175,12 @@ function ProductRow({
 function ProductsSection() {
   return (
     <section className="bg-white pt-32">
-      <div className="mx-auto max-w-7xl px-6 pt-16 text-center lg:px-10">
+      <div className="mx-auto max-w-7xl px-6 pt-16 text-center lg:px-10 lg:pb-20">
         <h2 className="text-3xl font-light text-[#02ac75] lg:text-4xl">
-          All Products
+          All Sets
         </h2>
       </div>
-      <div className="mt-6 divide-y divide-slate-100">
+      {/* <div className="mt-6 divide-y divide-slate-100">
         {productCategories.map((category, index) => (
           <ProductRow
             key={category.name}
@@ -188,7 +188,7 @@ function ProductsSection() {
             imageOnLeft={index % 2 === 1}
           />
         ))}
-      </div>
+      </div> */}
     </section>
   );
 }
