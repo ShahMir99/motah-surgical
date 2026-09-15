@@ -48,7 +48,7 @@ export default function LiposuctionCategoryPage() {
           <span className="text-[23px] font-bold tracking-[2px]">BLOGS</span>
 
           <h1 className="font-light text-[28px]  md:text-[55px] leading-[1.35] pt-14 pb-20">
-            News, Insights, and Industry Events : 
+            News, Insights, and Industry Events :  
             <span className="text-[45px] font-bold tracking-[2px]">
                Dive into our Inspiring Blog
             </span>
