@@ -139,10 +139,9 @@ export default function Home() {
         </div>
       </section> */}
 
-      <section className="relative">
-        {/* Colored panel starts lower than the section so the image can overlap above it */}
+      <section className="relative bg-primary">
         <div
-          className="absolute inset-x-0 top-20 bottom-0 overflow-hidden bg-primary md:top-24"
+          className="absolute inset-0 overflow-hidden"
           style={{
             backgroundImage: `url(${worldVectorImage.src})`,
             backgroundSize: "cover",
@@ -151,15 +150,9 @@ export default function Home() {
           }}
         />
 
-        <div className="relative mx-auto max-w-[1320px] px-10 ">
-          <div className="grid items-center lg:grid-cols-[50%_50%]">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative aspect-[4/3] w-full max-w-[560px] -mt-30 rounded-xl overflow-hidden bg-gray-100"
-            >
+        <div className="relative mx-auto max-w-[1320px] px-10 py-16 md:py-14">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+            <div className="relative mx-auto aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-xl bg-gray-100">
               <Image
                 src={aboutUs}
                 alt="Motah Surgical instrument manufacturing"
@@ -167,21 +160,15 @@ export default function Home() {
                 sizes="(max-width: 1024px) 90vw, 490px"
                 className="object-cover"
               />
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-              className="pt-16 pb-16 text-white lg:pt-40 lg:pb-16"
-            >
-              <div className="flex flex-wrap items-baseline gap-x-3 ">
+            <div className="text-center text-white lg:text-left">
+              <div className="flex flex-wrap items-baseline justify-center gap-x-3 lg:justify-start">
                 <span className="text-3xl font-light md:text-4xl">About</span>
-                <h1 className="uppercase text-4xl font-bold">Motah Surgical</h1>
+                <h1 className="text-4xl font-bold uppercase">Motah Surgical</h1>
               </div>
 
-              <p className="mt-6 max-w-xl text-lg whitespace-[20px] leading-relaxed text-white/90">
+              <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/90 lg:mx-0">
                 At Motah Surgical, we forge world-class, Made in KSA surgical
                 instruments engineered to meet the highest global
                 standards—backed by a lifetime guarantee. Built from inside the
@@ -195,11 +182,11 @@ export default function Home() {
 
               <Link
                 href="/company-introduction"
-                className="mt-8 inline-flex bg-primary-dark w-fit items-center rounded px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white transition-colors"
+                className="mx-auto mt-8 inline-flex w-fit items-center justify-center rounded bg-primary-dark px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white transition-colors lg:mx-0"
               >
                 Read more
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

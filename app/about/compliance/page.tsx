@@ -40,12 +40,12 @@ const Compliance = () => {
       {/* Body */}
       <section className="bg-white px-5 sm:px-8 md:px-12 lg:px-20 py-16 lg:pt-40 lg:pb-20">
         <div className="max-w-4xl mx-auto flex flex-col gap-10">
-          <div className="flex flex-col gap-5">
+          <div className="flex items-center justify-center flex-col gap-8">
             <p className="text-xl text-center font-semibold text-primary sm:text-2xl text-gray-900 leading-9 max-w-[62ch]">
               At Motah Surgical, strict regulatory compliance and rigorous
               quality control are built into every stage of our operations.
             </p>
-            <p className="text-[#5B6560] text-sm sm:text-base leading-7 max-w-[68ch]">
+            <p className="text-[#5B6560] text-center text-sm sm:text-base leading-7 max-w-[68ch]">
               We ensure every instrument exceeds{" "}
               <b className="text-gray-900 font-medium">
                 Saudi Food and Drug Authority (SFDA)
@@ -63,7 +63,7 @@ const Compliance = () => {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-4 pt-4 border-t border-[#D8DBD9]">
+          <div className="flex items-center justify-center flex-wrap gap-4 pt-4 border-t border-[#D8DBD9]">
             {credentials.map((label) => (
               <span
                 key={label}
