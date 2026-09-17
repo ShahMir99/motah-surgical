@@ -2,7 +2,7 @@ import React from "react";
 import { Counter } from "@/components/site/Counter";
 import { Reveal } from "@/components/site/Reveal";
 
-import aboutBanner from "@/assets/about-image.png";
+import aboutBanner from "@/assets/story.jpeg";
 
 const stats = [
   { value: "50", label: "Years in Business" },
@@ -52,7 +52,9 @@ const About = () => {
       {/* Letter */}
       <section className="mx-auto max-w-5xl px-6 pb-20">
         <div className="space-y-5 text-sm leading-relaxed text-slate-700">
-          <p>To Our Partners in Healthcare,</p>
+          <p className="text-[20px] font-semibold text-primary">
+            To Our Partners in Healthcare,
+          </p>
 
           <p>
             Welcome to Motah Surgical—where quality manufacturing meets
@@ -82,7 +84,7 @@ const About = () => {
             <br />
             Building national supply security also drives our growth across
             regional and global markets. As we strengthen Saudi Arabia&#39;s
-            healthcare infrastructure, Motah Surgical presents Made-in-KSA
+            healthcare infrastructure, Motah Surgical presents Made in KSA
             quality on the international stage, showing what modern healthcare
             systems can expect from a trusted supply partner.
           </p>
@@ -103,14 +105,8 @@ const About = () => {
         </div>
 
         <div className="mt-8 flex flex-col gap-8 sm:flex-row sm:gap-24">
-          <div>
-            {/* <p className="font-bold text-slate-900">Waseem Abbas</p> */}
-            <p className="italic text-slate-600">Managing Director</p>
-          </div>
-          <div>
-            {/* <p className="font-bold text-slate-900">Aqeel Abbas</p> */}
-            <p className="italic text-slate-600">Marketing Director</p>
-          </div>
+          <p className="italic text-slate-600">Motah Surgical Team</p>
+          <div></div>
         </div>
       </section>
     </div>

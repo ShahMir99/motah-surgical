@@ -25,7 +25,7 @@ const Compliance = () => {
             <p className="mb-5 text-lg font-medium tracking-[0.4em] text-white">
               REGULATORY COMPLIANCE
             </p>
-            <h1 className="font-serif text-7xl font-semibold text-white lg:text-7xl">
+            <h1 className="text-7xl font-semibold text-white lg:text-7xl">
               Motah Surgical
             </h1>
             <p className="mt-6 text-2xl font-light leading-snug text-white lg:text-3xl">
@@ -41,7 +41,7 @@ const Compliance = () => {
       <section className="bg-white px-5 sm:px-8 md:px-12 lg:px-20 py-16 lg:pt-40 lg:pb-20">
         <div className="max-w-4xl mx-auto flex flex-col gap-10">
           <div className="flex flex-col gap-5">
-            <p className="font-serif text-xl sm:text-2xl text-gray-900 leading-9 max-w-[62ch]">
+            <p className="text-xl text-center font-semibold text-primary sm:text-2xl text-gray-900 leading-9 max-w-[62ch]">
               At Motah Surgical, strict regulatory compliance and rigorous
               quality control are built into every stage of our operations.
             </p>

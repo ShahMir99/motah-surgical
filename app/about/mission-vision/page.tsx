@@ -2,7 +2,7 @@ import React from "react";
 
 import mission from "@/assets/01.png";
 import vision from "@/assets/02.jpeg";
-import ourGlobalPresence from "@/assets/03.png";
+import ourGlobalPresence from "@/assets/global-reached.png";
 
 const stats = [
   { value: "50", label: "Years in Business" },
@@ -42,7 +42,6 @@ const achievements = [
 const About = () => {
   return (
     <div>
-      {/* Hero / Introduction banner */}
       <section className="relative">
         <img
           src="https://placehold.co/1600x520/16303d/16303d?text=+"
@@ -57,7 +56,7 @@ const About = () => {
             <p className="mb-5 text-lg font-medium tracking-[0.4em] text-white">
               Mission and Vision
             </p>
-            <h1 className="font-serif text-7xl font-semibold text-white lg:text-7xl">
+            <h1 className="text-7xl font-semibold text-white lg:text-7xl">
               Motah Surgical
             </h1>
             <p className="mt-6 text-2xl font-light leading-snug text-white lg:text-3xl">
@@ -75,12 +74,11 @@ const About = () => {
           <p className="text-sm font-medium tracking-[0.3em] text-primary">
             VISION AND MISSION
           </p>
-          <h2 className="font-serif text-4xl sm:text-5xl text-color leading-tight">
+          <h2 className="text-4xl sm:text-5xl text-color leading-tight">
             What Drives Us
           </h2>
           <p className="text-[#5B6560] text-base sm:text-lg leading-8 max-w-[52ch]">
-            Advancing Kingdom healthcare with Made-in-KSA surgical
-            instruments.
+            Advancing Kingdom healthcare with Made in KSA surgical instruments.
           </p>
         </div>
       </section>
@@ -90,8 +88,8 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Image */}
           <div className="lg:col-span-7 order-1">
-            <div className="relative border border-[#D8DBD9] p-2 bg-white shadow-[6px_6px_0_0_rgba(18,33,29,0.06)]">
-              <div className="h-64 sm:h-80 md:h-96 lg:h-[440px] w-full overflow-hidden">
+            <div className="relative border border-[#D8DBD9]  bg-white shadow-[0_0_20px_0px_rgba(18,33,29,0.3)]">
+              <div className="h-64 sm:h-80 md:h-96 lg:h-[380px] w-full overflow-hidden">
                 <img
                   src={vision.src}
                   alt="Vision"
@@ -108,14 +106,16 @@ const About = () => {
                 className="h-8 w-[3px] bg-primary shrink-0"
                 aria-hidden="true"
               />
+
               <h2 className="text-3xl sm:text-4xl font-bold text-color leading-tight">
-                Vision
+                Mission
               </h2>
             </div>
-            <p className="font-serif text-xl sm:text-2xl text-gray-900 leading-9 max-w-[58ch]">
-              To lead the advancement of sovereign healthcare by delivering
-              Made-in-KSA surgical instruments that define global standards
-              for quality, supply resilience, and clinical reliability.
+            <p className="text-lg sm:text-lg text-gray-700 leading-7 max-w-[58ch]">
+              To strengthen national healthcare independence in alignment with
+              Saudi Vision 2030 through specialized manufacturing, precise
+              engineering, and dependable supply security for modern healthcare
+              institutions.
             </p>
           </div>
         </div>
@@ -125,27 +125,26 @@ const About = () => {
       <section className="bg-[#F2F4F3] px-5 sm:px-8 md:px-12 lg:px-20 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Text */}
-          <div className="lg:col-span-7 order-2 lg:order-1 flex flex-col gap-5">
+          <div className="lg:col-span-5 order-2 lg:order-1 flex flex-col gap-5">
             <div className="flex items-center gap-4">
               <span
                 className="h-8 w-[3px] bg-primary shrink-0"
                 aria-hidden="true"
               />
               <h2 className="text-3xl sm:text-4xl font-bold text-color leading-tight">
-                Mission
+                Vision
               </h2>
             </div>
-            <p className="font-serif text-xl sm:text-2xl text-gray-900 leading-9 max-w-[58ch]">
-              To strengthen national healthcare independence in alignment
-              with Saudi Vision 2030 through specialized manufacturing,
-              precise engineering, and dependable supply security for
-              modern healthcare institutions.
+            <p className="text-lg sm:text-lg text-gray-700 leading-7 max-w-[58ch]">
+              To lead the advancement of sovereign healthcare by delivering Made
+              in KSA surgical instruments that define global standards for
+              quality, supply resilience, and clinical reliability.
             </p>
           </div>
 
           {/* Image */}
-          <div className="lg:col-span-5 order-1 lg:order-2">
-            <div className="relative border border-[#D8DBD9] p-2 bg-white shadow-[6px_6px_0_0_rgba(18,33,29,0.06)]">
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <div className="relative border border-[#D8DBD9]  bg-white shadow-[0_0_20px_0px_rgba(18,33,29,0.3)]">
               <div className="h-64 sm:h-80 md:h-96 lg:h-[420px] w-full overflow-hidden">
                 <img
                   src={mission.src}
@@ -171,26 +170,32 @@ const About = () => {
 
         <div className="relative px-6 sm:px-10 md:px-16 lg:px-32">
           <div className="max-w-[68ch] mx-auto text-center flex flex-col gap-5">
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl text-white leading-tight">
               Global Strategic Reach
             </h2>
             <p className="text-[#C9D1CB] text-base sm:text-lg leading-8">
               Our footprint extends far beyond conventional market boundaries.
-              We have deliberately established{" "}
-              <b className="text-white font-medium">pivotal regional hubs</b> to
-              ensure seamless support and rapid supply across major global
-              zones. This includes dedicated operations driving growth across
-              North America (including{" "}
-              <b className="text-white font-medium">Canada</b>), a centralized
-              presence securing our expansion across the dynamic{" "}
+              We have intentionally established{" "}
+              <b className="text-white font-medium">key regional hubs</b> to
+              ensure seamless supply chain continuity, rapid delivery, and
+              dedicated technical support across high-growth healthcare sectors.
+              At the core of our expansion strategy is{" "}
+              <b className="text-white font-medium">Moath Surgical's</b>{" "}
+              centralized presence driving growth across the dynamic{" "}
               <b className="text-white font-medium">
                 Middle East and North Africa
               </b>{" "}
-              (MENA) region, and strong strategic command centers serving the
-              vast <b className="text-white font-medium">Asia-Pacific</b>{" "}
-              markets. This focused, local investment guarantees that surgeons
-              worldwide receive our instruments and expertise with unparalleled
-              speed and reliability.
+              (MENA) region.
+            </p>
+            <p className="text-[#C9D1CB] text-base sm:text-lg leading-8">
+              By combining localized technical infrastructure in{" "}
+              <b className="text-white font-medium">Saudi Arabia</b> with robust
+              manufacturing capabilities, Moath Surgical bridges the gap between
+              international manufacturing standards and regional healthcare
+              needs. This focused, local investment guarantees that hospitals,
+              surgical centers, and procurement partners across MENA receive our
+              precision surgical instruments, repair services, and clinical
+              expertise with unmatched speed and reliability.
             </p>
           </div>
         </div>
@@ -199,12 +204,12 @@ const About = () => {
       {/* How We Achieve Our Mission Section */}
       <section className="bg-[#F2F4F3] px-5 sm:px-8 md:px-12 lg:px-20 py-16 md:py-24">
         <div className="max-w-5xl mx-auto flex flex-col gap-12">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-2">
             <span
               className="h-8 w-[3px] bg-primary shrink-0"
               aria-hidden="true"
             />
-            <h2 className="text-3xl sm:text-4xl font-bold text-color leading-tight">
+            <h2 className="text-3xl text-center sm:text-4xl font-bold text-color leading-tight">
               How We Achieve Our Mission
             </h2>
           </div>
@@ -217,7 +222,7 @@ const About = () => {
                   index !== 0 ? "border-t border-[#D8DBD9]" : ""
                 }`}
               >
-                <span className="font-serif text-4xl text-primary leading-none">
+                <span className="text-4xl text-primary leading-none">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div className="flex flex-col gap-2">
@@ -232,13 +237,13 @@ const About = () => {
             ))}
           </div>
 
-          <p className="font-serif text-xl sm:text-2xl text-gray-900 leading-9 max-w-[68ch] border-t border-[#D8DBD9] pt-10">
+          <p className="text-xl sm:text-2xl text-gray-900 leading-9 max-w-[68ch] border-t border-[#D8DBD9] pt-10">
             By delivering on this operational roadmap, Motah Surgical
-            strengthens local healthcare infrastructure while bringing
-            Made-in-KSA precision to the global market. Through reliable
-            manufacturing, supply security, and trusted partnerships, we
-            equip healthcare systems with the tools they need to operate
-            with complete confidence.
+            strengthens local healthcare infrastructure while bringing Made in
+            KSA precision to the global market. Through reliable manufacturing,
+            supply security, and trusted partnerships, we equip healthcare
+            systems with the tools they need to operate with complete
+            confidence.
           </p>
         </div>
       </section>

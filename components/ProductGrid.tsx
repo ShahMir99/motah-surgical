@@ -20,19 +20,20 @@ const LABEL_COLOR = "#1C3350";
 interface Category {
   label: string;
   image: StaticImageData;
+  href : string;
 }
  
 const categories: Category[] = [
-  { label: "Arthroscopy (New)", image: arthroscopy },
-  { label: "Cardiovascular Surgery", image: cardioVascular },
-  { label: "Dental Surgery", image: dentistry },
-  { label: "Ear, Nose & Throat Surgery", image: entSurgery },
-  { label: "Eye Instruments", image: eyeSurgery },
-  { label: "General Surgery", image: generalSurgery },
-  { label: "Gynaecology", image: gynaecology },
-  { label: "Laryngoscopes", image: laryngoscopy },
-  { label: "Liposuction", image: liposuction },
-  { label: "Microsurgery", image: microSurgery },
+  { label: "Arthroscopy (New)", image: arthroscopy, href : "/products/arthroscopy" },
+  { label: "Cardiovascular Surgery", image: cardioVascular, href : "/cardiovascular-surgery" },
+  { label: "Dental Surgery", image: dentistry, href : "/products/dental-surgery" },
+  { label: "Ear, Nose & Throat Surgery", image: entSurgery, href : "/products/ear-nose-throat-surgery" },
+  { label: "Eye Instruments", image: eyeSurgery, href : "/products/eye-instruments" },
+  { label: "General Surgery", image: generalSurgery, href : "/products/general-surgery" },
+  { label: "Gynaecology", image: gynaecology, href : "/products/gynaecology" },
+  { label: "Laryngoscopes", image: laryngoscopy, href : "/products/laryngoscopes" },
+  { label: "Liposuction", image: liposuction, href : "/products/liposuction" },
+  { label: "Microsurgery", image: microSurgery, href : "/products/microsurgery" },
 ];
 
 export default function ProductCategoriesGrid() {
@@ -43,7 +44,7 @@ export default function ProductCategoriesGrid() {
           {categories.map((cat, i) => (
             <motion.a
               key={cat.label}
-              href="#"
+              href={cat.href}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

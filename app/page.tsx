@@ -3,10 +3,6 @@
 import { ArrowRight, Award, Globe2, ShieldCheck, Sparkles } from "lucide-react";
 
 import heroImg from "@/assets/hero-section.jpeg";
-import factoryImg from "@/assets/about-factory.jpg";
-import { categories } from "@/lib/catalog";
-
-import logo from "@/assets/logo.png";
 
 // About Section
 import aboutUs from "@/assets/about-us.png";
@@ -48,7 +44,7 @@ export default function Home() {
               </span>
 
               <h2 className="text-white font-normal text-[35px] md:text-[39px] leading-[1.3]">
-                Advancing Kingdom healthcare with Made-in-KSA surgical
+                Advancing Kingdom healthcare with Made in KSA surgical
                 instruments.
               </h2>
 
@@ -162,7 +158,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-             className="relative aspect-[4/3] w-full max-w-[560px] -mt-30 rounded-xl overflow-hidden bg-gray-100"
+              className="relative aspect-[4/3] w-full max-w-[560px] -mt-30 rounded-xl overflow-hidden bg-gray-100"
             >
               <Image
                 src={aboutUs}
@@ -178,15 +174,15 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-              className="py-16 text-white lg:py-24"
+              className="pt-16 pb-16 text-white lg:pt-40 lg:pb-16"
             >
-              <div className="flex flex-wrap items-baseline gap-x-3 mt-10">
+              <div className="flex flex-wrap items-baseline gap-x-3 ">
                 <span className="text-3xl font-light md:text-4xl">About</span>
                 <h1 className="uppercase text-4xl font-bold">Motah Surgical</h1>
               </div>
 
               <p className="mt-6 max-w-xl text-lg whitespace-[20px] leading-relaxed text-white/90">
-                At Motah Surgical, we forge world-class, Made-in-KSA surgical
+                At Motah Surgical, we forge world-class, Made in KSA surgical
                 instruments engineered to meet the highest global
                 standards—backed by a lifetime guarantee. Built from inside the
                 Kingdom, our operations directly accelerate Saudi Vision 2030 by

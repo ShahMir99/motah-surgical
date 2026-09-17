@@ -67,7 +67,7 @@ const Downloads = () => {
       {/* Resource list */}
       <section className="bg-white px-5 sm:px-8 md:px-12 lg:px-20 py-16 lg:pt-40 lg:pb-20">
         <div className="max-w-4xl mx-auto flex flex-col gap-10">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-4">
             <span
               className="h-8 w-[3px] bg-primary shrink-0"
               aria-hidden="true"

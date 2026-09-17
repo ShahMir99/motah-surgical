@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo_2.png";
 import { Phone, Mail, MapPin, ChevronRight, Check } from "lucide-react";
 
 type IconProps = { size?: number; className?: string };
@@ -82,7 +82,7 @@ export default function Footer() {
   return (
     <footer className="text-accent-foreground">
       {/* ---------- Contact section ---------- */}
-      <section className="bg-primary py-16 lg:py-24">
+      <section className="bg-primary py-24 px-[30px]">
         <div className="container-page grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left: heading + contact details */}
           <div className="grid gap-10 sm:grid-cols-2 sm:items-start">
@@ -194,7 +194,7 @@ export default function Footer() {
 
       {/* ---------- Main footer ---------- */}
       <div className="bg-primary-dark">
-        <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-20">
+        <div className="container-page grid gap-10 py-14 px-[30px] md:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-20">
           <div>
             <Link href="/" className="inline-block">
               <Image
@@ -271,7 +271,7 @@ export default function Footer() {
         </div>
 
         {/* ---------- Bottom bar ---------- */}
-        <div className="border-t border-white/10">
+        <div className="border-t border-white/10 px-[30px]">
           <div className="container-page flex flex-col gap-8 py-7 text-base text-accent-foreground/80 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
             <p>© Motah Surgical. Improving Lives!</p>
 

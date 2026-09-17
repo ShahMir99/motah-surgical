@@ -112,9 +112,7 @@ function Hero() {
             support hospital operating rooms and tender requirements across
             Saudi Arabia. Engineered for complete clinical precision and fully
             compliant with SFDA standards, our complete specialty sets will be
-            available shortly. Please design header just like Surgical
-            Instruments Page and below just plain Green Boxes without any image
-            or Products
+            available shortly.
           </p>
         </div>
       </div>

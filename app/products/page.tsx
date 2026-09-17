@@ -131,7 +131,7 @@ function ProductRow({
 }) {
   return (
     <div
-      className={`mx-auto flex max-w-7xl flex-col items-center gap-10 px-6 py-14 lg:gap-20 lg:px-10 lg:py-20 ${
+      className={`mx-auto flex max-w-7xl flex-col items-center gap-10 px-6 py-14 lg:gap-20 lg:px-10 lg:py-12 ${
         imageOnLeft ? "lg:flex-row-reverse" : "lg:flex-row"
       }`}
     >
@@ -164,7 +164,7 @@ function ProductRow({
           <img
             src={category.image.src}
             alt={category.name}
-            className="h-96 w-full object-cover object-top lg:h-[370px]"
+            className="h-96 w-full object-cover object-center lg:h-[370px]"
           />
         </div>
       </div>
@@ -180,7 +180,7 @@ function ProductsSection() {
           All Products
         </h2>
       </div>
-      <div className="mt-6 divide-y divide-slate-100">
+      <div className="mt-6 ">
         {productCategories.map((category, index) => (
           <ProductRow
             key={category.name}

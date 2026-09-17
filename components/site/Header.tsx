@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.jpeg";
 import { cn } from "@/lib/utils";
 
 const productCategories = [
@@ -149,7 +149,7 @@ export default function Header() {
         <div className="hidden lg:block">
           <a
             href="tel:+966543000010"
-            className="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+            className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
           >
             <Phone className="h-4 w-4" /> (+966) 54 300 0010
           </a>
