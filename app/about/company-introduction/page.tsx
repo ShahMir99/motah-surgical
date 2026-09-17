@@ -2,7 +2,7 @@ import React from "react";
 import { Counter } from "@/components/site/Counter";
 import { Reveal } from "@/components/site/Reveal";
 
-import aboutBanner from "@/assets/about-image.png";
+import aboutBanner from "@/assets/story.jpeg";
 
 const stats = [
   { value: "50", label: "Years in Business" },
