@@ -5,7 +5,7 @@ import { ArrowRight, Award, Globe2, ShieldCheck, Sparkles } from "lucide-react";
 import heroImg from "@/assets/hero-section.jpeg";
 
 // About Section
-import aboutUs from "@/assets/about-us.png";
+import aboutUs from "@/assets/vision_image.png";
 import worldVectorImage from "../assets/world-vector-image.png";
 
 import Link from "next/link";
