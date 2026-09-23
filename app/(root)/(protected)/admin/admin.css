@@ -1,0 +1,92 @@
+/* Admin-only styles. Imported from app/admin/layout.tsx. */
+
+.admin-root {
+  font-family: var(--font-admin-sans), ui-sans-serif, system-ui, sans-serif;
+  color: #10261f;
+  background: #f2f5f4;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-editorial {
+  font-family: var(--font-admin-serif), Georgia, "Times New Roman", serif;
+}
+
+/* Editor canvas: set in the same serif the reader sees, so writing feels like the published page. */
+.tiptap-content {
+  font-family: var(--font-admin-serif), Georgia, serif;
+  font-size: 1.1875rem;
+  line-height: 1.75;
+  color: #1c302a;
+  min-height: 420px;
+  max-width: 44rem;
+  outline: none;
+  word-wrap: break-word;
+}
+
+.tiptap-content > * + * { margin-top: 1.1em; }
+
+.tiptap-content h2,
+.tiptap-content h3 {
+  font-weight: 700;
+  color: #10261f;
+  line-height: 1.25;
+}
+.tiptap-content h2 { font-size: 1.75rem; margin-top: 1.8em; }
+.tiptap-content h3 { font-size: 1.375rem; margin-top: 1.6em; }
+.tiptap-content > :first-child { margin-top: 0; }
+
+.tiptap-content ul { list-style: disc; padding-left: 1.4em; }
+.tiptap-content ol { list-style: decimal; padding-left: 1.4em; }
+.tiptap-content li + li { margin-top: 0.3em; }
+.tiptap-content li p { margin: 0; }
+.tiptap-content li::marker { color: #0e7c58; }
+
+.tiptap-content blockquote {
+  border-left: 3px solid #18b27f;
+  padding-left: 1.1em;
+  color: #3d524b;
+  font-style: italic;
+}
+
+.tiptap-content a {
+  color: #0e7c58;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.tiptap-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.tiptap-content img.ProseMirror-selectednode {
+  outline: 3px solid #18b27f;
+  outline-offset: 3px;
+}
+
+.tiptap-content hr {
+  border: none;
+  border-top: 1px solid #dce3e0;
+  margin: 2.2em 0;
+}
+.tiptap-content hr.ProseMirror-selectednode { border-top-color: #18b27f; }
+
+.tiptap-content p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: #9aaaa5;
+  pointer-events: none;
+}
+
+.tiptap-content ::selection { background: #c9eedf; }
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-root *, .admin-root *::before, .admin-root *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

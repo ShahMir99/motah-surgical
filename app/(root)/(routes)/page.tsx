@@ -6,7 +6,7 @@ import heroImg from "@/assets/hero-section.jpeg";
 
 // About Section
 import aboutUs from "@/assets/vision_image.png";
-import worldVectorImage from "../assets/world-vector-image.png";
+import worldVectorImage from "@/assets/world-vector-image.png";
 
 import Link from "next/link";
 import Image from "next/image";

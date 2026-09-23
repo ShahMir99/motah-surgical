@@ -37,7 +37,7 @@ const nav = [
   { to: "#", label: "About Us", dropdown: aboutCategories },
   { to: "/products", label: "Surgical Instruments", dropdown: productCategories },
   { to: "/surgical-sets", label: "Surgical Sets" },
-  { to: "/blog", label: "News and Events" },
+  { to: "/blogs", label: "News and Events" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -82,7 +82,7 @@ export default function Header() {
       <div
         className={cn(
           "container-page flex items-center justify-between gap-6 transition-all h-[105px] duration-100",
-          isScrolled && "h-[85px]",
+          isScrolled && "h-[105px]",
         )}
       > 
         <Link
