@@ -1,10 +1,13 @@
+import Image from "next/image";
 import React from "react";
 
+import isoLogo from "@/assets/credentials/M- IDL-2026-MD-0279_page-0001.jpg.jpeg";
+import ceLogo from "@/assets/credentials/M- SWL-2026-MD-0715_page-0001.jpg.jpeg";
+
 const credentials = [
-  "SFDA Compliant",
-  "ISO 13485 Certified",
-  "Lifetime Guarantee",
-] as const;
+  { label: "Medical device establishment license ", image: isoLogo },
+  { label: "Medical device establishment license", image: ceLogo },
+];
 
 const Compliance = () => {
   return (
@@ -63,14 +66,18 @@ const Compliance = () => {
             </p>
           </div>
 
-          <div className="flex items-center justify-center flex-wrap gap-4 pt-4 border-t border-[#D8DBD9]">
-            {credentials.map((label) => (
-              <span
-                key={label}
-                className="border border-[#D8DBD9] text-color text-sm font-medium px-5 py-2.5"
+          <div className="flex items-center justify-center flex-wrap gap-4 pt-16 border-t border-[#D8DBD9]">
+            {credentials.map((item) => (
+              <div
+                key={item.label}
+                className="flex items-center justify-center border border-[#D8DBD9] h-[252px]"
               >
-                {label}
-              </span>
+                <Image
+                  src={item.image}
+                  alt={item.label}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
             ))}
           </div>
         </div>

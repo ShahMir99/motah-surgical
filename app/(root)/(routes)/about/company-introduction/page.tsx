@@ -66,16 +66,21 @@ const About = () => {
           </p>
 
           <p>
-            Our approach is simple: <strong>continuous innovation</strong> and
-            strict quality control. By carrying out specialized processing,
-            rigorous material testing, and full <strong>SFDA compliance</strong>{" "}
-            inside Saudi Arabia, we eliminate reliance on foreign supply
-            chains—delivering <strong>lifetime-guaranteed instruments</strong>{" "}
-            directly to healthcare institutions when they need them most. We
-            focus on precision because we know what hospitals and surgical teams
-            require. Every instrument we produce—including specialized
-            microsurgery tools—is designed for <strong>superior grip</strong>,
-            ideal balance, and reliable accuracy in the operating room.
+            Our approach is simple: <strong>continuous innovation</strong> and strict quality
+            control. By leveraging localized processing, rigorous material
+            testing, and full <strong>SFDA</strong> compliance within Saudi Arabia, we eliminate
+            reliance on foreign supply chains. This allows us to deliver
+            instruments backed by a lifetime warranty against <strong>manufacturing</strong>
+            defects in material and workmanship, directly to healthcare
+            institutions when they need them most. Coverage is subject to proper
+            use, care, and sterilization in accordance with our guidelines, and
+            excludes normal wear, consumable components, and damage from misuse
+            or unauthorized repair, with specialty and <strong>microsurgery instruments</strong>
+            covered under separate terms. We focus on precision because we
+            understand the exact needs of surgical teams. Every tool we
+            manufacture, including specialized microsurgery instruments, is
+            engineered for superior grip, ideal balance, and uncompromising
+            accuracy in the operating room.
           </p>
 
           <p>
