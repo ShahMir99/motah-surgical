@@ -51,8 +51,8 @@ const About = () => {
 
       {/* Letter */}
       <section className="mx-auto max-w-5xl px-6 pb-20">
-        <div className="space-y-5 text-[17px] leading-relaxed text-slate-800">
-          <p className="text-[20px] font-semibold text-primary">
+        <div className="mx-auto max-w-5xl space-y-5 text-justify text-[17px] leading-relaxed text-slate-800">
+          <p className="text-left text-[20px] font-semibold text-primary">
             To Our Partners in Healthcare,
           </p>
 
@@ -66,21 +66,22 @@ const About = () => {
           </p>
 
           <p>
-            Our approach is simple: <strong>continuous innovation</strong> and strict quality
-            control. By leveraging localized processing, rigorous material
-            testing, and full <strong>SFDA</strong> compliance within Saudi Arabia, we eliminate
-            reliance on foreign supply chains. This allows us to deliver
-            instruments backed by a lifetime warranty against <strong>manufacturing</strong>
-            defects in material and workmanship, directly to healthcare
-            institutions when they need them most. Coverage is subject to proper
-            use, care, and sterilization in accordance with our guidelines, and
-            excludes normal wear, consumable components, and damage from misuse
-            or unauthorized repair, with specialty and <strong>microsurgery instruments</strong>
-            covered under separate terms. We focus on precision because we
-            understand the exact needs of surgical teams. Every tool we
-            manufacture, including specialized microsurgery instruments, is
-            engineered for superior grip, ideal balance, and uncompromising
-            accuracy in the operating room.
+            Our approach is simple: <strong>continuous innovation</strong> and
+            strict quality control. By leveraging localized processing, rigorous
+            material testing, and full <strong>SFDA</strong> compliance within
+            Saudi Arabia, we eliminate reliance on foreign supply chains. This
+            allows us to deliver instruments backed by a lifetime warranty
+            against <strong>manufacturing</strong> defects in material and
+            workmanship, directly to healthcare institutions when they need them
+            most. Coverage is subject to proper use, care, and sterilization in
+            accordance with our guidelines, and excludes normal wear, consumable
+            components, and damage from misuse or unauthorized repair, with
+            specialty and <strong>microsurgery instruments</strong> covered
+            under separate terms. We focus on precision because we understand
+            the exact needs of surgical teams. Every tool we manufacture,
+            including specialized microsurgery instruments, is engineered for
+            superior grip, ideal balance, and uncompromising accuracy in the
+            operating room.
           </p>
 
           <p>
@@ -91,7 +92,7 @@ const About = () => {
             delays.
             <br />
             Building national supply security also drives our growth across
-            regional and global markets. As we strengthen Saudi Arabia&#39;s
+            regional and global markets. As we strengthen Saudi Arabia&apos;s
             healthcare infrastructure, Motah Surgical presents{" "}
             <strong>Made in KSA quality</strong> on the international stage,
             showing what modern healthcare systems can expect from a trusted
@@ -107,8 +108,8 @@ const About = () => {
           </p>
 
           <p>
-            Thank you for choosing Motah Surgical. Let’s build a stronger, more
-            reliable healthcare supply chain together.
+            Thank you for choosing Motah Surgical. Let&apos;s build a stronger,
+            more reliable healthcare supply chain together.
           </p>
 
           <p>Sincerely,</p>
