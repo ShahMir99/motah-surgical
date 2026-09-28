@@ -3,26 +3,11 @@
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import logo from "@/assets/logo.jpeg";
 import { cn } from "@/lib/utils";
-
-const productCategories = [
-  { to: "/products/general-surgery", label: "General Surgery" },
-  { to: "/products/liposuction", label: "Liposuction" },
-  { to: "/products/plastic-surgery", label: "Plastic Surgery" },
-  { to: "/products/ear-nose-throat-surgery", label: "Ear, Nose & Throat Surgery" },
-  { to: "/products/cardiovascular-surgery", label: "Cardiovascular Surgery" },
-  { to: "/products/orthopedics", label: "Orthopedics" },
-  { to: "/products/dental-surgery", label: "Dental Surgery" },
-  { to: "/products/arthroscopy", label: "Arthroscopy" },
-  { to: "/products/neurosurgery", label: "Neurosurgery" },
-  { to: "/products/gynaecology", label: "Gynaecology" },
-  { to: "/products/eye-instruments", label: "Eye Instruments" },
-  { to: "/products/laryngoscopes", label: "Laryngoscopes" },
-  { to: "/products/microsurgery", label: "Microsurgery" },
-] as const;
+import type { ProductMenuItem } from "@/types/product";
 
 const aboutCategories = [
   { to: "/about/company-introduction", label: "Company Introduction" },
@@ -32,16 +17,30 @@ const aboutCategories = [
   { to: "/about/downloads", label: "Downloads" },
 ] as const;
 
-const nav = [
-  { to: "/", label: "Home" },
-  { to: "#", label: "About Us", dropdown: aboutCategories },
-  { to: "/products", label: "Surgical Instruments", dropdown: productCategories },
-  { to: "/surgical-sets", label: "Surgical Sets" },
-  { to: "/blogs", label: "News and Events" },
-  { to: "/contact", label: "Contact" },
-] as const;
+type MenuLink = { to: string; label: string };
+type NavItem = { to: string; label: string; dropdown?: readonly MenuLink[] };
 
-export default function Header() {
+function buildNav(productCategories: readonly MenuLink[]): NavItem[] {
+  return [
+    { to: "/", label: "Home" },
+    { to: "#", label: "About Us", dropdown: aboutCategories },
+    // Filled from the database. With no products yet it's a plain link.
+    {
+      to: "/products",
+      label: "Surgical Instruments",
+      ...(productCategories.length ? { dropdown: productCategories } : {}),
+    },
+    { to: "/surgical-sets", label: "Surgical Sets" },
+    { to: "/blogs", label: "News and Events" },
+    { to: "/contact", label: "Contact" },
+  ];
+}
+
+export default function Header({ products = [] }: { products?: ProductMenuItem[] }) {
+  const nav = useMemo(
+    () => buildNav(products.map((p) => ({ to: `/products/${p.slug}`, label: p.name }))),
+    [products],
+  );
   const [open, setOpen] = useState(false);
   const [mobileOpenKey, setMobileOpenKey] = useState<string | null>(null);
   const [desktopOpenKey, setDesktopOpenKey] = useState<string | null>(null);
@@ -95,7 +94,7 @@ export default function Header() {
 
         <nav className="hidden items-center gap-4 lg:flex">
           {nav.map((item) =>
-            "dropdown" in item ? (
+            item.dropdown ? (
               <div
                 key={item.to}
                 className="relative"
@@ -169,7 +168,7 @@ export default function Header() {
         <div className="border-t border-border bg-background lg:hidden">
           <nav className="container-page flex flex-col py-4">
             {nav.map((item) =>
-              "dropdown" in item ? (
+              item.dropdown ? (
                 <div key={item.to} className="border-b border-border/60">
                   <button
                     type="button"

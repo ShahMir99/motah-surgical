@@ -181,3 +181,39 @@
 @utility rise {
   animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* ------------------------------------------------------------------
+   Justified paragraphs on the public site (main.site-content + footer).
+   Unlayered on purpose so it wins over Tailwind's text-left/center
+   utilities. Widths are untouched; only alignment changes.
+   ------------------------------------------------------------------ */
+.site-content p,
+footer p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* Centered blocks: justify every line, center the last one */
+.site-content p.text-center,
+.site-content .text-center p,
+footer p.text-center,
+footer .text-center p {
+  text-align-last: center;
+}
+
+/* Right-aligned blocks keep their last line on the right */
+footer p.text-right,
+footer .text-right p {
+  text-align-last: right;
+}
+
+@media (min-width: 1024px) {
+  .site-content .lg\:text-left p,
+  footer .lg\:text-left p {
+    text-align-last: auto;
+  }
+  footer .lg\:text-right p {
+    text-align-last: right;
+  }
+}

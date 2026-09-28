@@ -1,81 +1,18 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Download, ImageIcon } from "lucide-react";
 
-import React from "react";
-import { Download } from "lucide-react";
-import { StaticImageData } from "next/image";
+import { getPublishedProducts } from "@/lib/apis/product-queries";
+import type { ProductListItem } from "@/types/product";
 
-import laryngoscopy from "@/assets/products_home/Laryngoscop.jpeg";
-import liposuction from "@/assets/products_home/Liposucction.jpeg";
-import microSurgery from "@/assets/products_home/MicroSurgery.jpeg";
-import generalSurgery from "@/assets/products_home/gernal-surgery.jpeg";
-import Gynaecology from "@/assets/products_home/Gynaecology.jpg";
-import eyeSurgery from "@/assets/products_home/Eye-Surgery.jpeg";
-import entSurgery from "@/assets/products_home/ENT-Surgery.jpeg";
-import dentistry from "@/assets/products_home/Dentistry.jpeg";
-import cardioVascular from "@/assets/products_home/Cardio-Vascular.jpeg";
-import arthroscopy from "@/assets/products_home/Arthoscopy.jpeg";
-import Orthopedics from "@/assets/products_home/arthopedic.jpg";
-import neurosurgery from "@/assets/products_home/neurosurgery.png";
+export const metadata: Metadata = {
+  title: "Surgical Instruments | Motah Surgical",
+  description:
+    "Browse Motah Surgical's precision instrument ranges for general surgery, orthopedics, ENT, neurosurgery and more.",
+};
 
-interface ProductCategory {
-  name: string;
-  badge?: string;
-  description: string;
-  image: StaticImageData;
-}
-
-const productCategories: ProductCategory[] = [
-  {
-    name: "General Surgery",
-    description:
-      "We understand the critical role that precision and reliability play in surgical procedures, which is why we offer a wide range of general surgery instruments built to the highest standard.",
-    image: generalSurgery,
-  },
-  {
-    name: "Ear, Nose & Throat Surgery",
-    description:
-      "Professional Hospital offers a comprehensive range of high-quality ENT instruments for ear, nose, and throat procedures. Our precision-crafted instruments are trusted by surgeons worldwide.",
-    image: entSurgery,
-  },
-  {
-    name: "Orthopedics",
-    description:
-      "Discover a wide array of orthopedic instruments, including bone saws, drills, reamers, retractors, forceps, and more. Each instrument is ergonomically designed for surgeon comfort and control.",
-    image: Orthopedics,
-  },
-  {
-    name: "Arthroscopy",
-    badge: "New",
-    description:
-      "Professional Arthroscopy Instruments are specifically designed for minimally invasive joint procedures. These instruments offer precise control, visibility, and access during complex procedures.",
-    image: arthroscopy,
-  },
-  {
-    name: "Neurosurgery",
-    badge: "New",
-    description:
-      "Unlocking precision and potential: Professional's neurosurgery instruments are meticulously designed to empower surgeons with the tools they need to perform delicate procedures with confidence.",
-    image: neurosurgery,
-  },
-  {
-    name: "Gynaecology",
-    description:
-      "Our gynecology instruments category encompasses a wide range of specialized tools tailored to the unique needs of gynecological procedures, from routine exams to complex surgeries.",
-    image: Gynaecology,
-  },
-  {
-    name: "Eye Instruments",
-    description:
-      "Our eye instruments are engineered with a keen focus on the intricate and delicate nature of eye procedures. Each instrument is crafted for exceptional precision and control.",
-    image: eyeSurgery,
-  },
-  {
-    name: "Microsurgery",
-    description:
-      "We understand that in microsurgery, even the smallest movement matters. That's why our instruments are engineered for the highest level of precision and reliability.",
-    image: microSurgery,
-  },
-];
+// Admin changes refresh this page right away; this is a fallback interval.
+export const revalidate = 60;
 
 function Hero() {
   return (
@@ -123,12 +60,13 @@ function Hero() {
 }
 
 function ProductRow({
-  category,
+  product,
   imageOnLeft,
 }: {
-  category: ProductCategory;
+  product: ProductListItem;
   imageOnLeft: boolean;
 }) {
+  const href = `/products/${product.slug}`;
   return (
     <div
       className={`mx-auto flex max-w-7xl flex-col items-center gap-10 px-6 py-14 lg:gap-20 lg:px-10 lg:py-12 ${
@@ -137,42 +75,54 @@ function ProductRow({
     >
       <div className="w-full lg:w-1/2">
         <h3 className="mb-5 text-4xl font-bold text-[#02ac75] lg:text-4xl">
-          {category.name}
-          {category.badge && (
+          <Link href={href} className="hover:text-[#029764]">
+            {product.name}
+          </Link>
+          {product.badge && (
             <span className="ml-2 text-xl font-semibold text-slate-400">
-              ({category.badge})
+              ({product.badge})
             </span>
           )}
         </h3>
-        <p className="mb-7 max-w-lg text-lg font-normal leading-relaxed text-slate-700 line-clamp-2">
-          {category.description}
-        </p>
-        <button
-          type="button"
-          className="rounded-full bg-primary-dark px-7 py-3.5 text-xs font-bold tracking-wide text-white transition-colors hover:bg-[#0F2A38]"
+        {product.summary && (
+          <p className="mb-7 max-w-lg text-lg font-normal leading-relaxed text-slate-700 line-clamp-2">
+            {product.summary}
+          </p>
+        )}
+        <Link
+          href={href}
+          className="inline-block rounded-full bg-primary-dark px-7 py-3.5 text-xs font-bold tracking-wide text-white transition-colors hover:bg-[#0F2A38]"
         >
           VIEW PRODUCTS
-        </button>
+        </Link>
       </div>
 
       <div className="w-full lg:w-1/2">
-        <div className="flex">
+        <Link href={href} className="flex" tabIndex={-1} aria-hidden>
           <div className="flex flex-col">
             <div className="w-[20px] h-[88%] bg-primary" />
             <div className="w-[20px] h-[12%] bg-primary-dark" />
           </div>
-          <img
-            src={category.image.src}
-            alt={category.name}
-            className="h-96 w-full object-cover object-center lg:h-[370px]"
-          />
-        </div>
+          {product.image?.url ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={product.image.url}
+              alt={product.image.alt || product.name}
+              loading="lazy"
+              className="h-96 w-full object-cover object-center lg:h-[370px]"
+            />
+          ) : (
+            <div className="grid h-96 w-full place-items-center bg-[#EEF5F2] text-[#9DB5AC] lg:h-[370px]">
+              <ImageIcon className="h-10 w-10" aria-hidden />
+            </div>
+          )}
+        </Link>
       </div>
     </div>
   );
 }
 
-function ProductsSection() {
+function ProductsSection({ products }: { products: ProductListItem[] }) {
   return (
     <section className="bg-white pt-32">
       <div className="mx-auto max-w-7xl px-6 pt-16 text-center lg:px-10">
@@ -180,15 +130,21 @@ function ProductsSection() {
           All Products
         </h2>
       </div>
-      <div className="mt-6 ">
-        {productCategories.map((category, index) => (
-          <ProductRow
-            key={category.name}
-            category={category}
-            imageOnLeft={index % 2 === 1}
-          />
-        ))}
-      </div>
+      {products.length ? (
+        <div className="mt-6 ">
+          {products.map((product, index) => (
+            <ProductRow
+              key={product._id}
+              product={product}
+              imageOnLeft={index % 2 === 1}
+            />
+          ))}
+        </div>
+      ) : (
+        <p className="mx-auto max-w-md px-6 py-24 text-center text-lg text-slate-500">
+          Our product ranges are being updated. Please check back soon.
+        </p>
+      )}
     </section>
   );
 }
@@ -211,11 +167,16 @@ function CtaBanner() {
   );
 }
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const products = await getPublishedProducts().catch((err) => {
+    console.error("[products] list couldn't be loaded", err);
+    return [] as ProductListItem[];
+  });
+
   return (
     <div className="min-h-screen bg-white">
       <Hero />
-      <ProductsSection />
+      <ProductsSection products={products} />
       <CtaBanner />
     </div>
   );

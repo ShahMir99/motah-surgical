@@ -20,7 +20,19 @@ function Progress({ value }: { value: number }) {
   );
 }
 
-export function CoverImageField({ value, onChange }: { value: BlogImage | null; onChange: (value: BlogImage | null) => void }) {
+export function CoverImageField({
+  value,
+  onChange,
+  noun = "cover image",
+  hint = "1600×900 works best.",
+}: {
+  value: BlogImage | null;
+  onChange: (value: BlogImage | null) => void;
+  /** What the image is called in the UI, e.g. "product image". */
+  noun?: string;
+  hint?: string;
+}) {
+  const Noun = noun.charAt(0).toUpperCase() + noun.slice(1);
   const inputRef = useRef<HTMLInputElement>(null);
   const [progress, setProgress] = useState<number | null>(null);
   const [dragging, setDragging] = useState(false);
@@ -32,7 +44,7 @@ export function CoverImageField({ value, onChange }: { value: BlogImage | null; 
     try {
       const { url, key } = await uploadImage(file, setProgress);
       onChange({ url, key, alt: value?.alt ?? "" });
-      toast.success("Cover image uploaded");
+      toast.success(`${Noun} uploaded`);
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "The image couldn't be uploaded.");
     } finally {
@@ -57,7 +69,7 @@ export function CoverImageField({ value, onChange }: { value: BlogImage | null; 
     return (
       <div className="space-y-3">
         <div className="relative overflow-hidden rounded-md border border-[#E6ECEA] bg-[#EEF1F0]">
-          <img src={value.url} alt={value.alt || "Cover image preview"} className="aspect-[16/9] w-full object-cover" />
+          <img src={value.url} alt={value.alt || `${Noun} preview`} className="aspect-[16/9] w-full object-cover" />
           {uploading && (
             <div className="absolute inset-0 grid place-items-center bg-white/85 p-4">
               <Progress value={progress} />
@@ -111,9 +123,9 @@ export function CoverImageField({ value, onChange }: { value: BlogImage | null; 
         ) : (
           <>
             <Upload className="h-5 w-5 text-[#5E716B]" aria-hidden />
-            <span className="text-sm font-medium text-[#10261F]">Upload cover image</span>
+            <span className="text-sm font-medium text-[#10261F]">Upload {noun}</span>
             <span className="text-xs text-[#5E716B]">
-              Drop a file or click to browse. Up to {MAX_IMAGE_MB} MB, 1600×900 works best.
+              Drop a file or click to browse. Up to {MAX_IMAGE_MB} MB, {hint}
             </span>
           </>
         )}

@@ -26,9 +26,14 @@ export function publicUrlFor(key: string) {
 }
 
 export async function createImageUpload(contentType: string, size: number, folder = "blogs") {
+  return createFileUpload(contentType, size, folder, IMAGE_TYPES[contentType]);
+}
+
+/** Presigned PUT for any allowed file. The caller validates type and size first. */
+export async function createFileUpload(contentType: string, size: number, folder: string, extension: string) {
   const now = new Date();
   const month = String(now.getMonth() + 1).padStart(2, "0");
-  const key = `${folder}/${now.getFullYear()}/${month}/${randomUUID()}.${IMAGE_TYPES[contentType]}`;
+  const key = `${folder}/${now.getFullYear()}/${month}/${randomUUID()}.${extension}`;
 
   const uploadUrl = await getSignedUrl(
     s3(),
