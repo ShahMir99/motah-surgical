@@ -64,13 +64,13 @@ export function AdminShell({ admin, children }: { admin: Admin; children: ReactN
 
         <nav className="flex-1 px-3 py-4">
           <ul className="space-y-1">
-            {adminNav.map(({ label, href, icon: Icon }) => {
+            {adminNav.map(({ label, href, icon: Icon, children: subPages }) => {
               const active = pathname === href || pathname.startsWith(`${href}/`);
               return (
                 <li key={href}>
                   <Link
-                    href={href}
-                    aria-current={active ? "page" : undefined}
+                    href={subPages ? subPages[0].href : href}
+                    aria-current={active && !subPages ? "page" : undefined}
                     className={`relative flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#18B27F] ${
                       active ? "bg-white/10 text-white" : "text-white/65 hover:bg-white/5 hover:text-white"
                     }`}
@@ -79,6 +79,28 @@ export function AdminShell({ admin, children }: { admin: Admin; children: ReactN
                     <Icon className="h-4 w-4" aria-hidden />
                     {label}
                   </Link>
+                  {subPages && active && (
+                    <ul className="ml-5 mt-1 space-y-0.5 border-l border-white/10 pl-3">
+                      {subPages.map((sub) => {
+                        const subActive = pathname === sub.href || pathname.startsWith(`${sub.href}/`);
+                        return (
+                          <li key={sub.href}>
+                            <Link
+                              href={sub.href}
+                              aria-current={subActive ? "page" : undefined}
+                              className={`block rounded-md px-3 py-2 text-[13px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#18B27F] ${
+                                subActive
+                                  ? "bg-white/10 font-medium text-white"
+                                  : "text-white/60 hover:bg-white/5 hover:text-white"
+                              }`}
+                            >
+                              {sub.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
                 </li>
               );
             })}

@@ -25,12 +25,15 @@ export function CoverImageField({
   onChange,
   noun = "cover image",
   hint = "1600×900 works best.",
+  id = "cover",
 }: {
   value: BlogImage | null;
   onChange: (value: BlogImage | null) => void;
   /** What the image is called in the UI, e.g. "product image". */
   noun?: string;
   hint?: string;
+  /** Unique per field when several share a page. */
+  id?: string;
 }) {
   const Noun = noun.charAt(0).toUpperCase() + noun.slice(1);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -84,9 +87,9 @@ export function CoverImageField({
             Remove
           </Button>
         </div>
-        <Field label="Alt text" htmlFor="cover-alt" hint="Describe the image for screen readers and search engines.">
+        <Field label="Alt text" htmlFor={`${id}-alt`} hint="Describe the image for screen readers and search engines.">
           <input
-            id="cover-alt"
+            id={`${id}-alt`}
             value={value.alt ?? ""}
             onChange={(e) => onChange({ ...value, alt: e.target.value })}
             placeholder="e.g. Stainless steel forceps on a sterile tray"

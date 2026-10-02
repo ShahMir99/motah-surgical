@@ -6,7 +6,6 @@ import type { ProductDTO, ProductListItem, ProductMenuItem } from "@/types/produ
 const PUBLISHED = { status: "published" } as const;
 const MENU_ORDER = { order: 1, name: 1 } as const;
 
-/** Every published product, in menu order, without the long description. */
 export async function getPublishedProducts() {
   await connectDB();
   const items = await Product.find(PUBLISHED).sort(MENU_ORDER).select("-description").lean();

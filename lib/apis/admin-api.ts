@@ -10,6 +10,8 @@ import type {
   ProductPayload,
   ProductStatus,
 } from "@/types/product";
+import type { HomeContent, HomeContentResponse } from "@/types/home";
+import type { AboutContentMap, AboutContentResponse, AboutSlug } from "@/types/about";
 import {
   ACCEPTED_CATALOG_TYPES,
   ACCEPTED_IMAGE_TYPES,
@@ -103,6 +105,24 @@ export const productsApi = {
     request<{ deleted: number }>("/api/admin/products", {
       method: "DELETE",
       body: JSON.stringify({ ids }),
+    }),
+};
+
+export const homeApi = {
+  get: () => request<HomeContentResponse>("/api/admin/home"),
+  save: (data: HomeContent) =>
+    request<HomeContentResponse>("/api/admin/home", {
+      method: "PUT",
+      body: JSON.stringify(data),
+    }),
+};
+
+export const aboutApi = {
+  get: <S extends AboutSlug>(slug: S) => request<AboutContentResponse<S>>(`/api/admin/about/${slug}`),
+  save: <S extends AboutSlug>(slug: S, data: AboutContentMap[S]) =>
+    request<AboutContentResponse<S>>(`/api/admin/about/${slug}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
     }),
 };
 

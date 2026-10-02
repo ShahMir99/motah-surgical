@@ -1,74 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import Link from "next/link";
+import { ImageIcon } from "lucide-react";
 
-import laryngoscopy from "@/assets/products_home/Laryngoscop.jpeg";
-import liposuction from "@/assets/products_home/Liposucction.jpeg";
-import microSurgery from "@/assets/products_home/MicroSurgery.jpeg";
-import generalSurgery from "@/assets/products_home/gernal-surgery.jpeg";
-import gynaecology from "@/assets/products_home/Gynaecology.jpg";
-import eyeSurgery from "@/assets/products_home/Eye-Surgery.jpeg";
-import entSurgery from "@/assets/products_home/ENT-Surgery.jpeg";
-import dentistry from "@/assets/products_home/Dentistry.jpeg";
-import cardioVascular from "@/assets/products_home/Cardio-Vascular.jpeg";
-import arthroscopy from "@/assets/products_home/Arthoscopy.jpeg"; 
- 
+import type { ProductListItem } from "@/types/product";
 
 const LABEL_COLOR = "#1C3350";
 
-interface Category {
-  label: string;
-  image: StaticImageData;
-  href : string;
-}
- 
-const categories: Category[] = [
-  { label: "Arthroscopy (New)", image: arthroscopy, href : "/products/arthroscopy" },
-  { label: "Cardiovascular Surgery", image: cardioVascular, href : "/cardiovascular-surgery" },
-  { label: "Dental Surgery", image: dentistry, href : "/products/dental-surgery" },
-  { label: "Ear, Nose & Throat Surgery", image: entSurgery, href : "/products/ear-nose-throat-surgery" },
-  { label: "Eye Instruments", image: eyeSurgery, href : "/products/eye-instruments" },
-  { label: "General Surgery", image: generalSurgery, href : "/products/general-surgery" },
-  { label: "Gynaecology", image: gynaecology, href : "/products/gynaecology" },
-  { label: "Laryngoscopes", image: laryngoscopy, href : "/products/laryngoscopes" },
-  { label: "Liposuction", image: liposuction, href : "/products/liposuction" },
-  { label: "Microsurgery", image: microSurgery, href : "/products/microsurgery" },
-];
+export default function ProductCategoriesGrid({ products }: { products: ProductListItem[] }) {
+  if (!products.length) return null;
 
-export default function ProductCategoriesGrid() {
   return (
     <section className="bg-white pt-16">
       <div className="mx-auto max-w-[1320px]">
         <div className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
-          {categories.map((cat, i) => (
-            <motion.a
-              key={cat.label}
-              href={cat.href}
+          {products.map((product, i) => (
+            <motion.div
+              key={product._id}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group block overflow-hidden rounded-2xl  border border-gray-100 bg-white shadow-lg transition-shadow duration-300 hover:shadow-lg"
+              transition={{ duration: 0.4, delay: (i % 5) * 0.04 }}
             >
-              <div className="relative aspect-[4/2] w-full overflow-hidden ">
-                <Image
-                  src={cat.image}
-                  alt={cat.label}
-                  fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105 p-2"
-                />
-              </div>
-              <div className=" px-4 py-4 text-center">
-                <span
-                  className="text-[16px] font-bold uppercase tracking-wide"
-                  style={{ color: LABEL_COLOR }}
-                >
-                  {cat.label}
-                </span>
-              </div>
-            </motion.a>
+              <Link
+                href={`/products/${product.slug}`}
+                className="group block h-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-lg transition-shadow duration-300 hover:shadow-lg"
+              >
+                <div className="relative aspect-[4/2] w-full overflow-hidden">
+                  {product.image?.url ? (
+                    <Image
+                      src={product.image.url}
+                      alt={product.image.alt || product.name}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                      className="object-cover p-2 transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="grid h-full w-full place-items-center bg-gray-100 text-gray-300">
+                      <ImageIcon className="h-8 w-8" aria-hidden />
+                    </div>
+                  )}
+                </div>
+                <div className="px-4 py-4 text-center">
+                  <span className="text-[16px] font-bold uppercase tracking-wide" style={{ color: LABEL_COLOR }}>
+                    {product.name}
+                    {product.badge ? ` (${product.badge})` : ""}
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -7,7 +7,7 @@ export const IMAGE_TYPES: Record<string, string> = {
 };
 
 export const ACCEPTED_IMAGE_TYPES = Object.keys(IMAGE_TYPES);
-export const MAX_IMAGE_MB = 5;
+export const MAX_IMAGE_MB = 20;
 export const MAX_IMAGE_BYTES = MAX_IMAGE_MB * 1024 * 1024;
 
 // Product catalogues (PDF only).

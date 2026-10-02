@@ -3,9 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import exibation from "@/assets/exhibation.jpeg"
+import exibation from "@/assets/exhibation.jpeg";
+import type { HomeContent } from "@/types/home";
 
-export default function UpcomingExhibitions() {
+export default function UpcomingExhibitions({ content }: { content: HomeContent["exhibition"] }) {
   return (
     <section className="bg-white py-16">
       <div className="mx-auto max-w-[1320px] px-14">
@@ -18,11 +19,11 @@ export default function UpcomingExhibitions() {
             className="pl-8"
           >
             <h2 className="text-5xl font-light leading-tight text-primary md:text-5xl">
-              <span className="block">Upcoming</span>
-              <span className="block">Exhibitions</span>
+              <span className="block">{content.titleTop}</span>
+              <span className="block">{content.titleBottom}</span>
             </h2>
             <p className="mt-5 text-xl max-w-[380px] font-semibold uppercase tracking-wide text-gray-900">
-              Global Health Exhibition, Riyadh (Malham), Oct 26–29, 2026
+              {content.text}
             </p>
           </motion.div>
 
@@ -34,8 +35,8 @@ export default function UpcomingExhibitions() {
             className="relative aspect-[6/3] w-full overflow-hidden rounded-2xl bg-gray-100"
           >
             <Image
-              src={exibation}
-              alt="Motah Surgical at an upcoming exhibition"
+              src={content.image?.url ?? exibation}
+              alt={content.image?.alt || "Motah Surgical at an upcoming exhibition"}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

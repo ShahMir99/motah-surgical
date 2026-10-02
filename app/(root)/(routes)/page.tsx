@@ -1,144 +1,78 @@
-"use client";
+import { ShieldCheck } from "lucide-react";
 
-import { ArrowRight, Award, Globe2, ShieldCheck, Sparkles } from "lucide-react";
-
-import heroImg from "@/assets/hero-section.jpeg";
-
-// About Section
-import aboutUs from "@/assets/vision_image.png";
+import aboutFallback from "@/assets/vision_image.png";
 import worldVectorImage from "@/assets/world-vector-image.png";
 
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/site/Reveal";
-import { Counter } from "@/components/site/Counter";
-
-import { motion } from "framer-motion";
+import HomeHero from "@/components/site/HomeHero";
 import ProductCategoriesGrid from "@/components/ProductGrid";
 import HighlightsGrid from "@/components/Highlights";
 import UpcomingExhibitions from "@/components/Upcomingexhibitions";
 
-export default function Home() {
+import { getHomeContent } from "@/lib/apis/home-queries";
+import { getPublishedProducts } from "@/lib/apis/product-queries";
+import type { ProductListItem } from "@/types/product";
+
+// Saving the Home Page or a product in the admin refreshes this page right
+// away; this is a fallback refresh interval.
+export const revalidate = 60;
+
+async function loadProducts(limit: number): Promise<ProductListItem[]> {
+  try {
+    return (await getPublishedProducts()).slice(0, limit);
+  } catch (err) {
+    console.error("[home] products couldn't be loaded", err);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const content = await getHomeContent();
+  const products = await loadProducts(content.products.limit);
+  const { hero, badges, about, highlights, exhibition } = content;
+
   return (
     <>
       {/* Hero */}
       <section className="relative">
-        <div className="relative h-[85vh] min-h-[560px] w-full overflow-hidden">
-          <Image
-            src={heroImg}
-            alt="Surgical team operating under theatre lights"
-            width={1920}
-            height={1280}
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 flex items-center px-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="w-full max-w-[460px] p-10 flex flex-col gap-3 bg-primary"
-            >
-              <span className="text-white font-medium text-xl">
-                What drives us
-              </span>
-
-              <h2 className="text-white font-normal text-[35px] md:text-[39px] leading-[1.3]">
-                Advancing Kingdom healthcare with Made in KSA surgical
-                instruments.
-              </h2>
-
-              <a
-                href="#"
-                className="w-fit rounded-full mt-6 bg-white text-[#18B27F] font-semibold text-sm px-6 py-3.5 hover:bg-white/90 transition-colors"
-              >
-                Learn more about Motah Surgical
-              </a>
-            </motion.div>
+        <HomeHero content={hero} />
+        {badges.length > 0 && (
+          <div className="border-y border-border bg-primary-soft">
+            <div className="container-page grid gap-6 py-6 text-sm font-semibold uppercase tracking-[0.16em] text-ink-soft sm:grid-cols-2 lg:grid-cols-4">
+              {badges.map((b, i) => (
+                <div key={`${b}-${i}`} className="flex items-center gap-3">
+                  <ShieldCheck size={18} className="text-primary" />
+                  {b}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="border-y border-border bg-primary-soft">
-          <div className="container-page grid gap-6 py-6 text-sm font-semibold uppercase tracking-[0.16em] text-ink-soft sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              "ISO 13485 certified",
-              "CE marked",
-              "EU-MDR compliant",
-              "FDA registered",
-            ].map((b) => (
-              <div key={b} className="flex items-center gap-3">
-                <ShieldCheck size={18} className="text-primary" />
-                {b}
-              </div>
-            ))}
-          </div>
-        </div>
+        )}
       </section>
 
-      {/* Categories */}
+      {/* Products */}
       <section className="relative pt-32 pb-14">
         <div className="container-page">
           <Reveal className="max-w-2xl mx-auto">
-            <p className="eyebrow text-ink text-center">Product range</p>
+            <p className="eyebrow text-ink text-center">{content.products.eyebrow}</p>
             <h2 className="mt-2 text-6xl text-center font-medium text-primary sm:text-4xl  lg:text-5xl">
-              What are you looking for ?
+              {content.products.heading}
             </h2>
           </Reveal>
 
-          <ProductCategoriesGrid />
+          <ProductCategoriesGrid products={products} />
 
           <div className="mt-10 flex justify-center">
             <Link href="/products" className="btn-base btn-ink bg-primary">
-              View all products
+              {content.products.buttonLabel}
             </Link>
           </div>
         </div>
       </section>
 
       {/* About */}
-      {/* <section className="bg-secondary section-pad">
-        <div className="container-page grid items-center gap-14 lg:grid-cols-2">
-          <Reveal>
-            <div className="relative">
-              <Image
-                src={factoryImg}
-                alt="Technician inspecting surgical instruments in the manufacturing facility"
-                loading="lazy"
-                width={1200}
-                height={912}
-                className="w-full object-cover shadow-lift"
-              />
-              <div className="absolute -bottom-8 -right-4 hidden bg-primary px-9 py-7 text-primary-foreground shadow-lift sm:block">
-                <div className=" text-4xl font-bold">50+</div>
-                <div className="mt-1 text-xs font-bold uppercase tracking-[0.2em] opacity-85">
-                  Years of performance
-                </div>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={120}>
-            <p className="eyebrow">About</p>
-            <h2 className="mt-4 rule-accent  text-3xl font-bold leading-tight text-ink sm:text-4xl">
-              A half-century of precision manufacturing
-            </h2>
-            <p className="mt-8 text-base leading-relaxed text-ink-soft">
-              We have spent five decades doing one thing well: manufacturing
-              surgical instruments that behave predictably in the surgeon's
-              hand. Today our work reaches theatres in more than fifty countries
-              through hospitals, distributors and OEM partners.
-            </p>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-              A catalogue of more than 10,000 patterns is only useful if every
-              one of them is repeatable. In-house forging, CNC micro-machining
-              and instrument-level inspection are what keep the thousandth unit
-              identical to the first.
-            </p>
-            <Link href="/about" className="btn-base btn-primary mt-9">
-              Read more <ArrowRight size={16} />
-            </Link>
-          </Reveal>
-        </div>
-      </section> */}
-
       <section className="relative bg-primary">
         <div
           className="absolute inset-0 overflow-hidden"
@@ -154,8 +88,8 @@ export default function Home() {
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
             <div className="relative mx-auto aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-xl bg-gray-100">
               <Image
-                src={aboutUs}
-                alt="Motah Surgical instrument manufacturing"
+                src={about.image?.url ?? aboutFallback}
+                alt={about.image?.alt || "Motah Surgical instrument manufacturing"}
                 fill
                 sizes="(max-width: 1024px) 90vw, 490px"
                 className="object-cover"
@@ -164,70 +98,42 @@ export default function Home() {
 
             <div className="text-center text-white lg:text-left">
               <div className="flex flex-wrap items-baseline justify-center gap-x-3 lg:justify-start">
-                <span className="text-3xl font-light md:text-4xl">About</span>
-                <h1 className="text-4xl font-bold uppercase">Motah Surgical</h1>
+                <span className="text-3xl font-light md:text-4xl">{about.prefix}</span>
+                <h1 className="text-4xl font-bold uppercase">{about.title}</h1>
               </div>
 
-              <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/90 lg:mx-0">
-                At Motah Surgical, we forge world-class, Made in KSA surgical
-                instruments engineered to meet the highest global
-                standards—backed by a lifetime guarantee. Built from inside the
-                Kingdom, our operations directly accelerate Saudi Vision 2030 by
-                localizing medical device manufacturing and reinforcing national
-                healthcare sovereignty. We equip surgeons with absolute tactile
-                precision, elevating standard operating procedure across Saudi
-                hospitals and empowering healthcare professionals to perform
-                with total confidence.
-              </p>
+              <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/90 lg:mx-0">{about.body}</p>
 
-              <Link
-                href="/company-introduction"
-                className="mx-auto mt-8 inline-flex w-fit items-center justify-center rounded bg-primary-dark px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white transition-colors lg:mx-0"
-              >
-                Read more
-              </Link>
+              {about.buttonLabel && (
+                <Link
+                  href={about.buttonHref || "#"}
+                  className="mx-auto mt-8 inline-flex w-fit items-center justify-center rounded bg-primary-dark px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white transition-colors lg:mx-0"
+                >
+                  {about.buttonLabel}
+                </Link>
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      {/* <section className="section-pad">
-        <div className="container-page">
-          <Reveal className="max-w-xl">
-            <p className="eyebrow text-ink">Why Professional</p>
-            <h2 className="mt-4 text-3xl font-bold text-primary sm:text-4xl">
-              Numbers built over decades
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 px-20">
-            <Counter value={50} label="Years in business" />
-            <Counter value={50} suffix="+" label="Countries served" />
-            <Counter value={10000} suffix="+" label="Instrument types" />
-            <Counter value={800} suffix="+" label="Employees" />
-          </div>
-        </div>
-      </section> */}
-
       {/* Highlights */}
       <section className="section-pad text-accent-foreground">
         <div className="container-page">
           <Reveal className="max-w-2xl mx-auto pb-5">
-            <p className="text-xs font-bold text-center uppercase tracking-[0.24em] text-ink">
-              Our highlights
-            </p>
+            <p className="text-xs font-bold text-center uppercase tracking-[0.24em] text-ink">{highlights.eyebrow}</p>
             <h2 className="mt-4 text-3xl text-center text-primary font-bold sm:text-4xl lg:text-5xl">
-              Where our engineering makes the difference
+              {highlights.heading}
             </h2>
           </Reveal>
 
-          <HighlightsGrid />
+          <HighlightsGrid items={highlights.items} />
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Exhibitions */}
       <section className="pb-10">
-        <UpcomingExhibitions />
+        <UpcomingExhibitions content={exhibition} />
       </section>
     </>
   );
