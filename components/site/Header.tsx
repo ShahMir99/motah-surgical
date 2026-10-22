@@ -74,7 +74,7 @@ export default function Header({ products = [] }: { products?: ProductMenuItem[]
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 bg-background px-5",
+        "sticky top-0 z-50 bg-background px-5 border border-gray-100",
         isScrolled ? "border-b border-border/70 shadow-sm" : "",
       )}
     >

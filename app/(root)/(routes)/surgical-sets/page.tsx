@@ -1,118 +1,59 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, PackageSearch } from "lucide-react";
 
-import React from "react";
-import { Download } from "lucide-react";
-import { StaticImageData } from "next/image";
+import { SurgicalSetCard } from "@/components/site/SurgicalSetCard";
+import { getPublishedSurgicalSets, getSurgicalSetCategories } from "@/lib/apis/surgical-set-queries";
+import type { SurgicalSetCategory, SurgicalSetListItem } from "@/types/surgical-set";
 
-import laryngoscopy from "@/assets/products_home/Laryngoscop.jpeg";
-import liposuction from "@/assets/products_home/Liposucction.jpeg";
-import microSurgery from "@/assets/products_home/MicroSurgery.jpeg";
-import generalSurgery from "@/assets/products_home/gernal-surgery.jpeg";
-import Gynaecology from "@/assets/products_home/Gynaecology.jpg";
-import eyeSurgery from "@/assets/products_home/Eye-Surgery.jpeg";
-import entSurgery from "@/assets/products_home/ENT-Surgery.jpeg";
-import dentistry from "@/assets/products_home/Dentistry.jpeg";
-import cardioVascular from "@/assets/products_home/Cardio-Vascular.jpeg";
-import arthroscopy from "@/assets/products_home/Arthoscopy.jpeg";
-import Orthopedics from "@/assets/products_home/arthopedic.jpg";
-import neurosurgery from "@/assets/products_home/neurosurgery.png";
+export const metadata: Metadata = {
+  title: "Surgical Sets | Motah Surgical",
+  description:
+    "Complete, procedure-ready surgical instrument sets from Motah Surgical — assembled and finished in Saudi Arabia for hospital operating rooms and tender requirements.",
+};
 
-interface ProductCategory {
-  name: string;
-  badge?: string;
-  description: string;
-  image: StaticImageData;
+// Admin changes refresh this page right away; this is a fallback interval.
+export const revalidate = 60;
+
+const PAGE_SIZE = 20;
+
+type PageProps = { searchParams: Promise<{ page?: string; category?: string }> };
+
+/** Keeps the category when paging, and drops page=1 from the URL. */
+function buildHref(category: string | undefined, page: number) {
+  const qs = new URLSearchParams();
+  if (category) qs.set("category", category);
+  if (page > 1) qs.set("page", String(page));
+  const query = qs.toString();
+  return query ? `/surgical-sets?${query}` : "/surgical-sets";
 }
-
-const productCategories: ProductCategory[] = [
-  {
-    name: "General Surgery",
-    description:
-      "We understand the critical role that precision and reliability play in surgical procedures, which is why we offer a wide range of general surgery instruments built to the highest standard.",
-    image: generalSurgery,
-  },
-  {
-    name: "Ear, Nose & Throat Surgery",
-    description:
-      "Professional Hospital offers a comprehensive range of high-quality ENT instruments for ear, nose, and throat procedures. Our precision-crafted instruments are trusted by surgeons worldwide.",
-    image: entSurgery,
-  },
-  {
-    name: "Orthopedics",
-    description:
-      "Discover a wide array of orthopedic instruments, including bone saws, drills, reamers, retractors, forceps, and more. Each instrument is ergonomically designed for surgeon comfort and control.",
-    image: Orthopedics,
-  },
-  {
-    name: "Arthroscopy",
-    badge: "New",
-    description:
-      "Professional Arthroscopy Instruments are specifically designed for minimally invasive joint procedures. These instruments offer precise control, visibility, and access during complex procedures.",
-    image: arthroscopy,
-  },
-  {
-    name: "Neurosurgery",
-    badge: "New",
-    description:
-      "Unlocking precision and potential: Professional's neurosurgery instruments are meticulously designed to empower surgeons with the tools they need to perform delicate procedures with confidence.",
-    image: neurosurgery,
-  },
-  {
-    name: "Gynaecology",
-    description:
-      "Our gynecology instruments category encompasses a wide range of specialized tools tailored to the unique needs of gynecological procedures, from routine exams to complex surgeries.",
-    image: Gynaecology,
-  },
-  {
-    name: "Eye Instruments",
-    description:
-      "Our eye instruments are engineered with a keen focus on the intricate and delicate nature of eye procedures. Each instrument is crafted for exceptional precision and control.",
-    image: eyeSurgery,
-  },
-  {
-    name: "Microsurgery",
-    description:
-      "We understand that in microsurgery, even the smallest movement matters. That's why our instruments are engineered for the highest level of precision and reliability.",
-    image: microSurgery,
-  },
-];
 
 function Hero() {
   return (
     <section className="relative">
-      <img
-        src="https://placehold.co/1600x520/16303d/16303d?text=+"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
       <div className="absolute inset-0 bg-primary-dark" />
 
       <div className="relative mx-auto flex max-w-6xl flex-col lg:h-[360px] lg:flex-row">
-        <div className="relative flex w-full h-[440px] flex-col justify-center bg-[#02ac75] px-8 py-14 lg:w-[510px] lg:shrink-0 lg:px-16 lg:py-0">
-          <p className="mb-4 text-xl font-bold tracking-[0.3em] text-white">
-            Surgical Sets
-          </p>
+        <div className="relative flex h-[440px] w-full flex-col justify-center bg-[#18B27F] px-8 py-14 lg:w-[510px] lg:shrink-0 lg:px-16 lg:py-0">
+          <p className="mb-4 text-xl font-bold tracking-[0.3em] text-white">Surgical Sets</p>
           <h1 className="text-3xl font-light leading-tight text-white lg:text-[2.8rem]">
             Integrated Instruments <br className="hidden lg:block" />
-            for Advanced{" "}
-            <span className="font-bold">Procedure Standards</span>
+            for Advanced <span className="font-bold">Procedure Standards</span>
           </h1>
-          <button
-            type="button"
+          <Link
+            href="/about/downloads"
             className="mt-8 w-fit rounded-xl bg-primary-dark px-6 py-3 text-base font-semibold tracking-wider text-white transition-colors hover:bg-[#0F2A38]"
           >
             DOWNLOAD CATALOGUE
-          </button>
+          </Link>
         </div>
 
         <div className="flex items-center px-8 py-10 lg:px-16 lg:py-0">
           <p className="w-full text-lg leading-relaxed text-white/90">
-            We are finalizing our specialized surgical instrument sets to
-            support hospital operating rooms and tender requirements across
-            Saudi Arabia. Engineered for complete clinical precision and fully
-            compliant with SFDA standards, our complete specialty sets will be
-            available shortly.
+            Every Motah Surgical set arrives complete and theatre-ready: each instrument is matched to the procedure,
+            counted into the tray and finished to the same standard as our single instruments. Built for hospital
+            operating rooms and tender requirements across Saudi Arabia, and fully compliant with SFDA and ISO
+            13485:2016 requirements. Browse the sets below, or filter by specialty to find the tray you need.
           </p>
         </div>
       </div>
@@ -120,100 +61,172 @@ function Hero() {
   );
 }
 
-function ProductRow({
-  category,
-  imageOnLeft,
+function CategorySidebar({
+  categories,
+  active,
+  total,
 }: {
-  category: ProductCategory;
-  imageOnLeft: boolean;
+  categories: SurgicalSetCategory[];
+  active?: string;
+  total: number;
 }) {
-  return (
-    <div
-      className={`mx-auto flex max-w-7xl flex-col items-center gap-10 px-6 py-14 lg:gap-20 lg:px-10 lg:py-20 ${
-        imageOnLeft ? "lg:flex-row-reverse" : "lg:flex-row"
-      }`}
-    >
-      <div className="w-full lg:w-1/2">
-        <h3 className="mb-5 text-4xl font-bold text-[#02ac75] lg:text-4xl">
-          {category.name}
-          {category.badge && (
-            <span className="ml-2 text-xl font-semibold text-slate-400">
-              ({category.badge})
-            </span>
-          )}
-        </h3>
-        <p className="mb-7 max-w-lg text-lg font-normal leading-relaxed text-slate-700 line-clamp-2">
-          {category.description}
-        </p>
-        <button
-          type="button"
-          className="rounded-full bg-primary-dark px-7 py-3.5 text-xs font-bold tracking-wide text-white transition-colors hover:bg-[#0F2A38]"
-        >
-          VIEW PRODUCTS
-        </button>
-      </div>
+  const linkClass = (isActive: boolean) =>
+    `flex items-start justify-between gap-3 border-l-2 py-2.5 pl-4 pr-2 text-sm transition-colors ${
+      isActive
+        ? "border-[#18B27F] bg-[#F1FAF6] font-semibold text-[#10261F]"
+        : "border-transparent font-medium text-[#5E716B] hover:border-[#18B27F]/40 hover:bg-[#F7FAF9] hover:text-[#10261F]"
+    }`;
 
-      <div className="w-full lg:w-1/2">
-        <div className="flex">
-          <div className="flex flex-col">
-            <div className="w-[20px] h-[88%] bg-primary" />
-            <div className="w-[20px] h-[12%] bg-primary-dark" />
-          </div>
-          <img
-            src={category.image.src}
-            alt={category.name}
-            className="h-96 w-full object-cover object-top lg:h-[370px]"
-          />
-        </div>
-      </div>
-    </div>
+  return (
+    <aside className="lg:sticky lg:top-28 lg:self-start">
+      <h2 className="rule-accent text-sm font-bold uppercase tracking-[0.22em] text-[#10261F]">Categories</h2>
+
+      <nav className="mt-7 flex flex-col" aria-label="Surgical set categories">
+        <Link href={buildHref(undefined, 1)} className={linkClass(!active)}>
+          <span>All Sets</span>
+          <span className="mt-px shrink-0 text-xs tabular-nums text-[#8A9A95]">{total}</span>
+        </Link>
+        {categories.map((category) => (
+          <Link
+            key={category.name}
+            href={buildHref(category.name, 1)}
+            aria-current={active === category.name ? "page" : undefined}
+            className={linkClass(active === category.name)}
+          >
+            <span>{category.name}</span>
+            <span className="mt-px shrink-0 text-xs tabular-nums text-[#8A9A95]">{category.count}</span>
+          </Link>
+        ))}
+      </nav>
+    </aside>
   );
 }
 
-function ProductsSection() {
+function Pagination({ page, pages, category }: { page: number; pages: number; category?: string }) {
+  if (pages <= 1) return null;
+
+  const numbers = Array.from({ length: pages }, (_, i) => i + 1);
+  const base = "grid h-10 min-w-10 place-items-center rounded-md border px-3 text-sm font-semibold transition-colors";
+
   return (
-    <section className="bg-white pt-32">
-      <div className="mx-auto max-w-7xl px-6 pt-16 text-center lg:px-10 lg:pb-20">
-        <h2 className="text-3xl font-light text-[#02ac75] lg:text-4xl">
-          All Sets
-        </h2>
+    <nav className="mt-12 flex flex-wrap items-center gap-2" aria-label="Pagination">
+      {numbers.map((n) =>
+        n === page ? (
+          <span key={n} aria-current="page" className={`${base} border-[#18B27F] bg-[#18B27F] text-white`}>
+            {n}
+          </span>
+        ) : (
+          <Link
+            key={n}
+            href={buildHref(category, n)}
+            aria-label={`Page ${n}`}
+            className={`${base} border-[#D9E3DF] bg-white text-[#10261F] hover:border-[#18B27F] hover:text-[#18B27F]`}
+          >
+            {n}
+          </Link>
+        )
+      )}
+    </nav>
+  );
+}
+
+function EmptyState({ filtered }: { filtered: boolean }) {
+  return (
+    <div className="rounded-lg border border-dashed border-[#D9E3DF] bg-[#F9FBFA] px-6 py-20 text-center">
+      <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#E1F5EC] text-[#0E7C58]">
+        <PackageSearch className="h-5 w-5" aria-hidden />
       </div>
-      {/* <div className="mt-6 divide-y divide-slate-100">
-        {productCategories.map((category, index) => (
-          <ProductRow
-            key={category.name}
-            category={category}
-            imageOnLeft={index % 2 === 1}
-          />
-        ))}
-      </div> */}
-    </section>
+      <p className="mt-4 font-semibold text-[#10261F]">
+        {filtered ? "No sets in this category yet" : "Our surgical sets are being added"}
+      </p>
+      <p className="mx-auto mt-1.5 max-w-sm text-sm text-[#5E716B]">
+        {filtered
+          ? "Browse every set instead, or get in touch and we will assemble one to your specification."
+          : "We are finalising our specialty trays. Please check back soon, or contact us for a tailored set."}
+      </p>
+      <Link
+        href={filtered ? "/surgical-sets" : "/contact"}
+        className="mt-6 inline-block rounded-md bg-[#1E2A3B] px-6 py-3 text-xs font-bold tracking-[1.5px] text-white transition-colors hover:bg-[#24344A]"
+      >
+        {filtered ? "VIEW ALL SETS" : "CONTACT US"}
+      </Link>
+    </div>
   );
 }
 
 function CtaBanner() {
   return (
-    <section className="bg-primary-dark border-b border-white">
+    <section className="border-b border-white bg-primary-dark">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row lg:px-10">
-        <p className="text-sm font-bold tracking-wide text-white">
-          WANT TO KNOW MORE ABOUT PROFESSIONAL?
-        </p>
-        <button
-          type="button"
-          className="flex items-center gap-2 rounded bg-[#02ac75] px-5 py-2.5 text-xs font-bold tracking-wide text-white transition-colors hover:bg-[#029764]"
+        <p className="text-sm font-bold tracking-wide text-white">NEED A SET BUILT TO YOUR OWN INSTRUMENT LIST?</p>
+        <Link
+          href="/contact"
+          className="flex items-center gap-2 rounded bg-[#18B27F] px-5 py-2.5 text-xs font-bold tracking-wide text-white transition-colors hover:bg-[#12915F]"
         >
-          <Download className="h-4 w-4" /> DOWNLOAD CATALOGUE
-        </button>
+          TALK TO OUR TEAM <ArrowRight className="h-4 w-4" aria-hidden />
+        </Link>
       </div>
     </section>
   );
 }
 
-export default function ProductsPage() {
+export default async function SurgicalSetsPage({ searchParams }: PageProps) {
+  const { page: pageParam, category: categoryParam } = await searchParams;
+  const page = Math.max(1, Number(pageParam) || 1);
+  const category = categoryParam?.trim() || undefined;
+
+  const [categories, list] = await Promise.all([
+    getSurgicalSetCategories().catch((err) => {
+      console.error("[surgical-sets] categories couldn't be loaded", err);
+      return [] as SurgicalSetCategory[];
+    }),
+    getPublishedSurgicalSets({ page, limit: PAGE_SIZE, category }).catch((err) => {
+      console.error("[surgical-sets] list couldn't be loaded", err);
+      return { items: [] as SurgicalSetListItem[], total: 0, page: 1, pages: 1 };
+    }),
+  ]);
+
+  const categoryTotal = categories.reduce((sum, c) => sum + c.count, 0);
+  const heading = category || "List of Surgical Sets";
+  const first = (list.page - 1) * PAGE_SIZE + 1;
+  const last = Math.min(list.page * PAGE_SIZE, list.total);
+
   return (
     <div className="min-h-screen bg-white">
       <Hero />
-      <ProductsSection />
+
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-44">
+        <div className="grid gap-12 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-16">
+          <CategorySidebar categories={categories} active={category} total={Math.max(categoryTotal, list.total)} />
+
+          <div className="min-w-0">
+            <header className="border-b border-[#E7EDEB] pb-6">
+              <h2 className="text-[30px] font-bold leading-tight text-[#18B27F] lg:text-[38px]">{heading}</h2>
+              <p className="mt-2 text-base text-[#5E716B]">
+                {list.total > 0
+                  ? `Showing ${first}–${last} of ${list.total} ${list.total === 1 ? "set" : "sets"} in our catalogue.`
+                  : "Complete instrument trays, assembled by procedure."}
+              </p>
+            </header>
+
+            {list.items.length ? (
+              <>
+                <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                  {list.items.map((set) => (
+                    <SurgicalSetCard key={set._id} set={set} />
+                  ))}
+                </div>
+                <Pagination page={list.page} pages={list.pages} category={category} />
+              </>
+            ) : (
+              <div className="mt-8">
+                <EmptyState filtered={Boolean(category)} />
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
       <CtaBanner />
     </div>
   );

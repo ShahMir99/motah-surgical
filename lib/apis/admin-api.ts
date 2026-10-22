@@ -10,6 +10,12 @@ import type {
   ProductPayload,
   ProductStatus,
 } from "@/types/product";
+import type {
+  SurgicalSetDTO,
+  SurgicalSetListResponse,
+  SurgicalSetPayload,
+  SurgicalSetStatus,
+} from "@/types/surgical-set";
 import type { HomeContent, HomeContentResponse } from "@/types/home";
 import type { AboutContentMap, AboutContentResponse, AboutSlug } from "@/types/about";
 import {
@@ -103,6 +109,45 @@ export const productsApi = {
     }),
   removeMany: (ids: string[]) =>
     request<{ deleted: number }>("/api/admin/products", {
+      method: "DELETE",
+      body: JSON.stringify({ ids }),
+    }),
+};
+
+export type SurgicalSetListParams = {
+  page?: number;
+  limit?: number;
+  q?: string;
+  status?: SurgicalSetStatus | "all";
+  category?: string;
+  sort?: "order" | "recent" | "name";
+};
+
+export const surgicalSetsApi = {
+  list(params: SurgicalSetListParams) {
+    const qs = new URLSearchParams();
+    for (const [k, v] of Object.entries(params)) {
+      if (v !== undefined && v !== "" && v !== "all") qs.set(k, String(v));
+    }
+    return request<SurgicalSetListResponse>(`/api/admin/surgical-sets?${qs}`);
+  },
+  get: (id: string) => request<SurgicalSetDTO>(`/api/admin/surgical-sets/${id}`),
+  create: (data: SurgicalSetPayload) =>
+    request<SurgicalSetDTO>("/api/admin/surgical-sets", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+  update: (id: string, data: SurgicalSetPayload) =>
+    request<SurgicalSetDTO>(`/api/admin/surgical-sets/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    }),
+  remove: (id: string) =>
+    request<{ deleted: number }>(`/api/admin/surgical-sets/${id}`, {
+      method: "DELETE",
+    }),
+  removeMany: (ids: string[]) =>
+    request<{ deleted: number }>("/api/admin/surgical-sets", {
       method: "DELETE",
       body: JSON.stringify({ ids }),
     }),

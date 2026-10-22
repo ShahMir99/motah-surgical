@@ -1,4 +1,4 @@
-import { FileText, House, Info, Package, type LucideIcon } from "lucide-react";
+import { FileText, House, Info, LayoutGrid, Package, type LucideIcon } from "lucide-react";
 import { ABOUT_PAGE_LABELS, ABOUT_SLUGS } from "@/types/about";
 
 export type AdminNavItem = {
@@ -19,4 +19,5 @@ export const adminNav: AdminNavItem[] = [
   },
   { label: "Blogs", href: "/admin/blogs", icon: FileText },
   { label: "Products", href: "/admin/products", icon: Package },
+  { label: "Surgical Sets", href: "/admin/surgical-sets", icon: LayoutGrid },
 ];
