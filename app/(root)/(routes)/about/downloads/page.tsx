@@ -28,11 +28,11 @@ const Downloads = async () => {
                   key={index}
                   href={link}
                   {...(opensFile ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className={`flex items-center justify-between gap-6 py-6 group ${
+                  className={`flex flex-col items-start gap-2 py-5 group sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-6 ${
                     index !== 0 ? "border-t border-[#D8DBD9]" : ""
                   }`}
                 >
-                  <span className="flex items-center gap-4">
+                  <span className="flex min-w-0 items-center gap-3 sm:gap-4">
                     <svg
                       className="w-6 h-6 text-primary shrink-0"
                       viewBox="0 0 24 24"
@@ -44,9 +44,11 @@ const Downloads = async () => {
                       <path d="M6 2h9l5 5v15H6V2z" strokeLinejoin="round" />
                       <path d="M15 2v5h5" strokeLinejoin="round" />
                     </svg>
-                    <span className="text-base sm:text-lg font-medium text-gray-900">{resource.title}</span>
+                    <span className="text-[15px] sm:text-lg font-medium text-gray-900 break-words">{resource.title}</span>
                   </span>
-                  <span className="text-sm font-medium text-primary group-hover:underline">{c.linkLabel}</span>
+                  <span className="shrink-0 pl-9 text-sm font-medium text-primary group-hover:underline sm:pl-0">
+                    {c.linkLabel}
+                  </span>
                 </a>
               );
             })}

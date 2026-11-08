@@ -110,13 +110,24 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  /* Never below a 44px touch target, never wider than a phone screen. */
+  min-height: 2.75rem;
+  max-width: 100%;
   font-weight: 500;
-  font-size: 0.8125rem;
-  letter-spacing: 0.09em;
   text-transform: uppercase;
-  padding: 0.95rem 1.75rem;
+  text-align: center;
   border-radius: var(--radius);
   transition: all 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  /* Phone: a touch tighter so long labels still fit on one line. */
+  font-size: 0.75rem;
+  letter-spacing: 0.07em;
+  padding: 0.85rem 1.25rem;
+  /* Tablet and up: the original desktop proportions. */
+  @media (min-width: 640px) {
+    font-size: 0.8125rem;
+    letter-spacing: 0.09em;
+    padding: 0.95rem 1.75rem;
+  }
 }
 
 @utility btn-primary {
@@ -150,8 +161,14 @@
 }
 
 @utility section-pad {
-  padding-block: 4rem;
+  padding-block: 2.5rem;
+  @media (min-width: 640px) {
+    padding-block: 3.5rem;
+  }
   @media (min-width: 768px) {
+    padding-block: 4rem;
+  }
+  @media (min-width: 1024px) {
     padding-block: 5rem;
   }
 }
@@ -160,10 +177,14 @@
   &::after {
     content: "";
     display: block;
-    width: 3.5rem;
+    width: 2.5rem;
     height: 3px;
-    margin-top: 1.25rem;
+    margin-top: 0.875rem;
     background-color: var(--color-primary);
+    @media (min-width: 1024px) {
+      width: 3.5rem;
+      margin-top: 1.25rem;
+    }
   }
 }
 
@@ -215,5 +236,57 @@ footer .text-right p {
   }
   footer .lg\:text-right p {
     text-align-last: right;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Mobile / tablet hardening.
+
+   Desktop (lg and up) is untouched: every rule below is either a
+   safety net that only fires when something would overflow, or is
+   scoped to viewports under 1024px.
+   ------------------------------------------------------------------ */
+
+/* Safety net: nothing may push the page sideways on a phone.
+   `clip` (not `hidden`) so the sticky header keeps working. */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Long product codes, URLs and compound words can be wider than a
+   phone screen; let them break instead of overflowing. */
+.site-content h1,
+.site-content h2,
+.site-content h3,
+.site-content h4,
+.site-content p,
+.site-content li,
+.site-content a {
+  overflow-wrap: break-word;
+}
+
+/* Media inside admin-authored rich text never exceeds its column. */
+.site-content img,
+.site-content video,
+.site-content iframe {
+  max-width: 100%;
+}
+
+
+/* Justified copy turns into rivers of whitespace in a ~320px column,
+   so phones get normal ragged-right text. Tablets and desktop keep
+   the justified setting. */
+@media (max-width: 639px) {
+  .site-content p,
+  footer p {
+    text-align: left;
+    text-align-last: auto;
+  }
+  .site-content p.text-center,
+  .site-content .text-center p,
+  footer p.text-center,
+  footer .text-center p {
+    text-align: center;
   }
 }

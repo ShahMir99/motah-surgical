@@ -40,7 +40,7 @@ export default async function Home() {
         <HomeHero content={hero} />
         {badges.length > 0 && (
           <div className="border-y border-border bg-primary-soft">
-            <div className="container-page grid gap-6 py-6 text-sm font-semibold uppercase tracking-[0.16em] text-ink-soft sm:grid-cols-2 lg:grid-cols-4">
+            <div className="container-page grid gap-4 px-5 py-5 text-xs font-semibold uppercase tracking-[0.12em] text-ink-soft sm:grid-cols-2 sm:gap-6 sm:px-8 sm:text-sm sm:tracking-[0.16em] lg:grid-cols-4 lg:px-0 lg:py-6">
               {badges.map((b, i) => (
                 <div key={`${b}-${i}`} className="flex items-center gap-3">
                   <ShieldCheck size={18} className="text-primary" />
@@ -53,11 +53,11 @@ export default async function Home() {
       </section>
 
       {/* Products */}
-      <section className="relative pt-32 pb-14">
-        <div className="container-page">
+      <section className="relative pt-14 pb-10 sm:pt-20 lg:pt-32 lg:pb-14">
+        <div className="container-page px-5 sm:px-8 lg:px-0">
           <Reveal className="max-w-2xl mx-auto">
             <p className="eyebrow text-ink text-center">{content.products.eyebrow}</p>
-            <h2 className="mt-2 text-6xl text-center font-medium text-primary sm:text-4xl  lg:text-5xl">
+            <h2 className="mt-2 text-3xl text-center font-medium text-primary sm:text-4xl lg:text-5xl">
               {content.products.heading}
             </h2>
           </Reveal>
@@ -84,7 +84,7 @@ export default async function Home() {
           }}
         />
 
-        <div className="relative mx-auto max-w-[1320px] px-10 py-16 md:py-14">
+        <div className="relative mx-auto max-w-[1320px] px-5 py-10 sm:px-8 sm:py-12 md:py-14 lg:px-10">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
             <div className="relative mx-auto aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-xl bg-gray-100">
               <Image
@@ -98,16 +98,18 @@ export default async function Home() {
 
             <div className="text-center text-white lg:text-left">
               <div className="flex flex-wrap items-baseline justify-center gap-x-3 lg:justify-start">
-                <span className="text-3xl font-light md:text-4xl">{about.prefix}</span>
-                <h1 className="text-4xl font-bold uppercase">{about.title}</h1>
+                <span className="text-2xl font-light sm:text-3xl md:text-4xl">{about.prefix}</span>
+                <h1 className="text-3xl font-bold uppercase sm:text-4xl">{about.title}</h1>
               </div>
 
-              <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/90 lg:mx-0">{about.body}</p>
+              <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg lg:mx-0">
+                {about.body}
+              </p>
 
               {about.buttonLabel && (
                 <Link
                   href={about.buttonHref || "#"}
-                  className="mx-auto mt-8 inline-flex w-fit items-center justify-center rounded bg-primary-dark px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-white transition-colors lg:mx-0"
+                  className="mx-auto mt-7 inline-flex w-fit items-center justify-center rounded bg-primary-dark px-5 py-2.5 text-[13px] font-semibold uppercase tracking-wider text-white transition-colors sm:mt-8 sm:px-6 sm:text-sm sm:tracking-widest lg:mx-0"
                 >
                   {about.buttonLabel}
                 </Link>
@@ -119,9 +121,11 @@ export default async function Home() {
 
       {/* Highlights */}
       <section className="section-pad text-accent-foreground">
-        <div className="container-page">
+        <div className="container-page px-5 sm:px-8 lg:px-0">
           <Reveal className="max-w-2xl mx-auto pb-5">
-            <p className="text-xs font-bold text-center uppercase tracking-[0.24em] text-ink">{highlights.eyebrow}</p>
+            <p className="text-[11px] font-bold text-center uppercase tracking-[0.16em] text-ink sm:text-xs sm:tracking-[0.24em]">
+              {highlights.eyebrow}
+            </p>
             <h2 className="mt-4 text-3xl text-center text-primary font-bold sm:text-4xl lg:text-5xl">
               {highlights.heading}
             </h2>

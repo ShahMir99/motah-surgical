@@ -37,7 +37,11 @@ export function SurgicalSetTabs({
 
   return (
     <div>
-      <div role="tablist" aria-label={`${name} details`} className="flex flex-wrap gap-1 border-b border-[#E3EAE7]">
+      <div
+        role="tablist"
+        aria-label={`${name} details`}
+        className="-mx-5 flex gap-1 overflow-x-auto border-b border-[#E3EAE7] px-5 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
+      >
         {tabs.map((tab) => {
           const isActive = active === tab;
           return (
@@ -49,7 +53,7 @@ export function SurgicalSetTabs({
               aria-selected={isActive}
               aria-controls={`panel-${tab}`}
               onClick={() => setActive(tab)}
-              className={`-mb-px border-b-2 px-5 py-3.5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#18B27F]/50 sm:px-7 sm:text-xs ${
+              className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3.5 py-3.5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#18B27F]/50 sm:px-7 sm:text-xs ${
                 isActive
                   ? "border-[#18B27F] bg-[#F1FAF6] text-[#10261F]"
                   : "border-transparent text-[#6B7C76] hover:bg-[#F7FAF9] hover:text-[#10261F]"
@@ -61,7 +65,7 @@ export function SurgicalSetTabs({
         })}
       </div>
 
-      <div className="pt-9">
+      <div className="pt-7 sm:pt-9">
         {active === "description" && (
           <div role="tabpanel" id="panel-description" aria-labelledby="tab-description">
             <DescriptionPanel name={name} description={description} summary={summary} items={items} />
@@ -110,8 +114,14 @@ function DescriptionPanel({
             {items.length} {items.length === 1 ? "instrument" : "instruments"} in the {name.toLowerCase()}.
           </p>
 
-          <div className="mt-6 overflow-hidden rounded-lg border border-[#E3EAE7]">
-            <table className="w-full border-collapse text-left text-[15px]">
+          {/*
+            Sr No / Instrument / Quantity cannot shrink below ~440px without
+            the instrument names breaking one word per line, so on phones the
+            table scrolls inside its card. From sm up this is the original
+            `overflow-hidden` box with an unconstrained table.
+          */}
+          <div className="mt-6 overflow-x-auto rounded-lg border border-[#E3EAE7] sm:overflow-hidden">
+            <table className="w-full min-w-[440px] border-collapse text-left text-[15px] sm:min-w-0">
               <caption className="sr-only">Instruments included in the {name}</caption>
               <thead className="bg-[#F5F8F7] text-[11px] uppercase tracking-[0.12em] text-[#5E716B]">
                 <tr>
@@ -147,7 +157,7 @@ function DescriptionPanel({
 
 function SpecificationsPanel({ specifications }: { specifications: SurgicalSetSpec[] }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-[#E3EAE7]">
+    <div className="overflow-x-auto rounded-lg border border-[#E3EAE7]">
       <table className="w-full border-collapse text-left text-[15px]">
         <tbody className="divide-y divide-[#EDF2F0]">
           {specifications.map((spec, index) => (
@@ -178,7 +188,7 @@ function FaqPanel({ faqs }: { faqs: SurgicalSetFaq[] }) {
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? null : index)}
                 aria-expanded={isOpen}
-                className="flex w-full items-center justify-between gap-6 py-5 text-left transition-colors hover:text-[#18B27F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#18B27F]/50"
+                className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-[#18B27F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#18B27F]/50 sm:gap-6"
               >
                 <span className="text-base font-bold text-[#10261F] sm:text-[17px]">{faq.question}</span>
                 <span

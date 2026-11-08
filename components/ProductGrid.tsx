@@ -13,9 +13,9 @@ export default function ProductCategoriesGrid({ products }: { products: ProductL
   if (!products.length) return null;
 
   return (
-    <section className="bg-white pt-16">
+    <section className="bg-white pt-8 sm:pt-12 lg:pt-16">
       <div className="mx-auto max-w-[1320px]">
-        <div className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-y-6 lg:grid-cols-5">
           {products.map((product, i) => (
             <motion.div
               key={product._id}
@@ -43,8 +43,11 @@ export default function ProductCategoriesGrid({ products }: { products: ProductL
                     </div>
                   )}
                 </div>
-                <div className="px-4 py-4 text-center">
-                  <span className="text-[16px] font-bold uppercase tracking-wide" style={{ color: LABEL_COLOR }}>
+                <div className="px-2.5 py-3 text-center sm:px-4 sm:py-4">
+                  <span
+                    className="text-[12px] font-bold uppercase tracking-wide sm:text-[14px] lg:text-[16px]"
+                    style={{ color: LABEL_COLOR }}
+                  >
                     {product.name}
                     {product.badge ? ` (${product.badge})` : ""}
                   </span>

@@ -34,22 +34,24 @@ function Hero() {
       <div className="absolute inset-0 bg-primary-dark" />
 
       <div className="relative mx-auto flex max-w-6xl flex-col lg:h-[360px] lg:flex-row">
-        <div className="relative flex h-[440px] w-full flex-col justify-center bg-[#18B27F] px-8 py-14 lg:w-[510px] lg:shrink-0 lg:px-16 lg:py-0">
-          <p className="mb-4 text-xl font-bold tracking-[0.3em] text-white">Surgical Sets</p>
-          <h1 className="text-3xl font-light leading-tight text-white lg:text-[2.8rem]">
+        <div className="relative flex min-h-[320px] w-full flex-col justify-center bg-[#18B27F] px-5 py-12 sm:min-h-[380px] sm:px-8 sm:py-14 lg:h-[440px] lg:min-h-0 lg:w-[510px] lg:shrink-0 lg:px-16 lg:py-0">
+          <p className="mb-3 text-sm font-bold tracking-[0.2em] text-white sm:mb-4 sm:text-base sm:tracking-[0.25em] lg:text-xl lg:tracking-[0.3em]">
+            Surgical Sets
+          </p>
+          <h1 className="text-2xl font-light leading-tight text-white sm:text-3xl lg:text-[2.8rem]">
             Integrated Instruments <br className="hidden lg:block" />
             for Advanced <span className="font-bold">Procedure Standards</span>
           </h1>
           <Link
             href="/about/downloads"
-            className="mt-8 w-fit rounded-xl bg-primary-dark px-6 py-3 text-base font-semibold tracking-wider text-white transition-colors hover:bg-[#0F2A38]"
+            className="mt-6 w-fit rounded-xl bg-primary-dark px-5 py-3 text-sm font-semibold tracking-wider text-white transition-colors hover:bg-[#0F2A38] sm:mt-8 sm:px-6 sm:text-base"
           >
             DOWNLOAD CATALOGUE
           </Link>
         </div>
 
-        <div className="flex items-center px-8 py-10 lg:px-16 lg:py-0">
-          <p className="w-full text-lg leading-relaxed text-white/90">
+        <div className="flex items-center px-5 py-8 sm:px-8 sm:py-10 lg:px-16 lg:py-0">
+          <p className="w-full text-[15px] leading-relaxed text-white/90 sm:text-base lg:text-lg">
             Every Motah Surgical set arrives complete and theatre-ready: each instrument is matched to the procedure,
             counted into the tray and finished to the same standard as our single instruments. Built for hospital
             operating rooms and tender requirements across Saudi Arabia, and fully compliant with SFDA and ISO
@@ -157,8 +159,10 @@ function EmptyState({ filtered }: { filtered: boolean }) {
 function CtaBanner() {
   return (
     <section className="border-b border-white bg-primary-dark">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row lg:px-10">
-        <p className="text-sm font-bold tracking-wide text-white">NEED A SET BUILT TO YOUR OWN INSTRUMENT LIST?</p>
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 py-5 sm:flex-row sm:px-6 sm:py-6 lg:px-10">
+        <p className="text-center text-[13px] font-bold tracking-wide text-white sm:text-left sm:text-sm">
+          NEED A SET BUILT TO YOUR OWN INSTRUMENT LIST?
+        </p>
         <Link
           href="/contact"
           className="flex items-center gap-2 rounded bg-[#18B27F] px-5 py-2.5 text-xs font-bold tracking-wide text-white transition-colors hover:bg-[#12915F]"
@@ -195,14 +199,16 @@ export default async function SurgicalSetsPage({ searchParams }: PageProps) {
     <div className="min-h-screen bg-white">
       <Hero />
 
-      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-44">
-        <div className="grid gap-12 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-16">
+      <section className="mx-auto max-w-7xl px-5 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-44">
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-16">
           <CategorySidebar categories={categories} active={category} total={Math.max(categoryTotal, list.total)} />
 
           <div className="min-w-0">
             <header className="border-b border-[#E7EDEB] pb-6">
-              <h2 className="text-[30px] font-bold leading-tight text-[#18B27F] lg:text-[38px]">{heading}</h2>
-              <p className="mt-2 text-base text-[#5E716B]">
+              <h2 className="text-[24px] font-bold leading-tight text-[#18B27F] sm:text-[30px] lg:text-[38px]">
+                {heading}
+              </h2>
+              <p className="mt-2 text-[15px] text-[#5E716B] sm:text-base">
                 {list.total > 0
                   ? `Showing ${first}–${last} of ${list.total} ${list.total === 1 ? "set" : "sets"} in our catalogue.`
                   : "Complete instrument trays, assembled by procedure."}

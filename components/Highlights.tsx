@@ -35,17 +35,28 @@ export default function HighlightsGrid({ items }: { items: HomeHighlight[] }) {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
+              {/*
+                There is no hover on a touch screen, so below lg the caption
+                is always on, sitting on a gradient scrim that keeps the photo
+                visible. From lg up this is the original full-cover panel that
+                fades in on hover: `lg:bg-none` drops the gradient and
+                `lg:bg-<brand>` paints the same solid colour as before.
+              */}
               <div
-                className={`absolute inset-0 flex flex-col items-center justify-center px-8 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${
-                  i % 2 === 0 ? "bg-primary" : "bg-primary-dark"
+                className={`absolute inset-0 flex flex-col items-center justify-end px-5 pb-6 text-center transition-opacity duration-300 sm:px-8 lg:justify-center lg:bg-none lg:pb-0 lg:opacity-0 lg:group-hover:opacity-100 ${
+                  i % 2 === 0
+                    ? "bg-gradient-to-t from-primary from-55% via-primary/85 via-80% to-transparent lg:bg-primary"
+                    : "bg-gradient-to-t from-primary-dark from-55% via-primary-dark/85 via-80% to-transparent lg:bg-primary-dark"
                 }`}
               >
-                <h3 className="text-xl font-bold text-white md:text-[27px]">{item.heading}</h3>
-                <p className="mt-3 max-w-lg text-base leading-relaxed text-white/90">{item.blurb}</p>
+                <h3 className="text-lg font-bold text-white sm:text-xl md:text-[27px]">{item.heading}</h3>
+                <p className="mt-2.5 line-clamp-3 max-w-lg text-sm leading-relaxed text-white/90 sm:mt-3 sm:text-base lg:line-clamp-none">
+                  {item.blurb}
+                </p>
                 {item.href && (
                   <Link
                     href={item.href}
-                    className="mt-6 inline-flex w-fit items-center rounded-xl bg-[#1E2A3B] px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#24344A]"
+                    className="mt-4 inline-flex w-fit items-center rounded-xl bg-[#1E2A3B] px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#24344A] sm:mt-6 sm:px-6 sm:py-3 sm:text-xs sm:tracking-widest"
                   >
                     Explore
                   </Link>

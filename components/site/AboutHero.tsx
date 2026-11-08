@@ -23,17 +23,21 @@ export default function AboutHero({
       <div className="absolute inset-0 bg-primary-dark" />
 
       <div className="relative mx-auto flex max-w-5xl flex-col lg:h-[360px] lg:flex-row">
-        <div className="relative flex text-center w-full h-[440px] flex-col justify-center bg-[#02ac75] px-8 py-14 lg:shrink-0 lg:px-16 lg:py-0">
-          <p className="mb-5 text-lg font-medium tracking-[0.4em] text-white">{content.eyebrow}</p>
+        <div className="relative flex text-center w-full min-h-[300px] flex-col justify-center bg-[#02ac75] px-5 py-12 sm:min-h-[360px] sm:px-8 sm:py-14 lg:h-[440px] lg:min-h-0 lg:shrink-0 lg:px-16 lg:py-0">
+          <p className="mb-3 text-xs font-medium tracking-[0.22em] text-white sm:mb-5 sm:text-sm sm:tracking-[0.3em] lg:text-lg lg:tracking-[0.4em]">
+            {content.eyebrow}
+          </p>
           <h1
             className={`${serif ? "font-serif " : ""}font-semibold text-white ${
-              compact ? "text-6xl lg:text-6xl" : "text-7xl lg:text-7xl"
+              compact ? "text-3xl sm:text-4xl lg:text-6xl" : "text-4xl sm:text-5xl lg:text-7xl"
             }`}
           >
             {content.title}
           </h1>
           <p
-            className={`mt-6 text-2xl font-light leading-snug text-white ${compact ? "lg:text-2xl" : "lg:text-3xl"}`}
+            className={`mt-4 text-base font-light leading-snug text-white sm:mt-6 sm:text-lg ${
+              compact ? "lg:text-2xl" : "lg:text-3xl"
+            }`}
           >
             <InlineText text={content.subtitle} />
           </p>

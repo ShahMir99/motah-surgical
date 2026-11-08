@@ -8,21 +8,21 @@ import type { HomeContent } from "@/types/home";
 
 export default function UpcomingExhibitions({ content }: { content: HomeContent["exhibition"] }) {
   return (
-    <section className="bg-white py-16">
-      <div className="mx-auto max-w-[1320px] px-14">
-        <div className="grid items-center lg:grid-cols-[40%_60%]">
+    <section className="bg-white py-10 sm:py-14 lg:py-16">
+      <div className="mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-14">
+        <div className="grid items-center gap-8 lg:grid-cols-[40%_60%] lg:gap-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="pl-8"
+            className="lg:pl-8"
           >
-            <h2 className="text-5xl font-light leading-tight text-primary md:text-5xl">
+            <h2 className="text-3xl font-light leading-tight text-primary sm:text-4xl md:text-5xl">
               <span className="block">{content.titleTop}</span>
               <span className="block">{content.titleBottom}</span>
             </h2>
-            <p className="mt-5 text-xl max-w-[380px] font-semibold uppercase tracking-wide text-gray-900">
+            <p className="mt-4 max-w-[380px] text-base font-semibold uppercase tracking-wide text-gray-900 sm:mt-5 sm:text-lg md:text-xl">
               {content.text}
             </p>
           </motion.div>

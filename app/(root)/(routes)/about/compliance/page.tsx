@@ -31,13 +31,20 @@ const Compliance = async () => {
           </div>
 
           {c.credentials.length > 0 && (
-            <div className="flex items-center justify-center flex-wrap gap-4 pt-16 border-t border-[#D8DBD9]">
+            <div className="flex items-center justify-center flex-wrap gap-4 pt-10 sm:pt-16 border-t border-[#D8DBD9]">
               {c.credentials.map((item, i) => {
                 const src = item.image?.url ?? FALLBACK_IMAGES[i];
                 return (
-                  <div key={i} className="flex items-center justify-center border border-[#D8DBD9] h-[252px]">
+                  <div
+                    key={i}
+                    className="flex max-w-full items-center justify-center border border-[#D8DBD9] h-[180px] sm:h-[220px] lg:h-[252px]"
+                  >
                     {src ? (
-                      <img src={src} alt={item.image?.alt || item.label} className="h-full w-auto object-contain" />
+                      <img
+                        src={src}
+                        alt={item.image?.alt || item.label}
+                        className="h-full w-auto max-w-full object-contain"
+                      />
                     ) : (
                       <span className="px-6 text-sm text-[#5B6560]">{item.label}</span>
                     )}

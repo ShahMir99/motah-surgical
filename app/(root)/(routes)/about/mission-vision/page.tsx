@@ -17,7 +17,7 @@ const About = async () => {
       <AboutHero content={c.hero} />
 
       {/* Vision & Mission Intro */}
-      <section className="bg-white px-5 sm:px-8 md:px-12 lg:px-20 pt-40 pb-16 text-center">
+      <section className="bg-white px-5 sm:px-8 md:px-12 lg:px-20 pt-14 sm:pt-24 lg:pt-40 pb-12 sm:pb-16 text-center">
         <div className="max-w-3xl mx-auto flex flex-col items-center gap-4">
           <p className="text-sm font-medium tracking-[0.3em] text-primary">{c.intro.eyebrow}</p>
           <h2 className="text-4xl sm:text-5xl text-color leading-tight">{c.intro.heading}</h2>
@@ -81,7 +81,7 @@ const About = async () => {
       </section>
 
       {/* Global Presence Section */}
-      <section className="relative bg-[#12211D] py-20 md:py-32 overflow-hidden">
+      <section className="relative bg-[#12211D] py-14 sm:py-20 md:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={c.global.image?.url ?? ourGlobalPresence.src}
@@ -121,7 +121,7 @@ const About = async () => {
                   index !== 0 ? "border-t border-[#D8DBD9]" : ""
                 }`}
               >
-                <span className="text-4xl text-primary leading-none">{String(index + 1).padStart(2, "0")}</span>
+                <span className="text-3xl text-primary leading-none sm:text-4xl">{String(index + 1).padStart(2, "0")}</span>
                 <div className="flex flex-col gap-2">
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900">{item.title}</h3>
                   <p className="text-[#5B6560] text-sm sm:text-base leading-7 max-w-[62ch]">{item.description}</p>
@@ -131,7 +131,7 @@ const About = async () => {
           </div>
 
           {c.achievements.closing && (
-            <p className="text-xl sm:text-2xl text-gray-900 leading-9 max-w-[68ch] border-t border-[#D8DBD9] pt-10">
+            <p className="text-lg sm:text-2xl text-gray-900 leading-8 sm:leading-9 max-w-[68ch] border-t border-[#D8DBD9] pt-8 sm:pt-10">
               {c.achievements.closing}
             </p>
           )}

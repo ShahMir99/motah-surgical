@@ -93,26 +93,26 @@ export default function BlogsPage() {
   return (
     <main className="bg-white text-[#4A5560]">
       {/* HERO */}
-      <div className="grid grid-cols-1 md:grid-cols-[48%_52%] max-w-[1250px] mx-auto min-h-[620px]">
+      <div className="grid grid-cols-1 md:grid-cols-[48%_52%] max-w-[1250px] mx-auto md:min-h-[620px]">
         <motion.div
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-[#18B27F] text-white flex flex-col justify-center gap-8 px-7 py-14 md:px-12 md:py-14"
+          className="bg-[#18B27F] text-white flex flex-col justify-center gap-5 px-5 py-10 sm:gap-8 sm:px-7 sm:py-12 md:px-12 md:py-14"
         >
-          <span className="text-[23px] font-bold tracking-[2px]">BLOGS</span>
+          <span className="text-[18px] font-bold tracking-[2px] sm:text-[23px]">BLOGS</span>
 
-          <h1 className="font-light text-[28px]  md:text-[55px] leading-[1.35] pt-14 pb-20">
+          <h1 className="font-light text-[22px] sm:text-[28px] md:text-[55px] leading-[1.35] pt-6 pb-8 sm:pt-10 sm:pb-12 md:pt-14 md:pb-20">
             News, Insights, and Industry Events :  
-            <span className="text-[45px] font-bold tracking-[2px]">
+            <span className="text-[20px] font-bold tracking-[2px] sm:text-[26px] md:text-[45px]">
                Dive into our Inspiring Blog
             </span>
           </h1>
         </motion.div>
 
-        <div className="order-first flex-col md:order-last gap-5 flex pl-16 justify-center overflow-hidden min-h-[320px]">
-          <h1 className="font-bold text-[28px] md:text-[42px] text-primary leading-[1.25]">
+        <div className="order-first flex-col md:order-last gap-5 flex pl-5 pr-5 pt-10 sm:pl-7 sm:pr-7 md:pl-16 md:pr-0 md:pt-0 justify-center overflow-hidden min-h-[280px] sm:min-h-[320px]">
+          <h1 className="font-bold text-[24px] sm:text-[28px] md:text-[42px] text-primary leading-[1.25]">
             Featured News &amp; Insights
           </h1>
 
@@ -148,10 +148,10 @@ export default function BlogsPage() {
         </div>
       </div>
 
-      <div className="max-w-[1320px] mx-auto px-6 pb-28">
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-6 pb-16 sm:pb-20 lg:pb-28">
         {/* LIST */}
-        <section className="pt-14">
-          <h2 className="text-[#18B27F] font-bold text-[42px] mb-5">Blogs</h2>
+        <section className="pt-10 sm:pt-14">
+          <h2 className="text-[#18B27F] font-bold text-[26px] sm:text-[34px] md:text-[42px] mb-5">Blogs</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-6">
             {status === "loading" &&

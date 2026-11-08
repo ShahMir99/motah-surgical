@@ -35,14 +35,14 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-primary-dark" />
 
         <div className="relative mx-auto flex max-w-5xl flex-col lg:h-[360px] lg:flex-row">
-          <div className="relative flex text-center w-full h-[440px] flex-col justify-center bg-[#02ac75] px-8 py-14 lg:shrink-0 lg:px-16 lg:py-0">
-            <p className="mb-5 text-lg font-medium tracking-[0.4em] text-white">
+          <div className="relative flex text-center w-full min-h-[300px] flex-col justify-center bg-[#02ac75] px-5 py-12 sm:min-h-[360px] sm:px-8 sm:py-14 lg:h-[440px] lg:min-h-0 lg:shrink-0 lg:px-16 lg:py-0">
+            <p className="mb-3 text-xs font-medium tracking-[0.22em] text-white sm:mb-5 sm:text-sm sm:tracking-[0.3em] lg:text-lg lg:tracking-[0.4em]">
               CONTACT US
             </p>
-            <h1 className="font-serif max-w-xl mx-auto text-7xl font-semibold text-white lg:text-5xl">
-              Let's Build Something Great Together
+            <h1 className="font-serif max-w-xl mx-auto text-[26px] font-semibold text-white sm:text-4xl lg:text-5xl">
+              Let&apos;s Build Something Great Together
             </h1>
-            <p className="mt-6 text-2xl font-light leading-snug text-white lg:text-3xl">
+            <p className="mt-4 text-base font-light leading-snug text-white sm:mt-6 sm:text-xl lg:text-3xl">
               Let&apos;s Talk About Your
               <br />
               Surgical Instrument Needs
@@ -51,8 +51,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-white py-24 pt-44">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-5">
+      <section className="bg-white py-14 pt-16 sm:py-20 sm:pt-24 lg:py-24 lg:pt-44">
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:gap-12 sm:px-6 lg:grid-cols-5">
           <div className="space-y-6 lg:col-span-2">
             {[
               {
@@ -81,11 +81,11 @@ export default function ContactPage() {
                 >
                   <c.icon className="h-5 w-5 text-white" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <div className="text-xs font-semibold uppercase tracking-widest text-gray-500">
                     {c.title}
                   </div>
-                  <div className="mt-1 font-semibold text-gray-900">
+                  <div className="mt-1 break-words font-semibold text-gray-900">
                     {c.value}
                   </div>
                 </div>
@@ -97,7 +97,7 @@ export default function ContactPage() {
               e.preventDefault();
               setSent(true);
             }}
-            className="rounded-3xl bg-white p-8 shadow-[0_25px_60px_-20px_rgba(24,178,127,0.35)] lg:col-span-3"
+            className="rounded-3xl bg-white p-5 shadow-[0_25px_60px_-20px_rgba(24,178,127,0.35)] sm:p-8 lg:col-span-3"
           >
             <h2
               className="font-display text-2xl font-bold"
@@ -123,7 +123,7 @@ export default function ContactPage() {
               />
             </div>
             <button
-              className="mt-6 inline-flex rounded-full px-8 py-3.5 text-sm font-semibold text-white"
+              className="mt-6 inline-flex w-full justify-center rounded-full px-8 py-3.5 text-sm font-semibold text-white sm:w-auto"
               style={{ background: GRADIENT }}
             >
               {sent ? "Message Sent ✓" : "Send Message"}
@@ -132,7 +132,7 @@ export default function ContactPage() {
         </div>
 
         {/* Map Section */}
-        <div className="w-full h-[70vh] overflow-hidden pt-20">
+        <div className="w-full h-[60vh] min-h-[300px] overflow-hidden pt-12 sm:h-[65vh] lg:h-[70vh] lg:pt-20">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1225414.8709407137!2d45.89737256073068!3d24.749391598559473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s5208%20Al%20Amir%20Bandar%20Ibn%20Abdul%20Aziz%2C%20Al%20Khalij%2C%20Riyadh%2013224!5e0!3m2!1sen!2s!4v1788169006144!5m2!1sen!2s"
             width="100%"

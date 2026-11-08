@@ -76,26 +76,26 @@ const socials = [
 ];
 
 const inputClass =
-  "w-full rounded-lg bg-white px-5 py-4 text-base text-primary-dark placeholder:text-neutral-400 outline-none ring-0 focus:ring-2 focus:ring-primary-dark/30";
+  "w-full rounded-lg bg-white px-4 py-3.5 text-base text-primary-dark placeholder:text-neutral-400 outline-none ring-0 focus:ring-2 focus:ring-primary-dark/30 sm:px-5 sm:py-4";
 
 export default function Footer() {
   return (
     <footer className="text-accent-foreground">
       {/* ---------- Contact section ---------- */}
-      <section className="bg-primary py-24 px-[30px]">
+      <section className="bg-primary py-14 px-5 sm:py-20 sm:px-8 lg:py-24 lg:px-[30px]">
         <div className="container-page grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left: heading + contact details */}
           <div className="grid gap-10 sm:grid-cols-2 sm:items-start">
-            <h2 className="text-4xl font-extrabold text-white sm:text-5xl">
+            <h2 className="text-3xl font-extrabold text-white sm:text-5xl">
               Contact Us
             </h2>
 
-            <ul className="space-y-10 text-center text-white">
+            <ul className="space-y-8 text-center text-white sm:space-y-10">
               <li>
                 <Phone size={30} className="mx-auto" strokeWidth={1.75} />
                 <a
                   href="tel:+966543000010"
-                  className="mt-4 block text-lg transition-opacity hover:opacity-80"
+                  className="mt-4 block break-words text-base transition-opacity hover:opacity-80 sm:text-lg"
                 >
                   (+966) 54 300 0010
                 </a>
@@ -104,14 +104,14 @@ export default function Footer() {
                 <Mail size={30} className="mx-auto" strokeWidth={1.75} />
                 <a
                   href="mailto:sales@phfworld.com"
-                  className="mt-4 block text-lg transition-opacity hover:opacity-80"
+                  className="mt-4 block break-words text-base transition-opacity hover:opacity-80 sm:text-lg"
                 >
                   info@motah-surgical.com
                 </a>
               </li>
               <li>
                 <MapPin size={30} className="mx-auto" strokeWidth={1.75} />
-                <p className="mt-4 text-lg leading-relaxed">
+                <p className="mt-4 text-base leading-relaxed sm:text-lg">
                   Head Office
                   <br />
                   5208 Al Amir Bandar Ibn Abdul Aziz, Al Khalij, Riyadh 13224
@@ -165,7 +165,7 @@ export default function Footer() {
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="rounded-md bg-primary-dark px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-opacity hover:opacity-90"
+                className="w-full rounded-md bg-primary-dark px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-opacity hover:opacity-90 sm:w-auto"
               >
                 Submit
               </button>
@@ -194,7 +194,7 @@ export default function Footer() {
 
       {/* ---------- Main footer ---------- */}
       <div className="bg-primary-dark">
-        <div className="container-page grid gap-10 py-14 px-[30px] md:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-20">
+        <div className="container-page grid gap-8 py-12 px-5 sm:px-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-20 lg:px-[30px]">
           <div>
             <Link href="/" className="inline-block">
               <Image
@@ -202,7 +202,7 @@ export default function Footer() {
                 alt="Professional Hospital Furnishers"
                 width={300}
                 height={100}
-                className="h-auto w-60 lg:w-72"
+                className="h-auto w-48 sm:w-60 lg:w-72"
               />
             </Link>
           </div>
@@ -214,7 +214,7 @@ export default function Footer() {
                   <ChevronRight size={16} className="shrink-0 text-primary" />
                   <Link
                     href={l.to}
-                    className="transition-colors hover:text-primary"
+                    className="break-words transition-colors hover:text-primary"
                   >
                     {l.label}
                   </Link>
@@ -230,7 +230,7 @@ export default function Footer() {
                   <ChevronRight size={16} className="shrink-0 text-primary" />
                   <Link
                     href={l.to}
-                    className="transition-colors hover:text-primary"
+                    className="break-words transition-colors hover:text-primary"
                   >
                     {l.label}
                   </Link>
@@ -247,7 +247,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={18} className="mt-0.5 shrink-0" />
-                <a href="mailto:info@motah-surgical.com" className="hover:underline">
+                <a href="mailto:info@motah-surgical.com" className="break-all hover:underline">
                   info@motah-surgical.com
                 </a>
               </li>
@@ -263,7 +263,7 @@ export default function Footer() {
           <div className="lg:text-right">
             <a
               href="/company-profile.pdf"
-              className="inline-block rounded-md bg-primary px-7 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-white transition-opacity hover:opacity-90"
+              className="inline-block rounded-md bg-primary px-6 py-3.5 text-[13px] font-bold uppercase tracking-[0.1em] text-white transition-opacity hover:opacity-90 sm:px-7 sm:text-sm sm:tracking-[0.14em]"
             >
               Company Profile
             </a>
@@ -271,8 +271,8 @@ export default function Footer() {
         </div>
 
         {/* ---------- Bottom bar ---------- */}
-        <div className="border-t border-white/10 px-[30px]">
-          <div className="container-page flex flex-col gap-8 py-7 text-base text-accent-foreground/80 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+        <div className="border-t border-white/10 px-5 sm:px-8 lg:px-[30px]">
+          <div className="container-page flex flex-col gap-6 py-6 text-sm text-accent-foreground/80 sm:gap-8 sm:py-7 sm:text-base lg:flex-row lg:items-center lg:justify-between lg:gap-6">
             <p>© Motah Surgical. Improving Lives!</p>
 
             <div className="flex items-center gap-3">

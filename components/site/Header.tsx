@@ -71,6 +71,24 @@ export default function Header({ products = [] }: { products?: ProductMenuItem[]
   }, []);
 
 
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [open]);
+
   return (
     <header
       className={cn(
@@ -80,8 +98,9 @@ export default function Header({ products = [] }: { products?: ProductMenuItem[]
     >
       <div
         className={cn(
-          "container-page flex items-center justify-between gap-6 transition-all h-[105px] duration-100",
-          isScrolled && "h-[105px]",
+          "container-page flex items-center justify-between transition-all duration-100",
+          // Shorter bar on phones/tablets; the desktop 105px is restored at lg.
+          "h-[68px] gap-3 sm:h-[84px] sm:gap-6 lg:h-[105px]",
         )}
       > 
         <Link
@@ -89,7 +108,13 @@ export default function Header({ products = [] }: { products?: ProductMenuItem[]
           className="group flex items-center gap-3"
           onClick={() => setOpen(false)}
         >
-          <Image src={logo} alt="logo" width={300} height={300} />
+          <Image
+            src={logo}
+            alt="logo"
+            width={300}
+            height={300}
+            className="h-auto w-[148px] shrink-0 sm:w-[200px] md:w-[240px] lg:w-[300px]"
+          />
         </Link>
 
         <nav className="hidden items-center gap-4 lg:flex">
@@ -157,7 +182,7 @@ export default function Header({ products = [] }: { products?: ProductMenuItem[]
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="flex h-10 w-10 items-center justify-center text-ink lg:hidden"
+          className="-mr-1 flex h-11 w-11 shrink-0 items-center justify-center text-ink lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -165,7 +190,7 @@ export default function Header({ products = [] }: { products?: ProductMenuItem[]
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background lg:hidden">
+        <div className="max-h-[calc(100dvh-68px)] overflow-y-auto overscroll-contain border-t border-border bg-background sm:max-h-[calc(100dvh-84px)] lg:hidden">
           <nav className="container-page flex flex-col py-4">
             {nav.map((item) =>
               item.dropdown ? (

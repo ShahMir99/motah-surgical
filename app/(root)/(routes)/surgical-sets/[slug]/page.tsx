@@ -62,9 +62,9 @@ export default async function SurgicalSetDetailPage({ params }: PageProps) {
   return (
     <div className="bg-white text-[#4A5560]">
 
-      <div className="mx-auto max-w-[1320px] px-6">
+      <div className="mx-auto max-w-[1320px] px-5 sm:px-6">
         {/* OVERVIEW */}
-        <section className="grid grid-cols-1 gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:py-16">
+        <section className="grid grid-cols-1 gap-8 py-10 sm:gap-10 sm:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:py-16">
           {/* self-start so the frame hugs the photo instead of stretching to the text column. */}
           <div className="overflow-hidden rounded-lg border-2 border-[#E3EAE7] bg-white shadow-[0_1px_2px_rgba(16,38,31,0.05)] lg:sticky lg:top-28 lg:self-start">
             {set.image?.url ? (
@@ -82,10 +82,12 @@ export default async function SurgicalSetDetailPage({ params }: PageProps) {
           </div>
 
           <div className="min-w-0">
-            <h1 className="text-[30px] font-bold leading-[1.2] text-[#18B27F] md:text-[42px]">{set.name}</h1>
+            <h1 className="text-[25px] font-bold leading-[1.2] text-[#18B27F] sm:text-[30px] md:text-[42px]">{set.name}</h1>
 
             {set.summary && (
-              <p className="mt-6 text-[16px] leading-[1.8] text-[#4A5560] md:text-[17px]">{set.summary}</p>
+              <p className="mt-5 text-[15px] leading-[1.8] text-[#4A5560] sm:mt-6 sm:text-[16px] md:text-[17px]">
+                {set.summary}
+              </p>
             )}
 
             {set.features.length > 0 && (
@@ -132,7 +134,7 @@ export default async function SurgicalSetDetailPage({ params }: PageProps) {
 
             <Link
               href="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#1E2A3B] px-6 py-4 text-xs font-bold tracking-[1.5px] text-white transition-colors hover:bg-[#24344A]"
+              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#1E2A3B] px-5 py-3.5 text-[11px] font-bold tracking-[1.5px] text-white transition-colors hover:bg-[#24344A] sm:px-6 sm:py-4 sm:text-xs"
             >
               REQUEST A QUOTE <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
@@ -140,7 +142,7 @@ export default async function SurgicalSetDetailPage({ params }: PageProps) {
         </section>
 
         {/* DESCRIPTION / SPECIFICATIONS / FAQS */}
-        <section className="pb-20">
+        <section className="pb-14 sm:pb-20">
           <SurgicalSetTabs
             name={set.name}
             description={set.description}
@@ -155,9 +157,9 @@ export default async function SurgicalSetDetailPage({ params }: PageProps) {
       {/* RELATED SETS */}
       {related.length > 0 && (
         <section className="border-t border-[#EDF2F0] bg-[#F9FBFA]">
-          <div className="mx-auto max-w-[1320px] px-6 py-16">
+          <div className="mx-auto max-w-[1320px] px-5 py-12 sm:px-6 sm:py-16">
             <div className="flex flex-wrap items-end justify-between gap-4">
-              <h2 className="text-[26px] font-bold text-[#10261F] md:text-[32px]">
+              <h2 className="text-[22px] font-bold text-[#10261F] sm:text-[26px] md:text-[32px]">
                 {set.category ? `More ${set.category}` : "More surgical sets"}
               </h2>
               <Link

@@ -46,18 +46,20 @@ export default async function ProductDetailPage({ params }: PageProps) {
   return (
     <div className="bg-white text-[#4A5560]">
       {/* HERO */}
-      <div className="mx-auto mt-10 grid min-h-[520px] max-w-[1320px] grid-cols-1 md:grid-cols-[45%_55%]">
-        <Reveal className="flex flex-col gap-8 bg-[#18B27F] px-7 py-14 text-white md:px-20 md:py-20">
-          <span className="text-[23px] font-semibold uppercase tracking-[2px]">{product.name}</span>
-          <h1 className="pb-20 pt-14 text-[28px] font-light leading-[1.35] md:text-[55px]">
+      <div className="mx-auto mt-6 grid max-w-[1320px] grid-cols-1 sm:mt-10 md:min-h-[520px] md:grid-cols-[45%_55%]">
+        <Reveal className="flex flex-col gap-5 bg-[#18B27F] px-5 py-10 text-white sm:gap-8 sm:px-7 sm:py-14 md:px-20 md:py-20">
+          <span className="text-[18px] font-semibold uppercase tracking-[2px] sm:text-[23px]">{product.name}</span>
+          <h1 className="pb-10 pt-6 text-[22px] font-light leading-[1.35] sm:pb-16 sm:pt-12 sm:text-[28px] md:pb-20 md:pt-14 md:text-[55px]">
             {product.tagline && <>{product.tagline} </>}
-            <span className="block text-[34px] font-bold tracking-[2px] md:text-[45px]">{product.taglineBold || product.name}</span>
+            <span className="block text-[24px] font-bold tracking-[2px] sm:text-[30px] md:text-[45px]">
+              {product.taglineBold || product.name}
+            </span>
           </h1>
           {catalogHref && (
             <a
               href={catalogHref}
               download
-              className="w-fit bg-[#1E2A3B] px-6 py-4 text-xs font-bold tracking-[1.5px] text-white transition-colors hover:bg-[#24344A]"
+              className="w-fit bg-[#1E2A3B] px-5 py-3.5 text-[11px] font-bold tracking-[1.5px] text-white transition-colors hover:bg-[#24344A] sm:px-6 sm:py-4 sm:text-xs"
             >
               DOWNLOAD CATALOGUE
             </a>
@@ -70,39 +72,48 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <img
               src={product.image.url}
               alt={product.image.alt || product.name}
-              className="h-[340px] w-full object-cover md:h-full md:max-h-[750px]"
+              className="h-[220px] w-full object-cover sm:h-[340px] md:h-full md:max-h-[750px]"
             />
           ) : (
-            <div className="grid h-[340px] w-full place-items-center bg-[#EEF5F2] text-[#9DB5AC] md:h-full">
+            <div className="grid h-[220px] w-full place-items-center bg-[#EEF5F2] text-[#9DB5AC] sm:h-[340px] md:h-full">
               <ImageIcon className="h-12 w-12" aria-hidden />
             </div>
           )}
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1320px] px-6">
+      <div className="mx-auto max-w-[1320px] px-5 sm:px-6">
         {/* INTRO */}
-        <section className="pt-14">
-          <h2 className="mb-5 text-[36px] font-bold text-[#18B27F] md:text-[45px]">
+        <section className="pt-10 sm:pt-14">
+          <h2 className="mb-5 text-[26px] font-bold text-[#18B27F] sm:text-[32px] md:text-[45px]">
             {product.name}
-            {product.badge && <span className="ml-3 align-middle text-xl font-semibold text-slate-400">({product.badge})</span>}
+            {product.badge && (
+              <span className="ml-2 align-middle text-base font-semibold text-slate-400 sm:ml-3 sm:text-xl">
+                ({product.badge})
+              </span>
+            )}
           </h2>
           {product.description ? (
             <div className={richTextBody} dangerouslySetInnerHTML={{ __html: product.description }} />
           ) : (
-            product.summary && <p className="text-[18px] leading-relaxed tracking-wide text-ink">{product.summary}</p>
+            product.summary && (
+              <p className="text-[16px] leading-relaxed tracking-wide text-ink sm:text-[18px]">{product.summary}</p>
+            )
           )}
         </section>
 
         {/* FEATURED CATEGORIES */}
         {product.categories.length > 0 && (
-          <section className="pt-16">
-            <h2 className="mb-5 text-[36px] font-bold text-[#18B27F] md:text-[45px]">Featured Categories</h2>
+          <section className="pt-12 sm:pt-16">
+            <h2 className="mb-5 text-[26px] font-bold text-[#18B27F] sm:text-[32px] md:text-[45px]">Featured Categories</h2>
 
             <ul className="mb-8 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 md:grid-cols-3">
               {product.categories.map((cat, i) => (
                 <li key={cat}>
-                  <FadeUp delay={Math.min(i, 12) * 40} className="flex items-center gap-2 text-[18px] font-semibold text-[#1C3350]">
+                  <FadeUp
+                    delay={Math.min(i, 12) * 40}
+                    className="flex items-center gap-2 text-[16px] font-semibold text-[#1C3350] sm:text-[18px]"
+                  >
                     <span
                       aria-hidden
                       className="h-0 w-0 shrink-0 border-y-[5px] border-l-[7px] border-y-transparent border-l-[#18B27F]"
@@ -115,7 +126,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
             <Link
               href="/products"
-              className="inline-block bg-[#1E2A3B] px-6 py-4 text-xs font-bold tracking-[1.5px] text-white transition-colors hover:bg-[#24344A]"
+              className="inline-block bg-[#1E2A3B] px-5 py-3.5 text-[11px] font-bold tracking-[1.5px] text-white transition-colors hover:bg-[#24344A] sm:px-6 sm:py-4 sm:text-xs"
             >
               VIEW ALL PRODUCTS
             </Link>
@@ -124,8 +135,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
         {/* MEDIA */}
         {catalogHref ? (
-          <section className="pb-24 pt-20 text-center">
-            <h2 className="mb-2 inline-block text-[32px] font-bold text-[#18B27F]">Media</h2>
+          <section className="pb-16 pt-14 text-center sm:pb-24 sm:pt-20">
+            <h2 className="mb-2 inline-block text-[24px] font-bold text-[#18B27F] sm:text-[32px]">Media</h2>
 
             <FadeUp className="mx-auto mt-8 w-[230px]">
               <a

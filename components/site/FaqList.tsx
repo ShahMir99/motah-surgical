@@ -14,7 +14,7 @@ export default function FaqList({ items }: { items: { question: string; answer: 
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="w-full flex items-center justify-between gap-6 text-left"
+              className="w-full flex items-center justify-between gap-4 sm:gap-6 text-left"
               aria-expanded={isOpen}
             >
               <span className="text-base sm:text-lg font-bold text-gray-900">{faq.question}</span>

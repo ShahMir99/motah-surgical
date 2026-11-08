@@ -76,7 +76,7 @@ async function getRelated(blog: BlogDTO): Promise<BlogListItem[]> {
 
 // Styles for the HTML that comes out of the admin editor (Tiptap)
 const articleBody = [
-  "text-[17px] md:text-[18px] leading-[1.85] text-[#4A5560]",
+  "text-[17px] md:text-[18px] leading-[1.85] text-[#4A5560] break-words",
   "[&_p]:my-5",
   "[&_h1]:mt-12 [&_h1]:mb-4 [&_h1]:text-[28px] md:[&_h1]:text-[32px] [&_h1]:font-bold [&_h1]:leading-[1.3] [&_h1]:text-[#1E2A33]",
   "[&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:text-[26px] md:[&_h2]:text-[30px] [&_h2]:font-bold [&_h2]:leading-[1.3] [&_h2]:text-[#1E2A33]",
@@ -89,6 +89,9 @@ const articleBody = [
   "[&_img]:my-8 [&_img]:h-auto [&_img]:w-full [&_img]:rounded-xl",
   "[&_hr]:my-12 [&_hr]:border-[#E3EEEA]",
   "[&_code]:rounded [&_code]:bg-[#F3FAF7] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-[15px]",
+  // Pasted/authored tables scroll inside the column instead of widening the page.
+  "[&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto",
+  "[&_pre]:max-w-full [&_pre]:overflow-x-auto",
 ].join(" ");
 
 export default async function BlogDetailPage({ params }: PageProps) {
@@ -104,7 +107,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
     <main className="bg-white text-[#4A5560]">
       {/* HERO: same split as the blogs page */}
       <div className="grid grid-cols-1 md:grid-cols-[48%_52%] max-w-[1250px] mx-auto md:min-h-[560px]">
-        <Reveal className="bg-[#18B27F] text-white flex flex-col justify-center gap-7 px-7 py-12 md:px-12 md:py-16">
+        <Reveal className="bg-[#18B27F] text-white flex flex-col justify-center gap-5 px-5 py-10 sm:gap-7 sm:px-7 sm:py-12 md:px-12 md:py-16">
           <Link
             href="/blogs"
             className="inline-flex w-fit items-center gap-2 text-[15px] font-semibold text-white/85 transition-colors hover:text-white"
@@ -130,11 +133,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
             </span>
           )}
 
-          <h1 className="text-[30px] md:text-[44px] font-bold leading-[1.2]">
+          <h1 className="text-[25px] sm:text-[30px] md:text-[44px] font-bold leading-[1.2]">
             {blog.title}
           </h1>
 
-          <dl className="flex flex-wrap gap-x-8 gap-y-3 border-t border-white/25 pt-6 text-[15px]">
+          <dl className="flex flex-wrap gap-x-6 gap-y-3 border-t border-white/25 pt-5 text-[14px] sm:gap-x-8 sm:pt-6 sm:text-[15px]">
             {blog.author && (
               <div>
                 <dt className="text-white/70">Written by</dt>
@@ -171,10 +174,10 @@ export default async function BlogDetailPage({ params }: PageProps) {
       </div>
 
       <ReadingProgress>
-        <article className="px-6 pt-14 pb-20 md:pt-20">
+        <article className="px-5 pt-10 pb-14 sm:px-6 sm:pt-14 sm:pb-20 md:pt-20">
           <div className="mx-auto max-w-[740px]">
             {blog.excerpt && (
-              <p className="mb-10 border-l-4 border-[#18B27F] pl-5 text-[20px] md:text-[22px] leading-[1.6] font-medium text-[#1E2A33]">
+              <p className="mb-8 border-l-4 border-[#18B27F] pl-4 text-[17px] sm:mb-10 sm:pl-5 sm:text-[20px] md:text-[22px] leading-[1.6] font-medium text-[#1E2A33]">
                 {blog.excerpt}
               </p>
             )}
@@ -205,9 +208,9 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
       {related.length > 0 && (
         <section className="bg-[#F6FBF9]">
-          <div className="max-w-[1320px] mx-auto px-6 py-20">
+          <div className="max-w-[1320px] mx-auto px-5 sm:px-6 py-14 sm:py-20">
             <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-              <h2 className="text-[#18B27F] font-bold text-[32px] md:text-[42px] leading-[1.2]">
+              <h2 className="text-[#18B27F] font-bold text-[24px] sm:text-[32px] md:text-[42px] leading-[1.2]">
                 Keep reading
               </h2>
               <Link
